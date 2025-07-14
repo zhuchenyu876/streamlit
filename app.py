@@ -278,7 +278,7 @@ class QAAnalyzer:
         progress_text.empty()
         return df
 
-    def analyze_file(self, file_path: str, sample_n: int, num_generations: int, update_progress, language="auto") -> tuple:
+    def analyze_file(self, file_path: str, sample_n: int, num_generations: int, update_progress, language="auto", enable_llm_analysis=True) -> tuple:
         """Main analysis function with language support"""
         try:
             # Load and process data with language-specific encoding
@@ -317,20 +317,24 @@ class QAAnalyzer:
             if not st.session_state.get('analysis_running', False):
                 return None, None
 
-            # Perform LLM analysis
-            st.write("Performing LLM analysis...")
-            llm_progress_bar = st.progress(0)  # LLM分析进度条
-            
-            def update_llm_progress(current, total):
-                llm_progress = current / total
-                llm_progress_bar.progress(llm_progress)
-            
-            df = self.llm_analyzer.analyze_dataframe(df, '参考答案', '生成答案1', progress_callback=update_llm_progress, pause_check_callback=update_progress)  # Use first generated answer
-            llm_progress_bar.empty()  # 清空LLM分析进度条
-            
-            # Check if analysis was stopped
-            if not st.session_state.get('analysis_running', False):
-                return None, None
+            # 根据用户选择决定是否进行LLM分析
+            if enable_llm_analysis:
+                # Perform LLM analysis
+                st.write("Performing LLM analysis...")
+                llm_progress_bar = st.progress(0)
+                
+                def update_llm_progress(current, total):
+                    llm_progress = current / total
+                    llm_progress_bar.progress(llm_progress)
+                
+                df = self.llm_analyzer.analyze_dataframe(df, '参考答案', '生成答案1', progress_callback=update_llm_progress, pause_check_callback=update_progress)  # Use first generated answer
+                llm_progress_bar.empty()  # 清空LLM分析进度条
+                
+                # Check if analysis was stopped
+                if not st.session_state.get('analysis_running', False):
+                    return None, None
+            else:
+                st.write("Skipping LLM analysis (基础机器学习分析模式)")
             
             # 添加"包含错误"列
             df['包含错误'] = df.apply(
@@ -344,18 +348,46 @@ class QAAnalyzer:
 
             # Save results
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}.csv'
-            df.to_csv(output_path, index=False, encoding='utf-8-sig')
+            # 根据是否进行LLM分析给文件添加不同后缀
+            if enable_llm_analysis:
+                output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}_with_llm.csv'
+            else:
+                output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}_basic.csv'
+            
+            # Create output directory if it doesn't exist (with error handling for Streamlit Cloud)
+            try:
+                os.makedirs('./qa_analysis_results', exist_ok=True)
+                df.to_csv(output_path, index=False, encoding='utf-8-sig')
+            except (OSError, PermissionError):
+                # If we can't create directory or write file, use session state to store data
+                st.warning("⚠️ 无法保存文件到磁盘（云端只读模式），结果将存储在会话中")
+                if 'analysis_results' not in st.session_state:
+                    st.session_state['analysis_results'] = {}
+                st.session_state['analysis_results'][timestamp] = df
+                output_path = f'session_result_{timestamp}'
             
             # 显示成功消息
-            st.success("✅ Analysis completed successfully!")
+            if enable_llm_analysis:
+                st.success("✅ LLM增强分析完成！")
+            else:
+                st.success("✅ 基础机器学习分析完成！")
             st.balloons()  # 添加气球动画效果
             
             # 显示下载链接
-            with open(output_path, 'rb') as file:
+            try:
+                with open(output_path, 'rb') as file:
+                    st.download_button(
+                        label="📥 Download Results",
+                        data=file,
+                        file_name=f"qa_analysis_results_{timestamp}.csv",
+                        mime="text/csv"
+                    )
+            except (FileNotFoundError, OSError):
+                # If file doesn't exist (cloud mode), provide CSV download from DataFrame
+                csv_data = df.to_csv(index=False, encoding='utf-8-sig')
                 st.download_button(
                     label="📥 Download Results",
-                    data=file,
+                    data=csv_data,
                     file_name=f"qa_analysis_results_{timestamp}.csv",
                     mime="text/csv"
                 )
@@ -429,7 +461,7 @@ def load_agents():
             agents_df['username'] = ''
         return agents_df
     except FileNotFoundError:
-        # Create default agents file if not exists
+        # Create default agents DataFrame (don't save to file for Streamlit Cloud compatibility)
         df = pd.DataFrame({
             'name': ['futu路线1', 'futu路线2'],
             'description': ['富途问答机器人路线1', '富途问答机器人路线2'],
@@ -447,7 +479,14 @@ def load_agents():
                 'MTczOTQyMDQ6NDUzMgowblpwWVRIWHQ0M2RGN3ErSEJzNDF0RmNUQkU9'
             ]
         })
-        df.to_csv('./public/agents.csv', index=False)
+        # Try to save to file, but don't fail if unable to (for Streamlit Cloud compatibility)
+        try:
+            import os
+            os.makedirs('./public', exist_ok=True)
+            df.to_csv('./public/agents.csv', index=False)
+        except (OSError, PermissionError):
+            # If we can't write to file (e.g., on Streamlit Cloud), just return the DataFrame
+            pass
         return df
 
 def load_analyzer_config():
@@ -455,23 +494,44 @@ def load_analyzer_config():
     try:
         return pd.read_csv('./public/analyzer_config.csv').iloc[0].to_dict()
     except (FileNotFoundError, IndexError):
-        # Create default config file if not exists
+        # Create default config (don't save to file for Streamlit Cloud compatibility)
         config = {
             'url': 'https://agents.dyna.ai/openapi/v1/conversation/dialog/',
             'robot_key': 'f79sd16wABIqwLe%2FzjGeZGDRMUo%3D',
             'robot_token': 'MTczODkxMDA0MzUwMgp1cjRVVnF4Y0w3Y2hwRmU3RmxFUXFQV05lSGc9',
             'username': 'marshall.ting@dyna.ai'
         }
-        pd.DataFrame([config]).to_csv('./public/analyzer_config.csv', index=False)
+        # Try to save to file, but don't fail if unable to (for Streamlit Cloud compatibility)
+        try:
+            import os
+            os.makedirs('./public', exist_ok=True)
+            pd.DataFrame([config]).to_csv('./public/analyzer_config.csv', index=False)
+        except (OSError, PermissionError):
+            # If we can't write to file (e.g., on Streamlit Cloud), just return the config
+            pass
         return config
 
 def save_analyzer_config(config_dict):
     """Save LLM analyzer configuration"""
-    pd.DataFrame([config_dict]).to_csv('./public/analyzer_config.csv', index=False)
+    try:
+        import os
+        os.makedirs('./public', exist_ok=True)
+        pd.DataFrame([config_dict]).to_csv('./public/analyzer_config.csv', index=False)
+    except (OSError, PermissionError):
+        # If we can't write to file (e.g., on Streamlit Cloud), just skip saving
+        st.warning("⚠️ 无法保存配置到文件（云端只读模式），配置将在会话结束后丢失")
+        pass
 
 def save_agents(df):
     """Save agents to CSV file"""
-    df.to_csv('./public/agents.csv', index=False)
+    try:
+        import os
+        os.makedirs('./public', exist_ok=True)
+        df.to_csv('./public/agents.csv', index=False)
+    except (OSError, PermissionError):
+        # If we can't write to file (e.g., on Streamlit Cloud), just skip saving
+        st.warning("⚠️ 无法保存Agent配置到文件（云端只读模式），配置将在会话结束后丢失")
+        pass
 
 def main():
     st.set_page_config(
@@ -1087,6 +1147,67 @@ def main():
             else:
                 st.caption("⚠️ 单次生成无法计算语义稳定性")
         
+        # LLM分析选项
+        st.markdown("---")
+        st.subheader("🧠 LLM分析选项")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            enable_llm_analysis = st.checkbox(
+                "🔬 启用LLM深度分析",
+                value=False,
+                help="是否进行LLM深度分析。关闭此选项只进行基础机器学习分析（ROUGE、语义相似度等）"
+            )
+            
+            # 保存LLM分析选项到session state
+            st.session_state.enable_llm_analysis = enable_llm_analysis
+            
+        with col2:
+            if enable_llm_analysis:
+                st.success("✅ 将进行完整的LLM深度分析")
+                st.caption("包含：事实准确性、语义一致性、业务逻辑等10+维度分析")
+            else:
+                st.info("📊 仅进行基础机器学习分析")
+                st.caption("包含：ROUGE分数、语义相似度、完整度、相关度等传统指标")
+        
+        # 显示分析内容说明
+        if enable_llm_analysis:
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%); 
+                        color: #333; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                <h5 style="margin: 0 0 10px 0; color: #2c3e50;">🎯 LLM深度分析包含：</h5>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    <div>• 事实准确性评估</div>
+                    <div>• 语义一致性分析</div>
+                    <div>• 业务逻辑符合性</div>
+                    <div>• 用户意图理解度</div>
+                    <div>• 专业程度评估</div>
+                    <div>• 上下文理解能力</div>
+                </div>
+                <p style="margin: 10px 0 0 0; font-size: 0.9rem; opacity: 0.8;">
+                    <strong>注意：</strong> LLM分析需要API密钥，分析时间较长，但提供更深入的洞察
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); 
+                        color: #333; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                <h5 style="margin: 0 0 10px 0; color: #2c3e50;">📊 基础机器学习分析包含：</h5>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    <div>• ROUGE-L 分数</div>
+                    <div>• 语义相似度</div>
+                    <div>• 回答完整度</div>
+                    <div>• 信息相关度</div>
+                    <div>• 语义稳定性</div>
+                    <div>• 冗余度分析</div>
+                </div>
+                <p style="margin: 10px 0 0 0; font-size: 0.9rem; opacity: 0.8;">
+                    <strong>优势：</strong> 快速分析，无需API密钥，适合快速质量检查
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
         # Analysis execution
         st.markdown("---")
         st.subheader("🚀 开始分析")
@@ -1095,18 +1216,29 @@ def main():
         if uploaded_file is None:
             st.warning("⚠️ 请先上传CSV文件")
             analysis_ready = False
+        elif enable_llm_analysis and not st.session_state.get('analyzer_config'):
+            st.warning("⚠️ LLM分析需要配置API参数，请前往'Analyzer Config'标签页配置")
+            analysis_ready = False
         else:
             st.success("✅ 准备就绪，可以开始分析")
             analysis_ready = True
         
-        # Analysis steps indicator
-        analysis_steps = [
-            ("数据加载", "读取和处理CSV文件"),
-            ("答案生成", "调用机器人生成答案"),
-            ("指标计算", "计算各种质量指标"),
-            ("LLM分析", "深度质量分析"),
-            ("结果保存", "保存分析结果")
-        ]
+        # Analysis steps indicator - 根据是否启用LLM分析显示不同步骤
+        if enable_llm_analysis:
+            analysis_steps = [
+                ("数据加载", "读取和处理CSV文件"),
+                ("答案生成", "调用机器人生成答案"),
+                ("指标计算", "计算各种质量指标"),
+                ("LLM分析", "深度质量分析"),
+                ("结果保存", "保存分析结果")
+            ]
+        else:
+            analysis_steps = [
+                ("数据加载", "读取和处理CSV文件"),
+                ("答案生成", "调用机器人生成答案"),
+                ("指标计算", "计算各种质量指标"),
+                ("结果保存", "保存分析结果")
+            ]
         
         # Analysis control buttons
         analysis_running = st.session_state.get('analysis_running', False)
@@ -1271,7 +1403,14 @@ def main():
                         df, output_path = None, None
                 else:
                     # 单机器人分析
-                    df, output_path = analyzer.analyze_file(temp_file, sample_n, num_generations, enhanced_progress_callback, selected_language)
+                    # 获取LLM分析选项
+                    enable_llm_analysis = st.session_state.get('enable_llm_analysis', False)
+                    
+                    df, output_path = analyzer.analyze_file(
+                        temp_file, sample_n, num_generations, 
+                        enhanced_progress_callback, selected_language, 
+                        enable_llm_analysis
+                    )
                 
                 if df is not None:
                     st.session_state.task_manager.store_result(task_id, df, output_path)
