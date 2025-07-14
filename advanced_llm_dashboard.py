@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 import os
 import glob
 from typing import Dict, List, Any, Optional
-import time # Added for time estimation
+import time
 from file_manager import file_manager
 
 class AdvancedLLMDashboard:
@@ -55,7 +55,7 @@ class AdvancedLLMDashboard:
     def show_advanced_llm_dashboard(self):
         """显示增强版LLM分析Dashboard"""
         
-        # 🎯 模式选择区域
+        # 模式选择区域
         self._show_mode_selector()
         
         # 数据加载和分析
@@ -171,13 +171,7 @@ class AdvancedLLMDashboard:
     
     def _show_first_step_analysis(self):
         """显示从第一步结果进行的分析"""
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                    color: white; padding: 20px; border-radius: 15px; margin: 20px 0;">
-            <h3 style="margin: 0; text-align: center;">🚀 从第一步结果进行增强LLM分析</h3>
-            <p style="margin: 10px 0 0 0; text-align: center;">选择已有的基础分析结果，进行深度LLM评估</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown("### 🚀 从第一步结果进行增强LLM分析")
         
         # 获取第一步分析结果文件
         first_step_files = self._get_first_step_analysis_files()
@@ -185,33 +179,16 @@ class AdvancedLLMDashboard:
         if not first_step_files:
             st.warning("⚠️ 没有找到第一步分析结果文件")
             st.info("💡 请先在'Analysis'标签页运行基础分析来生成数据")
-            
-            # 提供跳转到Analysis标签的链接
-            st.markdown("""
-            <div style="text-align: center; margin: 20px 0;">
-                <p style="font-size: 18px;">🔄 需要先进行基础分析</p>
-                <p>请前往 <strong>Analysis</strong> 标签页运行基础分析，然后返回这里进行增强LLM分析</p>
-            </div>
-            """, unsafe_allow_html=True)
             return
         
-        # 文件选择器 - 美化样式
+        # 文件选择器
         st.markdown("### 📁 选择第一步分析结果")
         
-        # 创建文件选择的漂亮界面
-        col1, col2 = st.columns([3, 1])
-        
-        with col1:
-            selected_file = st.selectbox(
-                "选择要进行LLM增强分析的基础结果文件",
-                first_step_files,
-                format_func=lambda x: f"📊 {os.path.basename(x)} ({datetime.fromtimestamp(os.path.getmtime(x)).strftime('%Y-%m-%d %H:%M')})",
-                help="选择一个基础分析结果文件进行LLM增强分析"
-            )
-        
-        with col2:
-            if st.button("🔄 刷新文件列表"):
-                st.rerun()
+        selected_file = st.selectbox(
+            "选择要进行LLM增强分析的基础结果文件",
+            first_step_files,
+            help="选择一个基础分析结果文件进行LLM增强分析"
+        )
         
         if selected_file:
             # 加载并预览数据
@@ -242,12 +219,20 @@ class AdvancedLLMDashboard:
                 
                 with col4:
                     if '语义稳定性' in df.columns:
-                        stability_series = pd.to_numeric(df['语义稳定性'], errors='coerce')
-                        avg_stability = stability_series.mean()
-                        if not pd.isna(avg_stability):
-                            st.metric("🔄 平均稳定性", f"{avg_stability:.1f}%")
-                        else:
+                        try:
+                            if '语义稳定性' in df.columns:
+                                stability_values = df['语义稳定性'].dropna()
+                                if len(stability_values) > 0:
+                                    avg_stability = float(stability_values.mean())
+                                    st.metric("🔄 平均稳定性", f"{avg_stability:.1f}%")
+                                else:
+                                    st.metric("🔄 平均稳定性", "N/A")
+                            else:
+                                st.metric("🔄 平均稳定性", "N/A")
+                        except:
                             st.metric("🔄 平均稳定性", "N/A")
+                    else:
+                        st.metric("🔄 平均稳定性", "N/A")
                 
                 # 显示前几行数据预览
                 with st.expander("📋 数据预览 (前5行)", expanded=False):
@@ -265,9 +250,7 @@ class AdvancedLLMDashboard:
                 st.error("❌ 无法加载分析数据")
     
     def _get_first_step_analysis_files(self) -> List[str]:
-        """
-        获取第一步分析结果文件
-        """
+        """获取第一步分析结果文件"""
         import os
         import glob
         
@@ -291,42 +274,10 @@ class AdvancedLLMDashboard:
         return sorted(first_step_files, reverse=True)
     
     def _show_llm_analysis_interface(self, df: pd.DataFrame):
-        """
-        显示LLM分析界面
-        """
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); 
-                    color: #333; padding: 20px; border-radius: 15px; margin: 20px 0;">
-            <h3 style="margin: 0; text-align: center;">🧠 LLM增强分析配置</h3>
-            <p style="margin: 10px 0 0 0; text-align: center;">配置并运行深度LLM分析</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # 分析配置说明
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%); 
-                    color: #333; padding: 15px; border-radius: 10px; margin: 10px 0;">
-            <h4 style="margin: 0 0 10px 0; color: #2c3e50;">🎯 智能分析方案</h4>
-            <p style="margin: 0; font-size: 0.9rem;">
-                系统会根据您选择的方案自动优化分析类型和样本数量，无需手动配置
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+        """显示LLM分析界面"""
+        st.markdown("### 🧠 LLM增强分析配置")
         
         # 智能样本选择
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); 
-                    color: #333; padding: 20px; border-radius: 15px; margin: 20px 0;
-                    box-shadow: 0 4px 15px rgba(252, 182, 159, 0.2);">
-            <h4 style="margin: 0 0 15px 0; text-align: center; color: #2c3e50;">
-                📊 智能分析方案选择
-            </h4>
-            <p style="margin: 0; text-align: center; font-size: 0.9rem; opacity: 0.8;">
-                选择合适的分析方案，系统会自动优化分析类型和样本数量
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
         col1, col2 = st.columns(2)
         
         with col1:
@@ -392,24 +343,13 @@ class AdvancedLLMDashboard:
             total_api_calls = selected_count * api_calls_per_sample
             estimated_seconds = total_api_calls * time_per_call
             
-            st.markdown(f"""
-            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-                        color: white; padding: 20px; border-radius: 15px; 
-                        box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);">
-                <h4 style="margin: 0 0 15px 0;">⏱️ 分析方案详情</h4>
-                <p style="margin: 5px 0;"><strong>样本数：</strong> {selected_count}</p>
-                <p style="margin: 5px 0;"><strong>分析类型：</strong> {analysis_type}</p>
-                <p style="margin: 5px 0;"><strong>API调用：</strong> {total_api_calls} 次</p>
-                <p style="margin: 5px 0;"><strong>预计时间：</strong> {estimated_seconds//60}分{estimated_seconds%60}秒</p>
-                <hr style="border: 1px solid rgba(255,255,255,0.3); margin: 15px 0;">
-                <div style="font-size: 0.9rem; opacity: 0.9;">
-                    <p style="margin: 0;"><strong>💡 方案说明：</strong></p>
-                    <p style="margin: 5px 0;">• {sample_options[sample_choice]['description']}</p>
-                    <p style="margin: 5px 0;">• 每样本 {api_calls_per_sample} 次API调用</p>
-                    <p style="margin: 5px 0;">• 预计 {sample_options[sample_choice]['time']}</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.info(f"""
+            **分析方案详情：**
+            - 样本数：{selected_count}
+            - 分析类型：{analysis_type}
+            - API调用：{total_api_calls} 次
+            - 预计时间：{estimated_seconds//60}分{estimated_seconds%60}秒
+            """)
         
         # 如果选择样本数小于总数，进行采样
         if selected_count < len(df):
@@ -418,44 +358,6 @@ class AdvancedLLMDashboard:
         else:
             df_to_analyze = df
             
-        # 显示性能警告
-        if selected_count > 100:
-            st.warning(f"""
-            ⚠️ **性能提醒**：您选择了 {selected_count} 个样本进行分析
-            
-            - **预计时间**: {estimated_seconds//60} 分钟
-            - **API调用**: {total_api_calls} 次
-            - **建议**: 如果是首次使用，建议先选择较少样本进行测试
-            """)
-            
-        # 分析类型说明
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
-                    color: #333; padding: 20px; border-radius: 15px; margin: 20px 0;
-                    box-shadow: 0 4px 15px rgba(168, 237, 234, 0.2);">
-            <h4 style="margin: 0 0 15px 0; text-align: center; color: #2c3e50;">
-                🎯 分析类型说明
-            </h4>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px;">
-                    <strong>🔬 全面分析</strong><br/>
-                    <small>10维度+6业务维度+对比分析</small><br/>
-                    <small>⏱️ 每样本3次API调用</small>
-                </div>
-                <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px;">
-                    <strong>🛞 仅业务分析</strong><br/>
-                    <small>专注轮胎业务指标</small><br/>
-                    <small>⚡ 每样本1次API调用</small>
-                </div>
-                <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px;">
-                    <strong>🤖 仅对比分析</strong><br/>
-                    <small>Agent质量对比</small><br/>
-                    <small>⚡ 每样本1次API调用</small>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
         # API配置检查
         if not self._check_api_configuration():
             st.error("❌ 请先配置LLM API参数")
@@ -463,13 +365,6 @@ class AdvancedLLMDashboard:
         
         # 第一步：显示分析准备按钮
         if st.button("🚀 准备LLM增强分析", type="primary", use_container_width=True):
-            # 如果选择样本数小于总数，进行采样
-            if selected_count < len(df):
-                df_to_analyze = df.sample(n=selected_count, random_state=42).reset_index(drop=True)
-                st.info(f"📊 已从 {len(df)} 个样本中随机选择 {selected_count} 个进行分析")
-            else:
-                df_to_analyze = df
-            
             st.session_state['llm_analysis_prepared'] = True
             st.session_state['llm_analysis_data'] = {
                 'df': df_to_analyze,
@@ -486,14 +381,7 @@ class AdvancedLLMDashboard:
             analysis_data = st.session_state.get('llm_analysis_data', {})
             
             # 显示分析配置确认
-            st.markdown("""
-            <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); 
-                        color: white; padding: 20px; border-radius: 15px; margin: 20px 0;
-                        box-shadow: 0 4px 15px rgba(67, 233, 123, 0.3);">
-                <h3 style="margin: 0 0 15px 0; text-align: center;">✅ 分析配置已准备完成</h3>
-                <p style="margin: 0; text-align: center;">请确认以下配置，然后点击"真正开始分析"按钮</p>
-            </div>
-            """, unsafe_allow_html=True)
+            st.success("✅ 分析配置已准备完成")
             
             # 显示分析配置详情
             col1, col2 = st.columns(2)
@@ -535,16 +423,6 @@ class AdvancedLLMDashboard:
                     estimated_seconds = analysis_data['estimated_seconds']
                     total_api_calls = analysis_data['total_api_calls']
                     
-                    # 显示性能警告
-                    if selected_count > 100:
-                        st.warning(f"""
-                        ⚠️ **性能提醒**：您选择了 {selected_count} 个样本进行分析
-                        
-                        - **预计时间**: {estimated_seconds//60} 分钟
-                        - **API调用**: {total_api_calls} 次
-                        - **建议**: 如果是首次使用，建议先选择较少样本进行测试
-                        """)
-                    
                     # 创建分析器配置
                     config = self._get_llm_config()
                     
@@ -557,15 +435,13 @@ class AdvancedLLMDashboard:
                         self._run_llm_analysis_direct(df_to_analyze, analysis_type, config)
     
     def _run_llm_analysis_direct(self, df: pd.DataFrame, analysis_type: str, config: Dict):
-        """
-        直接运行LLM分析（无需二次确认）
-        """
+        """直接运行LLM分析"""
         try:
             # 预估时间计算
             sample_count = len(df)
             if analysis_type == "comprehensive":
-                api_calls = sample_count * 3  # 综合+业务+对比
-                estimated_time = api_calls * 4  # 平均每次调用4秒
+                api_calls = sample_count * 3
+                estimated_time = api_calls * 4
             elif analysis_type == "business_only":
                 api_calls = sample_count * 1
                 estimated_time = api_calls * 3
@@ -577,32 +453,23 @@ class AdvancedLLMDashboard:
                 estimated_time = api_calls * 4
             
             # 显示分析开始信息
-            st.markdown(f"""
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                        color: white; padding: 20px; border-radius: 15px; margin: 20px 0;
-                        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">
-                <h3 style="margin: 0 0 15px 0; text-align: center;">🚀 LLM增强分析已启动</h3>
-                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
-                    <p style="margin: 5px 0;"><strong>📊 样本数量：</strong> {sample_count} 个</p>
-                    <p style="margin: 5px 0;"><strong>🎯 分析类型：</strong> {analysis_type}</p>
-                    <p style="margin: 5px 0;"><strong>📡 API调用次数：</strong> {api_calls} 次</p>
-                    <p style="margin: 5px 0;"><strong>⏱️ 预计时间：</strong> {estimated_time//60} 分钟 {estimated_time%60} 秒</p>
-                </div>
-                <div style="text-align: center; margin-top: 15px;">
-                    <strong>💡 分析正在进行中，请耐心等待...</strong>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.info(f"""
+            🚀 LLM增强分析已启动
+            - 样本数量：{sample_count} 个
+            - 分析类型：{analysis_type}
+            - API调用次数：{api_calls} 次
+            - 预计时间：{estimated_time//60} 分钟 {estimated_time%60} 秒
+            """)
             
             # 导入分析器
             from advanced_llm_analyzer import AdvancedLLMAnalyzer
             
-            # 优化配置 - 增加超时处理和重试
+            # 优化配置
             optimized_config = {
                 **config,
-                'timeout': 60,  # 60秒超时
-                'max_retries': 3,  # 最大重试3次
-                'retry_delay': 2,  # 重试间隔2秒
+                'timeout': 60,
+                'max_retries': 3,
+                'retry_delay': 2,
                 'url': 'https://agents.dyna.ai/openapi/v1/conversation/dialog/',
                 'robot_key': 'AcZ%2FQzIk8m6UV0uNkXi3HO1pJPI%3D',
                 'robot_token': 'MTc1MjEzMDE5Njc3NQp2SE5aZU92SFUvT1JwSVMvaFN3S3Jza1BlU1U9',
@@ -651,27 +518,19 @@ class AdvancedLLMDashboard:
                     remaining_items = max(total - current, 0)
                     estimated_remaining = avg_time_per_item * remaining_items
                     
-                    status_text.markdown(f"""
-                    <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
-                                color: #333; padding: 15px; border-radius: 10px; margin: 10px 0;">
-                        <p style="margin: 0; font-size: 1.1rem;"><strong>🧠 正在进行LLM深度分析...</strong></p>
-                        <p style="margin: 5px 0 0 0;">📊 进度：{current}/{total} 样本 ({progress:.1%})</p>
-                        <p style="margin: 5px 0 0 0;">⏱️ 已用时：{elapsed_time//60:.0f}分{elapsed_time%60:.0f}秒</p>
-                        <p style="margin: 5px 0 0 0;">🕒 预计剩余：{estimated_remaining//60:.0f}分{estimated_remaining%60:.0f}秒</p>
-                        <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.8;">
-                            💡 每个样本平均耗时{avg_time_per_item:.1f}秒
-                        </p>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    status_text.info(f"""
+                    🧠 正在进行LLM深度分析...
+                    - 进度：{current}/{total} 样本 ({progress:.1%})
+                    - 已用时：{elapsed_time//60:.0f}分{elapsed_time%60:.0f}秒
+                    - 预计剩余：{estimated_remaining//60:.0f}分{estimated_remaining%60:.0f}秒
+                    - 每个样本平均耗时{avg_time_per_item:.1f}秒
+                    """)
                 else:
-                    status_text.markdown(f"""
-                    <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-                                color: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
-                        <p style="margin: 0; font-size: 1.1rem;"><strong>🚀 开始分析第一个样本...</strong></p>
-                        <p style="margin: 5px 0 0 0;">📊 总计需要分析：{total} 个样本</p>
-                        <p style="margin: 5px 0 0 0;">📡 预计API调用：{api_calls} 次</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    status_text.info(f"""
+                    🚀 开始分析第一个样本...
+                    - 总计需要分析：{total} 个样本
+                    - 预计API调用：{api_calls} 次
+                    """)
                 
                 # 更新实时结果显示
                 if st.session_state.realtime_results:
@@ -717,19 +576,13 @@ class AdvancedLLMDashboard:
                     del st.session_state['realtime_results']
                 
                 # 显示成功消息
-                st.markdown(f"""
-                <div style="background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); 
-                            color: white; padding: 20px; border-radius: 15px; margin: 20px 0;
-                            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);">
-                    <h3 style="margin: 0 0 15px 0; text-align: center;">✅ LLM增强分析完成！</h3>
-                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
-                        <p style="margin: 5px 0;"><strong>📊 分析样本：</strong> {len(df)} 个</p>
-                        <p style="margin: 5px 0;"><strong>📡 API调用：</strong> {api_calls} 次</p>
-                        <p style="margin: 5px 0;"><strong>⏱️ 总用时：</strong> {total_time//60:.0f}分{total_time%60:.0f}秒</p>
-                        <p style="margin: 5px 0;"><strong>💾 保存位置：</strong> {output_path}</p>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
+                st.success(f"""
+                ✅ LLM增强分析完成！
+                - 分析样本：{len(df)} 个
+                - API调用：{api_calls} 次
+                - 总用时：{total_time//60:.0f}分{total_time%60:.0f}秒
+                - 保存位置：{output_path}
+                """)
                 
                 st.balloons()
                 
@@ -754,8 +607,8 @@ class AdvancedLLMDashboard:
                 
                 # 提供查看详细结果的选项
                 if st.button("📊 查看详细分析结果", use_container_width=True):
-                    st.session_state['llm_mode'] = 'api'  # 切换到API模式查看结果
-                    st.session_state['auto_select_file'] = output_path  # 自动选择刚保存的文件
+                    st.session_state['llm_mode'] = 'api'
+                    st.session_state['auto_select_file'] = output_path
                     st.rerun()
                 
             except Exception as analysis_error:
@@ -775,22 +628,14 @@ class AdvancedLLMDashboard:
                 if "504" in error_msg or "Gateway Time-out" in error_msg:
                     st.error("""
                     🚨 **API超时错误**
-                    
-                    - **问题**: API服务器响应超时
-                    - **建议**: 
-                      1. 减少样本数量（试试10个样本）
-                      2. 稍后再试
-                      3. 检查网络连接
+                    - 问题: API服务器响应超时
+                    - 建议: 减少样本数量或稍后再试
                     """)
                 elif "timeout" in error_msg.lower():
                     st.error("""
                     ⏰ **请求超时**
-                    
-                    - **问题**: 请求处理时间过长
-                    - **建议**:
-                      1. 选择较少的样本数量
-                      2. 使用"仅业务分析"或"仅对比分析"
-                      3. 检查API服务状态
+                    - 问题: 请求处理时间过长
+                    - 建议: 选择较少的样本数量
                     """)
                 else:
                     st.error(f"**错误详情**: {error_msg}")
@@ -798,16 +643,6 @@ class AdvancedLLMDashboard:
                 # 显示错误详情
                 with st.expander("🔍 完整错误信息"):
                     st.code(error_msg)
-                
-                # 提供解决建议
-                st.markdown("""
-                ### 💡 解决建议
-                
-                1. **减少样本数量**: 先试试10个样本快速测试
-                2. **简化分析类型**: 选择"仅业务分析"而非"全面分析"
-                3. **检查网络**: 确保网络连接稳定
-                4. **稍后重试**: API服务可能暂时繁忙
-                """)
             
         except Exception as e:
             st.error(f"❌ 分析初始化失败: {str(e)}")
@@ -818,21 +653,11 @@ class AdvancedLLMDashboard:
                 st.code(str(e))
     
     def _update_realtime_results(self, container, results, current, total):
-        """
-        更新实时结果显示
-        """
+        """更新实时结果显示"""
         try:
             with container.container():
                 # 显示当前进度
-                st.markdown(f"""
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                            color: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
-                    <h4 style="margin: 0; text-align: center;">🔄 实时分析进度</h4>
-                    <p style="margin: 10px 0 0 0; text-align: center;">
-                        已完成 {current}/{total} 个样本 ({current/total:.1%})
-                    </p>
-                </div>
-                """, unsafe_allow_html=True)
+                st.info(f"已完成 {current}/{total} 个样本 ({current/total:.1%})")
                 
                 if results:
                     # 创建结果DataFrame
@@ -881,8 +706,9 @@ class AdvancedLLMDashboard:
                             if 'llm_comparison_winner' in df_results.columns:
                                 winner_counts = df_results['llm_comparison_winner'].value_counts()
                                 generated_wins = winner_counts.get('generated', 0)
-                                win_rate = generated_wins / len(df_results) * 100
-                                st.metric("Generated胜率", f"{win_rate:.1f}%")
+                                if len(df_results) > 0:
+                                    win_rate = generated_wins / len(df_results) * 100
+                                    st.metric("Generated胜率", f"{win_rate:.1f}%")
                     
                     # 显示进度条
                     progress_percent = current / total
@@ -894,9 +720,7 @@ class AdvancedLLMDashboard:
             st.error(f"实时结果显示错误: {str(e)}")
     
     def _get_llm_config(self) -> Dict:
-        """
-        获取LLM配置
-        """
+        """获取LLM配置"""
         return {
             'api_key': st.session_state.get('llm_api_key', ''),
             'api_base': st.session_state.get('llm_api_base', ''),
@@ -955,85 +779,48 @@ class AdvancedLLMDashboard:
     
     def _show_mode_selector(self):
         """显示模式选择界面"""
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                    color: white; padding: 25px; border-radius: 20px; margin: 20px 0; 
-                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
-            <h2 style="margin: 0; text-align: center; font-size: 2.2rem;">🎯 LLM分析模式选择</h2>
-            <p style="margin: 15px 0 0 0; text-align: center; font-size: 1.1rem; opacity: 0.9;">
-                选择适合您需求的分析模式
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown("### 🎯 LLM分析模式选择")
         
         # 创建三列布局展示选项
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.markdown("""
-            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-                        color: white; padding: 25px; border-radius: 15px; margin: 10px 0;
-                        box-shadow: 0 4px 16px rgba(79, 172, 254, 0.3); text-align: center;">
-                <h3 style="margin: 0; font-size: 1.3rem;">🎭 演示模式</h3>
-                <div style="margin: 15px 0; font-size: 0.9rem; opacity: 0.9;">
-                    <p>✅ 无需API Key，立即体验</p>
-                    <p>✅ 展示完整功能和界面</p>
-                    <p>✅ 使用高质量模拟数据</p>
-                    <p>⚠️ 分析结果为演示目的</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 8px; margin-top: 15px;">
-                    <strong>🌟 推荐新手使用</strong>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.info("""
+            **🎭 演示模式**
+            - 无需API Key，立即体验
+            - 展示完整功能和界面
+            - 使用高质量模拟数据
+            - 推荐新手使用
+            """)
             
         with col2:
-            st.markdown("""
-            <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
-                        color: #333; padding: 25px; border-radius: 15px; margin: 10px 0;
-                        box-shadow: 0 4px 16px rgba(168, 237, 234, 0.3); text-align: center;">
-                <h3 style="margin: 0; font-size: 1.3rem;">🚀 从第一步结果分析</h3>
-                <div style="margin: 15px 0; font-size: 0.9rem; opacity: 0.8;">
-                    <p>📊 基于已有基础分析结果</p>
-                    <p>🧠 进行深度LLM评估</p>
-                    <p>🎯 节省重复分析时间</p>
-                    <p>⚡ 快速获得增强洞察</p>
-                </div>
-                <div style="background: rgba(0,0,0,0.1); padding: 8px; border-radius: 8px; margin-top: 15px;">
-                    <strong>💡 有基础数据首选</strong>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.info("""
+            **🚀 从第一步结果分析**
+            - 基于已有基础分析结果
+            - 进行深度LLM评估
+            - 节省重复分析时间
+            - 有基础数据首选
+            """)
             
         with col3:
-            st.markdown("""
-            <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); 
-                        color: #333; padding: 25px; border-radius: 15px; margin: 10px 0;
-                        box-shadow: 0 4px 16px rgba(252, 182, 159, 0.3); text-align: center;">
-                <h3 style="margin: 0; font-size: 1.3rem;">🔑 真实API模式</h3>
-                <div style="margin: 15px 0; font-size: 0.9rem; opacity: 0.8;">
-                    <p>🔑 需要配置LLM API Key</p>
-                    <p>💰 产生API调用费用</p>
-                    <p>🎯 真实的深度分析结果</p>
-                    <p>📊 可用于生产环境</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.7); padding: 8px; border-radius: 8px; margin-top: 15px;">
-                    <strong>🏢 生产环境推荐</strong>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.info("""
+            **🔑 真实API模式**
+            - 需要配置LLM API Key
+            - 产生API调用费用
+            - 真实的深度分析结果
+            - 生产环境推荐
+            """)
         
         # 模式选择
         selected_mode = st.radio(
-            "**请选择分析模式：**",
+            "请选择分析模式：",
             [
                 "🎭 演示模式 (免费体验)",
                 "🚀 从第一步结果分析 (推荐)",
                 "🔑 真实API模式 (需要配置)"
             ],
             index=1,  # 默认选择第二个选项
-            help="选择最适合您当前需求的分析模式",
-            horizontal=False
+            help="选择最适合您当前需求的分析模式"
         )
         
         # 根据选择显示不同的配置界面
@@ -1051,22 +838,14 @@ class AdvancedLLMDashboard:
     
     def _show_first_step_mode_info(self):
         """显示第一步结果分析模式信息"""
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
-                    color: #333; padding: 20px; border-radius: 15px; margin: 20px 0;
-                    box-shadow: 0 4px 16px rgba(168, 237, 234, 0.2);">
-            <h3 style="margin: 0; text-align: center;">🚀 从第一步结果分析模式</h3>
-            <div style="margin: 20px 0; text-align: center;">
-                <p style="font-size: 1.1rem; margin: 10px 0;">
-                    ✨ 此模式将利用您已有的基础分析结果，进行深度LLM增强分析
-                </p>
-                <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <strong>🎯 分析流程：</strong><br/>
-                    📊 选择基础分析结果 → 🧠 配置LLM分析 → 🚀 运行增强分析 → 📈 查看深度洞察
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.success("""
+        🚀 从第一步结果分析模式
+        
+        此模式将利用您已有的基础分析结果，进行深度LLM增强分析。
+        
+        **分析流程：**
+        📊 选择基础分析结果 → 🧠 配置LLM分析 → 🚀 运行增强分析 → 📈 查看深度洞察
+        """)
         
         # 显示优势
         col1, col2 = st.columns(2)
@@ -1095,16 +874,7 @@ class AdvancedLLMDashboard:
     
     def _show_api_config_form(self):
         """显示API配置表单"""
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); 
-                    color: #333; padding: 20px; border-radius: 15px; margin: 20px 0;
-                    box-shadow: 0 4px 16px rgba(252, 182, 159, 0.2);">
-            <h4 style="margin: 0; text-align: center;">🔧 LLM API配置</h4>
-            <p style="margin: 10px 0 0 0; text-align: center; font-size: 0.9rem;">
-                配置您的LLM API参数以启用真实分析
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown("### 🔧 LLM API配置")
         
         # API配置表单
         col1, col2 = st.columns(2)
@@ -1167,9 +937,7 @@ class AdvancedLLMDashboard:
         if st.button("🔬 测试API连接"):
             if api_key:
                 try:
-                    # 这里可以添加实际的API测试代码
                     st.info("正在测试API连接...")
-                    # 模拟测试
                     import time
                     time.sleep(1)
                     st.success("✅ API连接测试成功！")
@@ -1180,22 +948,14 @@ class AdvancedLLMDashboard:
     
     def _show_demo_mode_info(self):
         """显示演示模式信息"""
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-                    color: white; padding: 20px; border-radius: 15px; margin: 20px 0;
-                    box-shadow: 0 4px 16px rgba(79, 172, 254, 0.2);">
-            <h3 style="margin: 0; text-align: center;">🎭 演示模式已启用</h3>
-            <div style="margin: 20px 0; text-align: center;">
-                <p style="font-size: 1.1rem; margin: 10px 0;">
-                    🌟 您正在使用演示模式，可以立即体验所有功能！
-                </p>
-                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <strong>💡 演示数据特点：</strong><br/>
-                    📊 50个模拟测试样本 | 🎯 10维度综合评估 | 🛞 6维度业务分析 | 📈 完整对比分析
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.success("""
+        🎭 演示模式已启用
+        
+        您正在使用演示模式，可以立即体验所有功能！
+        
+        **演示数据特点：**
+        📊 50个模拟测试样本 | 🎯 10维度综合评估 | 🛞 6维度业务分析 | 📈 完整对比分析
+        """)
         
         # 显示演示模式的特色功能
         col1, col2, col3 = st.columns(3)
@@ -1226,20 +986,6 @@ class AdvancedLLMDashboard:
             - 改进建议生成
             - 详细分析报告
             """)
-        
-        # 快速开始指南
-        st.markdown("""
-        <div style="background: rgba(79, 172, 254, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
-            <h4 style="margin: 0; color: #4facfe;">🚀 快速开始指南</h4>
-            <ol style="margin: 10px 0; padding-left: 20px;">
-                <li>🎭 当前已选择演示模式</li>
-                <li>📊 系统将自动生成模拟数据</li>
-                <li>🔍 您可以立即查看分析结果</li>
-                <li>📈 体验所有可视化功能</li>
-                <li>💡 了解系统的完整能力</li>
-            </ol>
-        </div>
-        """, unsafe_allow_html=True)
     
     def _show_api_mode_config(self):
         """显示API模式配置"""
@@ -1262,11 +1008,6 @@ class AdvancedLLMDashboard:
             3. **成本预估**
                - GPT-4o-mini: 100条分析约$2-5
                - GPT-3.5-turbo: 100条分析约$3-8
-            
-            4. **免费替代方案**
-               - 本地Ollama模型
-               - Hugging Face免费API
-               - Google Colab + 本地模型
             """)
             
         # 配置状态检查
@@ -1297,9 +1038,7 @@ class AdvancedLLMDashboard:
             return False
 
     def _get_available_analysis_files(self) -> List[str]:
-        """
-        获取可用的增强LLM分析结果文件
-        """
+        """获取可用的增强LLM分析结果文件"""
         pattern = "qa_analysis_results/*advanced_llm*.csv"
         files = file_manager.get_file_list(pattern)
         
@@ -1321,9 +1060,7 @@ class AdvancedLLMDashboard:
         return sorted(files, reverse=True)
 
     def _load_analysis_data(self, file_path: str) -> Optional[pd.DataFrame]:
-        """
-        加载分析数据
-        """
+        """加载分析数据"""
         try:
             df = file_manager.read_csv(file_path)
             if df is None:
@@ -1334,9 +1071,7 @@ class AdvancedLLMDashboard:
             return None
 
     def _show_analysis_overview(self, df: pd.DataFrame):
-        """
-        显示分析概览
-        """
+        """显示分析概览"""
         st.subheader("📊 分析概览")
         
         col1, col2, col3, col4 = st.columns(4)
@@ -1346,38 +1081,53 @@ class AdvancedLLMDashboard:
         
         with col2:
             # 计算综合评估平均分
-            overall_scores = []
             if 'llm_overall_score' in df.columns:
-                overall_scores = pd.to_numeric(df['llm_overall_score'], errors='coerce').fillna(0)
-                avg_score = overall_scores.mean()
-                st.metric("综合评估平均分", f"{avg_score:.2f}/10")
+                try:
+                    overall_scores = pd.to_numeric(df['llm_overall_score'], errors='coerce')
+                    if not overall_scores.empty:
+                        avg_score = overall_scores.mean()
+                        st.metric("综合评估平均分", f"{avg_score:.2f}/10")
+                    else:
+                        st.metric("综合评估平均分", "N/A")
+                except:
+                    st.metric("综合评估平均分", "N/A")
             else:
                 st.metric("综合评估平均分", "N/A")
         
         with col3:
             # 计算业务评估平均分
             if 'llm_business_overall_score' in df.columns:
-                business_scores = pd.to_numeric(df['llm_business_overall_score'], errors='coerce').fillna(0)
-                avg_business_score = business_scores.mean()
-                st.metric("业务评估平均分", f"{avg_business_score:.2f}/10")
+                try:
+                    business_scores = pd.to_numeric(df['llm_business_overall_score'], errors='coerce')
+                    if not business_scores.empty:
+                        avg_business_score = business_scores.mean()
+                        st.metric("业务评估平均分", f"{avg_business_score:.2f}/10")
+                    else:
+                        st.metric("业务评估平均分", "N/A")
+                except:
+                    st.metric("业务评估平均分", "N/A")
             else:
                 st.metric("业务评估平均分", "N/A")
         
         with col4:
             # 计算Agent对比胜率
             if 'llm_comparison_winner' in df.columns:
-                winner_counts = df['llm_comparison_winner'].value_counts()
-                total_comparisons = len(df[df['llm_comparison_winner'].notna()])
-                generated_wins = winner_counts.get('generated', 0)
-                win_rate = (generated_wins / total_comparisons * 100) if total_comparisons > 0 else 0
-                st.metric("Generated胜率", f"{win_rate:.1f}%")
+                try:
+                    winner_counts = df['llm_comparison_winner'].value_counts()
+                    total_comparisons = len(df[df['llm_comparison_winner'].notna()])
+                    generated_wins = winner_counts.get('generated', 0)
+                    if total_comparisons > 0:
+                        win_rate = (generated_wins / total_comparisons * 100)
+                        st.metric("Generated胜率", f"{win_rate:.1f}%")
+                    else:
+                        st.metric("Generated胜率", "N/A")
+                except:
+                    st.metric("Generated胜率", "N/A")
             else:
                 st.metric("Generated胜率", "N/A")
 
     def _show_comprehensive_analysis(self, df: pd.DataFrame):
-        """
-        显示综合分析结果
-        """
+        """显示综合分析结果"""
         st.subheader("🎯 10维度综合评估")
         
         # 计算各维度得分
@@ -1385,8 +1135,12 @@ class AdvancedLLMDashboard:
         for dim_key, dim_name in self.evaluation_dimensions.items():
             col_name = f'llm_{dim_key}_score'
             if col_name in df.columns:
-                scores = pd.to_numeric(df[col_name], errors='coerce').fillna(0)
-                dimension_scores[dim_name] = scores.mean()
+                try:
+                    scores = pd.to_numeric(df[col_name], errors='coerce')
+                    if not scores.empty:
+                        dimension_scores[dim_name] = scores.mean()
+                except:
+                    continue
         
         if dimension_scores:
             # 雷达图
@@ -1443,32 +1197,32 @@ class AdvancedLLMDashboard:
             # 问题分析
             st.subheader("🔍 问题分析")
             
-            # 找出得分最低的维度
-            min_score_dim = min(dimension_scores, key=dimension_scores.get)
-            min_score = dimension_scores[min_score_dim]
-            
-            # 找出得分最高的维度
-            max_score_dim = max(dimension_scores, key=dimension_scores.get)
-            max_score = dimension_scores[max_score_dim]
-            
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.error(f"**需要改进的维度**")
-                st.write(f"🔴 {min_score_dim}: {min_score:.2f}/10")
-                st.write("建议重点关注此维度的表现")
-            
-            with col2:
-                st.success(f"**表现优秀的维度**")
-                st.write(f"🟢 {max_score_dim}: {max_score:.2f}/10")
-                st.write("可作为其他维度的参考标准")
+            # 找出得分最低和最高的维度
+            try:
+                min_score_dim = min(dimension_scores.keys(), key=lambda x: dimension_scores[x])
+                min_score = dimension_scores[min_score_dim]
+                
+                max_score_dim = max(dimension_scores.keys(), key=lambda x: dimension_scores[x])
+                max_score = dimension_scores[max_score_dim]
+                
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    st.error(f"**需要改进的维度**")
+                    st.write(f"🔴 {min_score_dim}: {min_score:.2f}/10")
+                    st.write("建议重点关注此维度的表现")
+                
+                with col2:
+                    st.success(f"**表现优秀的维度**")
+                    st.write(f"🟢 {max_score_dim}: {max_score:.2f}/10")
+                    st.write("可作为其他维度的参考标准")
+            except:
+                st.info("无法进行维度对比分析")
         else:
             st.warning("⚠️ 没有找到综合评估数据")
 
     def _show_business_analysis(self, df: pd.DataFrame):
-        """
-        显示业务分析结果
-        """
+        """显示业务分析结果"""
         st.subheader("🛞 轮胎业务专门分析")
         
         # 计算业务维度得分
@@ -1476,8 +1230,12 @@ class AdvancedLLMDashboard:
         for dim_key, dim_name in self.tire_business_dimensions.items():
             col_name = f'llm_business_{dim_key}_score'
             if col_name in df.columns:
-                scores = pd.to_numeric(df[col_name], errors='coerce').fillna(0)
-                business_scores[dim_name] = scores.mean()
+                try:
+                    scores = pd.to_numeric(df[col_name], errors='coerce')
+                    if not scores.empty:
+                        business_scores[dim_name] = scores.mean()
+                except:
+                    continue
         
         if business_scores:
             # 业务雷达图
@@ -1569,9 +1327,7 @@ class AdvancedLLMDashboard:
             st.warning("⚠️ 没有找到业务分析数据")
 
     def _show_agent_comparison(self, df: pd.DataFrame):
-        """
-        显示Agent对比分析
-        """
+        """显示Agent对比分析"""
         st.subheader("🤖 Agent对比评估")
         
         if 'llm_comparison_winner' in df.columns:
@@ -1605,8 +1361,11 @@ class AdvancedLLMDashboard:
             
             with col4:
                 total_comparisons = len(df[df['llm_comparison_winner'].notna()])
-                win_rate = (generated_wins / total_comparisons * 100) if total_comparisons > 0 else 0
-                st.metric("生成答案胜率", f"{win_rate:.1f}%")
+                if total_comparisons > 0:
+                    win_rate = (generated_wins / total_comparisons * 100)
+                    st.metric("生成答案胜率", f"{win_rate:.1f}%")
+                else:
+                    st.metric("生成答案胜率", "N/A")
             
             # 置信度分析
             if 'llm_comparison_confidence' in df.columns:
@@ -1631,17 +1390,21 @@ class AdvancedLLMDashboard:
                 sample_analyses = df[df['llm_detailed_analysis'].notna()].head(5)
                 
                 for idx, row in sample_analyses.iterrows():
-                    with st.expander(f"案例 {idx + 1} - {row.get('llm_comparison_winner', 'Unknown')}"):
-                        st.write(f"**胜者**: {row.get('llm_comparison_winner', 'Unknown')}")
-                        st.write(f"**置信度**: {row.get('llm_comparison_confidence', 'Unknown')}")
-                        st.write(f"**详细分析**: {row.get('llm_detailed_analysis', '无详细分析')}")
+                    try:
+                        case_num = str(idx) + "_1"  # 避免索引类型问题
+                        winner = row.get('llm_comparison_winner', 'Unknown')
+                        
+                        with st.expander(f"案例 {case_num} - {winner}"):
+                            st.write(f"**胜者**: {winner}")
+                            st.write(f"**置信度**: {row.get('llm_comparison_confidence', 'Unknown')}")
+                            st.write(f"**详细分析**: {row.get('llm_detailed_analysis', '无详细分析')}")
+                    except:
+                        continue
         else:
             st.warning("⚠️ 没有找到Agent对比数据")
 
     def _show_method_comparison(self, df: pd.DataFrame):
-        """
-        显示方法对比分析
-        """
+        """显示方法对比分析"""
         st.subheader("📈 LLM分析 vs 传统方法对比")
         
         # 检查是否有传统方法的数据
@@ -1674,14 +1437,22 @@ class AdvancedLLMDashboard:
             # 计算传统方法平均得分
             for col in traditional_cols:
                 if col in df.columns:
-                    scores = pd.to_numeric(df[col], errors='coerce').fillna(0)
-                    traditional_scores.append(scores.mean() * 10)  # 转换为10分制
+                    try:
+                        scores = pd.to_numeric(df[col], errors='coerce')
+                        if not scores.empty:
+                            traditional_scores.append(scores.mean() * 10)  # 转换为10分制
+                    except:
+                        continue
             
             # 计算LLM方法平均得分
             for col in llm_cols:
                 if col in df.columns:
-                    scores = pd.to_numeric(df[col], errors='coerce').fillna(0)
-                    llm_scores.append(scores.mean())
+                    try:
+                        scores = pd.to_numeric(df[col], errors='coerce')
+                        if not scores.empty:
+                            llm_scores.append(scores.mean())
+                    except:
+                        continue
             
             if traditional_scores and llm_scores:
                 avg_traditional = np.mean(traditional_scores)
@@ -1731,9 +1502,7 @@ class AdvancedLLMDashboard:
             st.warning("⚠️ 数据不足，无法进行方法对比")
 
     def _show_detailed_data(self, df: pd.DataFrame):
-        """
-        显示详细数据
-        """
+        """显示详细数据"""
         st.subheader("📋 详细分析数据")
         
         # 过滤LLM相关列
@@ -1762,9 +1531,7 @@ class AdvancedLLMDashboard:
             st.write(df.columns.tolist())
 
     def _get_score_level(self, score: float) -> str:
-        """
-        根据得分获取等级
-        """
+        """根据得分获取等级"""
         if score >= 9:
             return "🟢 优秀"
         elif score >= 7:
@@ -1773,53 +1540,6 @@ class AdvancedLLMDashboard:
             return "🟠 一般"
         else:
             return "🔴 需改进"
-
-    def run_advanced_analysis(self, df: pd.DataFrame, ref_col: str, gen_col: str, config: Dict):
-        """
-        运行增强分析
-        """
-        st.subheader("🚀 运行增强LLM分析")
-        
-        # 创建分析器
-        analyzer = AdvancedLLMAnalyzer(config)
-        
-        # 分析选项
-        analysis_type = st.selectbox(
-            "选择分析类型",
-            ["comprehensive", "business_only", "comparison_only"],
-            format_func=lambda x: {
-                "comprehensive": "🎯 全面分析（推荐）",
-                "business_only": "🛞 仅业务分析",
-                "comparison_only": "🤖 仅对比分析"
-            }[x]
-        )
-        
-        if st.button("开始增强分析"):
-            progress_bar = st.progress(0)
-            
-            # 运行分析
-            result_df = analyzer.batch_analyze_dataframe(
-                df, ref_col, gen_col, analysis_type,
-                progress_callback=lambda current, total: progress_bar.progress(current/total)
-            )
-            
-                            # 保存结果
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}_advanced_llm.csv'
-                output_path = file_manager.save_csv(result_df, output_path, index=False, encoding='utf-8-sig')
-            
-            st.success("✅ 增强LLM分析完成！")
-            st.info(f"结果已保存到: {output_path}")
-            
-            # 显示结果预览
-            st.subheader("📊 结果预览")
-            llm_cols = [col for col in result_df.columns if col.startswith('llm_')]
-            if llm_cols:
-                st.dataframe(result_df[llm_cols[:5]], use_container_width=True)
-            
-            return result_df
-        
-        return None
 
 if __name__ == "__main__":
     # 测试代码
