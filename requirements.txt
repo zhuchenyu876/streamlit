@@ -13,3 +13,4 @@ rouge-score>=0.1.0
 sentence-transformers>=2.2.0
 openai>=1.0.0
 websockets>=11.0.0
+jieba>=0.42.0
