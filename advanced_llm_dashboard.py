@@ -12,6 +12,7 @@ import os
 import glob
 from typing import Dict, List, Any, Optional
 import time # Added for time estimation
+from file_manager import file_manager
 
 class AdvancedLLMDashboard:
     """
@@ -227,7 +228,7 @@ class AdvancedLLMDashboard:
                 
                 with col2:
                     if '场景' in df.columns:
-                        scenario_count = df['场景'].nunique()
+                        scenario_count = int(df['场景'].nunique())
                         st.metric("🎯 场景数量", scenario_count)
                     else:
                         st.metric("🎯 场景数量", "N/A")
@@ -241,8 +242,9 @@ class AdvancedLLMDashboard:
                 
                 with col4:
                     if '语义稳定性' in df.columns:
-                        avg_stability = pd.to_numeric(df['语义稳定性'], errors='coerce').mean()
-                        if pd.notna(avg_stability):
+                        stability_series = pd.to_numeric(df['语义稳定性'], errors='coerce')
+                        avg_stability = stability_series.mean()
+                        if not pd.isna(avg_stability):
                             st.metric("🔄 平均稳定性", f"{avg_stability:.1f}%")
                         else:
                             st.metric("🔄 平均稳定性", "N/A")
@@ -459,9 +461,8 @@ class AdvancedLLMDashboard:
             st.error("❌ 请先配置LLM API参数")
             return
         
-        # 运行分析按钮
-        if st.button("🚀 开始LLM增强分析", type="primary", use_container_width=True):
-            # 准备数据
+        # 第一步：显示分析准备按钮
+        if st.button("🚀 准备LLM增强分析", type="primary", use_container_width=True):
             # 如果选择样本数小于总数，进行采样
             if selected_count < len(df):
                 df_to_analyze = df.sample(n=selected_count, random_state=42).reset_index(drop=True)
@@ -469,22 +470,91 @@ class AdvancedLLMDashboard:
             else:
                 df_to_analyze = df
             
-            # 显示性能警告
-            if selected_count > 100:
-                st.warning(f"""
-                ⚠️ **性能提醒**：您选择了 {selected_count} 个样本进行分析
-                
-                - **预计时间**: {estimated_seconds//60} 分钟
-                - **API调用**: {total_api_calls} 次
-                - **建议**: 如果是首次使用，建议先选择较少样本进行测试
+            st.session_state['llm_analysis_prepared'] = True
+            st.session_state['llm_analysis_data'] = {
+                'df': df_to_analyze,
+                'selected_count': selected_count,
+                'analysis_type': analysis_type,
+                'estimated_seconds': estimated_seconds,
+                'total_api_calls': total_api_calls,
+                'sample_choice': sample_choice
+            }
+            st.rerun()
+        
+        # 第二步：如果已经准备好分析，显示确认界面和真正的开始按钮
+        if st.session_state.get('llm_analysis_prepared', False):
+            analysis_data = st.session_state.get('llm_analysis_data', {})
+            
+            # 显示分析配置确认
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); 
+                        color: white; padding: 20px; border-radius: 15px; margin: 20px 0;
+                        box-shadow: 0 4px 15px rgba(67, 233, 123, 0.3);">
+                <h3 style="margin: 0 0 15px 0; text-align: center;">✅ 分析配置已准备完成</h3>
+                <p style="margin: 0; text-align: center;">请确认以下配置，然后点击"真正开始分析"按钮</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # 显示分析配置详情
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.info(f"""
+                **📊 分析配置详情：**
+                - 样本数量：{analysis_data.get('selected_count', 0)} 个
+                - 分析类型：{analysis_data.get('analysis_type', 'unknown')}
+                - API调用：{analysis_data.get('total_api_calls', 0)} 次
+                - 预计时间：{analysis_data.get('estimated_seconds', 0)//60} 分钟
                 """)
             
-            # 创建分析器配置
-            config = self._get_llm_config()
+            with col2:
+                st.warning(f"""
+                **⚠️ 注意事项：**
+                - 分析过程中请勿关闭页面
+                - 确保网络连接稳定
+                - 分析过程可能需要较长时间
+                - 建议在空闲时段进行分析
+                """)
             
-            # 直接开始分析，不需要二次确认
-            with st.spinner("🚀 正在启动LLM增强分析..."):
-                self._run_llm_analysis_direct(df_to_analyze, analysis_type, config)
+            # 提供取消和确认按钮
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                if st.button("❌ 取消分析", type="secondary", use_container_width=True):
+                    st.session_state.pop('llm_analysis_prepared', None)
+                    st.session_state.pop('llm_analysis_data', None)
+                    st.success("✅ 分析已取消")
+                    st.rerun()
+            
+            with col2:
+                if st.button("🔥 真正开始分析", type="primary", use_container_width=True):
+                    # 准备数据
+                    df_to_analyze = analysis_data['df']
+                    selected_count = analysis_data['selected_count']
+                    analysis_type = analysis_data['analysis_type']
+                    estimated_seconds = analysis_data['estimated_seconds']
+                    total_api_calls = analysis_data['total_api_calls']
+                    
+                    # 显示性能警告
+                    if selected_count > 100:
+                        st.warning(f"""
+                        ⚠️ **性能提醒**：您选择了 {selected_count} 个样本进行分析
+                        
+                        - **预计时间**: {estimated_seconds//60} 分钟
+                        - **API调用**: {total_api_calls} 次
+                        - **建议**: 如果是首次使用，建议先选择较少样本进行测试
+                        """)
+                    
+                    # 创建分析器配置
+                    config = self._get_llm_config()
+                    
+                    # 清除准备状态
+                    st.session_state.pop('llm_analysis_prepared', None)
+                    st.session_state.pop('llm_analysis_data', None)
+                    
+                    # 直接开始分析
+                    with st.spinner("🚀 正在启动LLM增强分析..."):
+                        self._run_llm_analysis_direct(df_to_analyze, analysis_type, config)
     
     def _run_llm_analysis_direct(self, df: pd.DataFrame, analysis_type: str, config: Dict):
         """
@@ -547,9 +617,21 @@ class AdvancedLLMDashboard:
             progress_bar = st.progress(0)
             status_text = st.empty()
             
+            # 创建实时结果显示区域
+            st.markdown("### 📊 实时分析结果")
+            realtime_results_container = st.empty()
+            
+            # 用于存储实时结果
+            if 'realtime_results' not in st.session_state:
+                st.session_state.realtime_results = []
+            
             start_time = time.time()
             
-            def update_progress(current, total):
+            def update_progress(current, total, current_result=None):
+                # 更新实时结果
+                if current_result is not None:
+                    st.session_state.realtime_results.append(current_result)
+                
                 # 确保进度值在0-1之间
                 if total > 0:
                     progress = min(max(current / total, 0.0), 1.0)
@@ -590,14 +672,31 @@ class AdvancedLLMDashboard:
                         <p style="margin: 5px 0 0 0;">📡 预计API调用：{api_calls} 次</p>
                     </div>
                     """, unsafe_allow_html=True)
+                
+                # 更新实时结果显示
+                if st.session_state.realtime_results:
+                    self._update_realtime_results(realtime_results_container, st.session_state.realtime_results, current, total)
+            
+            # 清空之前的实时结果
+            st.session_state.realtime_results = []
             
             # 开始分析
             st.info("🔄 开始数据分析...")
             
             try:
+                # 创建支持实时结果的回调函数
+                def realtime_progress_callback(current, total, current_row=None):
+                    # 如果有当前行数据，添加到实时结果中
+                    current_result = None
+                    if current_row is not None:
+                        current_result = current_row.to_dict()
+                    
+                    # 调用更新进度的函数
+                    update_progress(current, total, current_result)
+                
                 result_df = analyzer.batch_analyze_dataframe(
                     df, '参考答案', '生成答案1', analysis_type,
-                    progress_callback=update_progress
+                    progress_callback=realtime_progress_callback
                 )
                 
                 # 计算总用时
@@ -606,11 +705,16 @@ class AdvancedLLMDashboard:
                 # 保存结果
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}_advanced_llm.csv'
-                result_df.to_csv(output_path, index=False, encoding='utf-8-sig')
+                output_path = file_manager.save_csv(result_df, output_path, index=False, encoding='utf-8-sig')
                 
                 # 清理进度显示
                 progress_bar.empty()
                 status_text.empty()
+                realtime_results_container.empty()
+                
+                # 清理实时结果
+                if 'realtime_results' in st.session_state:
+                    del st.session_state['realtime_results']
                 
                 # 显示成功消息
                 st.markdown(f"""
@@ -638,13 +742,15 @@ class AdvancedLLMDashboard:
                     st.dataframe(result_df[llm_cols[:8]], use_container_width=True)
                 
                 # 提供下载
-                st.download_button(
-                    label="📥 下载完整分析结果",
-                    data=result_df.to_csv(index=False, encoding='utf-8-sig'),
-                    file_name=f"advanced_llm_analysis_{timestamp}.csv",
-                    mime="text/csv",
-                    use_container_width=True
-                )
+                csv_data = file_manager.get_download_data(output_path)
+                if csv_data:
+                    st.download_button(
+                        label="📥 下载完整分析结果",
+                        data=csv_data,
+                        file_name=f"advanced_llm_analysis_{timestamp}.csv",
+                        mime="text/csv",
+                        use_container_width=True
+                    )
                 
                 # 提供查看详细结果的选项
                 if st.button("📊 查看详细分析结果", use_container_width=True):
@@ -656,6 +762,11 @@ class AdvancedLLMDashboard:
                 # 清理进度显示
                 progress_bar.empty()
                 status_text.empty()
+                realtime_results_container.empty()
+                
+                # 清理实时结果
+                if 'realtime_results' in st.session_state:
+                    del st.session_state['realtime_results']
                 
                 # 显示详细错误信息
                 st.error("❌ 分析过程中发生错误")
@@ -705,6 +816,82 @@ class AdvancedLLMDashboard:
             # 显示错误详情
             with st.expander("🔍 错误详情"):
                 st.code(str(e))
+    
+    def _update_realtime_results(self, container, results, current, total):
+        """
+        更新实时结果显示
+        """
+        try:
+            with container.container():
+                # 显示当前进度
+                st.markdown(f"""
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                            color: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                    <h4 style="margin: 0; text-align: center;">🔄 实时分析进度</h4>
+                    <p style="margin: 10px 0 0 0; text-align: center;">
+                        已完成 {current}/{total} 个样本 ({current/total:.1%})
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                if results:
+                    # 创建结果DataFrame
+                    import pandas as pd
+                    df_results = pd.DataFrame(results)
+                    
+                    # 显示最新的5个结果
+                    st.markdown("#### 📊 最新分析结果 (最近5个)")
+                    
+                    # 选择要显示的列
+                    display_columns = []
+                    if '测试数据' in df_results.columns:
+                        display_columns.append('测试数据')
+                    if '参考答案' in df_results.columns:
+                        display_columns.append('参考答案')
+                    if '生成答案1' in df_results.columns:
+                        display_columns.append('生成答案1')
+                    
+                    # 添加LLM分析结果列
+                    llm_columns = [col for col in df_results.columns if col.startswith('llm_') and col.endswith('_score')]
+                    display_columns.extend(llm_columns[:3])  # 只显示前3个LLM评分
+                    
+                    # 显示最新的结果
+                    recent_results = df_results[display_columns].tail(5)
+                    st.dataframe(recent_results, use_container_width=True)
+                    
+                    # 显示统计信息
+                    if llm_columns:
+                        st.markdown("#### 📈 当前统计")
+                        col1, col2, col3 = st.columns(3)
+                        
+                        with col1:
+                            # 平均综合得分
+                            if 'llm_overall_score' in df_results.columns:
+                                avg_score = df_results['llm_overall_score'].mean()
+                                st.metric("平均综合得分", f"{avg_score:.2f}")
+                            
+                        with col2:
+                            # 平均业务得分
+                            if 'llm_business_overall_score' in df_results.columns:
+                                avg_business = df_results['llm_business_overall_score'].mean()
+                                st.metric("平均业务得分", f"{avg_business:.2f}")
+                        
+                        with col3:
+                            # 胜率统计
+                            if 'llm_comparison_winner' in df_results.columns:
+                                winner_counts = df_results['llm_comparison_winner'].value_counts()
+                                generated_wins = winner_counts.get('generated', 0)
+                                win_rate = generated_wins / len(df_results) * 100
+                                st.metric("Generated胜率", f"{win_rate:.1f}%")
+                    
+                    # 显示进度条
+                    progress_percent = current / total
+                    st.progress(progress_percent)
+                else:
+                    st.info("🔄 正在等待第一个分析结果...")
+                    
+        except Exception as e:
+            st.error(f"实时结果显示错误: {str(e)}")
     
     def _get_llm_config(self) -> Dict:
         """
@@ -1113,23 +1300,20 @@ class AdvancedLLMDashboard:
         """
         获取可用的增强LLM分析结果文件
         """
-        import os
-        import glob
-        
         pattern = "qa_analysis_results/*advanced_llm*.csv"
-        files = glob.glob(pattern)
+        files = file_manager.get_file_list(pattern)
         
         # 如果没有找到专门的增强LLM文件，查找包含LLM分析列的文件
         if not files:
             pattern = "qa_analysis_results/*.csv"
-            all_files = glob.glob(pattern)
+            all_files = file_manager.get_file_list(pattern)
             
             files = []
             for file in all_files:
                 try:
-                    df = pd.read_csv(file)
+                    df = file_manager.read_csv(file)
                     # 检查是否包含增强LLM分析列
-                    if any(col.startswith('llm_') for col in df.columns):
+                    if df is not None and any(col.startswith('llm_') for col in df.columns):
                         files.append(file)
                 except Exception:
                     continue
@@ -1141,7 +1325,9 @@ class AdvancedLLMDashboard:
         加载分析数据
         """
         try:
-            df = pd.read_csv(file_path)
+            df = file_manager.read_csv(file_path)
+            if df is None:
+                st.error(f"加载数据失败: 文件不存在或无法读取")
             return df
         except Exception as e:
             st.error(f"加载数据失败: {str(e)}")
@@ -1617,10 +1803,10 @@ class AdvancedLLMDashboard:
                 progress_callback=lambda current, total: progress_bar.progress(current/total)
             )
             
-            # 保存结果
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}_advanced_llm.csv'
-            result_df.to_csv(output_path, index=False, encoding='utf-8-sig')
+                            # 保存结果
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}_advanced_llm.csv'
+                output_path = file_manager.save_csv(result_df, output_path, index=False, encoding='utf-8-sig')
             
             st.success("✅ 增强LLM分析完成！")
             st.info(f"结果已保存到: {output_path}")

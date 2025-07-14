@@ -16,6 +16,7 @@ from ui_components import (
     UserGuideComponents, DataValidationComponents, AnalysisProgressComponents,
     ResultDisplayComponents, ConfigurationComponents, ErrorHandlingComponents
 )
+from file_manager import file_manager
 import time
 
 class QAAnalyzer:
@@ -354,17 +355,8 @@ class QAAnalyzer:
             else:
                 output_path = f'./qa_analysis_results/qa_analysis_results_{timestamp}_basic.csv'
             
-            # Create output directory if it doesn't exist (with error handling for Streamlit Cloud)
-            try:
-                os.makedirs('./qa_analysis_results', exist_ok=True)
-                df.to_csv(output_path, index=False, encoding='utf-8-sig')
-            except (OSError, PermissionError):
-                # If we can't create directory or write file, use session state to store data
-                st.warning("⚠️ 无法保存文件到磁盘（云端只读模式），结果将存储在会话中")
-                if 'analysis_results' not in st.session_state:
-                    st.session_state['analysis_results'] = {}
-                st.session_state['analysis_results'][timestamp] = df
-                output_path = f'session_result_{timestamp}'
+            # Save using file_manager
+            output_path = file_manager.save_csv(df, output_path, index=False, encoding='utf-8-sig')
             
             # 显示成功消息
             if enable_llm_analysis:
@@ -374,17 +366,8 @@ class QAAnalyzer:
             st.balloons()  # 添加气球动画效果
             
             # 显示下载链接
-            try:
-                with open(output_path, 'rb') as file:
-                    st.download_button(
-                        label="📥 Download Results",
-                        data=file,
-                        file_name=f"qa_analysis_results_{timestamp}.csv",
-                        mime="text/csv"
-                    )
-            except (FileNotFoundError, OSError):
-                # If file doesn't exist (cloud mode), provide CSV download from DataFrame
-                csv_data = df.to_csv(index=False, encoding='utf-8-sig')
+            csv_data = file_manager.get_download_data(output_path)
+            if csv_data:
                 st.download_button(
                     label="📥 Download Results",
                     data=csv_data,
@@ -451,87 +434,49 @@ class TaskManager:
 
 def load_agents():
     """Load agents from CSV file"""
-    try:
-        agents_df = pd.read_csv('./public/agents.csv')
-        # Ensure 'url' column exists
+    agents_df = file_manager.read_csv('./public/agents.csv')
+    
+    if agents_df is not None:
+        # Ensure required columns exist
         if 'url' not in agents_df.columns:
-            agents_df['url'] = ''  # Add an empty 'url' column if it doesn't exist
-        # Ensure 'username' column exists
+            agents_df['url'] = ''
         if 'username' not in agents_df.columns:
             agents_df['username'] = ''
         return agents_df
-    except FileNotFoundError:
-        # Create default agents DataFrame (don't save to file for Streamlit Cloud compatibility)
-        df = pd.DataFrame({
-            'name': ['futu路线1', 'futu路线2'],
-            'description': ['富途问答机器人路线1', '富途问答机器人路线2'],
-            'url': [
-                'wss://agents.dyna.ai/openapi/v1/ws/dialog/',
-                'wss://agents.dyna.ai/openapi/v1/ws/dialog/'
-            ],
-            'username': ['your_username', 'your_username'],
-            'robot_key': [
-                'X3qi%2FBbsvlmDWGyUBZBhaNi4bDk%3D',
-                'aAPeava4nCrSSMpN%2F9SxHhtjgt4%3D'
-            ],
-            'robot_token': [
-                'MTczNjEzMTY4NzM0NwpQVHgxb3NYMWxDNnYyVVMrZzZ2UStUR1QwelU9',
-                'MTczOTQyMDQ6NDUzMgowblpwWVRIWHQ0M2RGN3ErSEJzNDF0RmNUQkU9'
-            ]
-        })
-        # Try to save to file, but don't fail if unable to (for Streamlit Cloud compatibility)
-        try:
-            import os
-            os.makedirs('./public', exist_ok=True)
-            df.to_csv('./public/agents.csv', index=False)
-        except (OSError, PermissionError):
-            # If we can't write to file (e.g., on Streamlit Cloud), just return the DataFrame
-            pass
+    else:
+        # Create default agents DataFrame
+        default_config = file_manager.get_default_config('agents')
+        df = pd.DataFrame(default_config)
+        
+        # Save using file_manager
+        file_manager.save_csv(df, './public/agents.csv', index=False)
         return df
 
 def load_analyzer_config():
     """Load LLM analyzer configuration"""
-    try:
-        return pd.read_csv('./public/analyzer_config.csv').iloc[0].to_dict()
-    except (FileNotFoundError, IndexError):
-        # Create default config (don't save to file for Streamlit Cloud compatibility)
-        config = {
-            'url': 'https://agents.dyna.ai/openapi/v1/conversation/dialog/',
-            'robot_key': 'f79sd16wABIqwLe%2FzjGeZGDRMUo%3D',
-            'robot_token': 'MTczODkxMDA0MzUwMgp1cjRVVnF4Y0w3Y2hwRmU3RmxFUXFQV05lSGc9',
-            'username': 'marshall.ting@dyna.ai'
-        }
-        # Try to save to file, but don't fail if unable to (for Streamlit Cloud compatibility)
-        try:
-            import os
-            os.makedirs('./public', exist_ok=True)
-            pd.DataFrame([config]).to_csv('./public/analyzer_config.csv', index=False)
-        except (OSError, PermissionError):
-            # If we can't write to file (e.g., on Streamlit Cloud), just return the config
-            pass
+    config_df = file_manager.read_csv('./public/analyzer_config.csv')
+    
+    if config_df is not None and len(config_df) > 0:
+        return config_df.iloc[0].to_dict()
+    else:
+        # Create default config
+        config = file_manager.get_default_config('analyzer')
+        
+        # Save using file_manager
+        file_manager.save_csv(pd.DataFrame([config]), './public/analyzer_config.csv', index=False)
         return config
 
 def save_analyzer_config(config_dict):
     """Save LLM analyzer configuration"""
-    try:
-        import os
-        os.makedirs('./public', exist_ok=True)
-        pd.DataFrame([config_dict]).to_csv('./public/analyzer_config.csv', index=False)
-    except (OSError, PermissionError):
-        # If we can't write to file (e.g., on Streamlit Cloud), just skip saving
-        st.warning("⚠️ 无法保存配置到文件（云端只读模式），配置将在会话结束后丢失")
-        pass
+    file_manager.save_csv(pd.DataFrame([config_dict]), './public/analyzer_config.csv', index=False)
+    if file_manager.is_cloud:
+        st.info("💾 配置已保存到会话中（云端模式）")
 
 def save_agents(df):
     """Save agents to CSV file"""
-    try:
-        import os
-        os.makedirs('./public', exist_ok=True)
-        df.to_csv('./public/agents.csv', index=False)
-    except (OSError, PermissionError):
-        # If we can't write to file (e.g., on Streamlit Cloud), just skip saving
-        st.warning("⚠️ 无法保存Agent配置到文件（云端只读模式），配置将在会话结束后丢失")
-        pass
+    file_manager.save_csv(df, './public/agents.csv', index=False)
+    if file_manager.is_cloud:
+        st.info("💾 Agent配置已保存到会话中（云端模式）")
 
 def main():
     st.set_page_config(
@@ -1037,22 +982,10 @@ def main():
             st.info("📝 模板文件包含了标准的数据格式和示例数据")
         
         with col2:
-            try:
-                # 智能编码检测读取模板文件
-                encodings = ['utf-8', 'utf-8-sig', 'gbk', 'gb2312']
-                template_content = None
-                
-                for encoding in encodings:
-                    try:
-                        with open('./public/template.csv', 'r', encoding=encoding) as f:
-                            template_content = f.read()
-                        break
-                    except UnicodeDecodeError:
-                        continue
-                
-                if template_content is None:
-                    raise ValueError("无法读取模板文件")
-                
+            # 使用file_manager获取模板内容
+            template_content = file_manager.get_template_content('default')
+            
+            if template_content:
                 # 添加 BOM 头并转换编码
                 template_content_with_bom = '\ufeff' + template_content
                 st.download_button(
@@ -1062,8 +995,8 @@ def main():
                     mime="text/csv",
                     help="下载CSV模板文件，了解数据格式要求"
                 )
-            except Exception as e:
-                st.error(f"模板文件未找到: {str(e)}")
+            else:
+                st.error("❌ 无法获取模板内容")
         
         # Language selection
         selected_language = DataValidationComponents.show_language_selector("_analysis")
@@ -1289,9 +1222,7 @@ def main():
         if analysis_running and not analysis_paused:
             try:
                 # Save uploaded file temporarily
-                temp_file = f"temp_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-                with open(temp_file, "wb") as f:
-                    f.write(uploaded_file.getvalue())
+                temp_file = file_manager.create_temp_file(uploaded_file.getvalue(), '.csv')
                 
                 # Create new task with language support
                 task_id = st.session_state.task_manager.create_task(temp_file, sample_n, num_generations, selected_language)

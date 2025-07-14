@@ -7,6 +7,7 @@ import glob
 import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
+from file_manager import file_manager
 
 class QADashboard:
     def __init__(self):
