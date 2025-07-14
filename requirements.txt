@@ -1,0 +1,9 @@
+streamlit>=1.28.0
+python-dotenv
+pandas
+scikit-learn
+jieba
+requests
+tqdm
+plotly
+aiohttp

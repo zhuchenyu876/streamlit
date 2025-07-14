@@ -1,0 +1,183 @@
+#,Pregunta,Fuente de Respuesta,Fuente de Pregunta,Satisfacción,Número,Contenido de Pregunta,Respuesta de Referencia
+1,Consulta especificaciones producto,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,1,Mi coche es un Toyota Corolla ¿qué tamaño de neumáticos necesito?,"ID Producto	Nombre del Producto	Stock	Precio
+LL-C1956	195 65 R15 91H KUMHO ECOWING ES01	22	$380.75
+LL-C1957	195 65 R15 91V BRIDGESTONE TURANZA T005	18	$520.25
+LL-C2055	205 55 R16 91V MICHELIN PRIMACY 4	15	$650.50
+
+🔍 Resultados de Búsqueda de Neumáticos - Neumático de Auto (Toyota Corolla)
+
+📊 Estadísticas de Búsqueda:
+• Neumáticos encontrados: 3
+• Cantidad mostrada: 3
+• Tipo de neumático: Auto
+• Especificación de búsqueda: Toyota Corolla (195/65R15, 205/55R16)
+
+💰 Rango de precios: $380.75 - $650.50
+
+🏆 Neumáticos recomendados:
+195 65 R15 91H KUMHO ECOWING ES01 - $380.75
+195 65 R15 91V BRIDGESTONE TURANZA T005 - $520.25
+205 55 R16 91V MICHELIN PRIMACY 4 - $650.50
+
+Las especificaciones más comunes para Toyota Corolla. ¿Qué año es su modelo para confirmar la especificación exacta?"
+2,Consulta especificaciones producto,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,2,¿Qué significa esta especificación 225/50R17?,¡Hola! 225 indica el ancho del neumático de 225 milímetros, 50 es la relación de aspecto (relación entre la altura del flanco y el ancho), R representa neumático radial, 17 es el diámetro de la llanta de 17 pulgadas. Esta es una especificación de neumático de ancho medio con buen rendimiento deportivo.
+3,Consulta de marca,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,3,¿Cuál es mejor entre Michelin y Bridgestone?,¡Hola! Michelin es famoso por su comodidad y silencio, Bridgestone sobresale en rendimiento deportivo y resistencia al desgaste. Se recomienda elegir según sus hábitos de conducción: Michelin para conducción diaria cómoda, Bridgestone para conducción deportiva.
+4,Consulta de precio,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,4,¿Cuánto cuesta aproximadamente un neumático 195/65R15?,"ID Producto	Nombre del Producto	Stock	Precio
+LL-E1956	195 65 R15 88H WINDFORCE CATCHFORS	25	$280.50
+LL-E1957	195 65 R15 91H KUMHO ECOWING ES01	20	$380.75
+LL-E1958	195 65 R15 91V HANKOOK KINERGY GT H436	18	$420.25
+LL-E1959	195 65 R15 91V BRIDGESTONE TURANZA T005	15	$520.75
+LL-E1960	195 65 R15 91V MICHELIN PRIMACY 4	12	$650.50
+
+🔍 Resultados de Búsqueda de Neumáticos - Neumático de Auto (195/65R15)
+
+📊 Estadísticas de Búsqueda:
+• Neumáticos encontrados: 5
+• Cantidad mostrada: 5
+• Tipo de neumático: Auto
+• Especificación de búsqueda: 195/65R15
+
+💰 Rango de precios: $280.50 - $650.50
+
+🏆 Neumáticos recomendados:
+195 65 R15 88H WINDFORCE CATCHFORS - $280.50
+195 65 R15 91H KUMHO ECOWING ES01 - $380.75
+195 65 R15 91V HANKOOK KINERGY GT H436 - $420.25
+
+¿Qué marca le interesa más o tiene algún presupuesto específico?"
+5,Consulta de inventario,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,5,¿Hay stock de Michelin 225/55R17 ahora?,"ID Producto	Nombre del Producto	Stock	Precio
+LL-M2255	225 55 R17 94V MICHELIN PRIMACY 4	15	$1250.75
+LL-M2256	225 55 R17 97Y MICHELIN PILOT SPORT 4	12	$1450.25
+LL-M2257	225 55 R17 94W MICHELIN ENERGY SAVER+	8	$1180.50
+
+🔍 Resultados de Búsqueda de Neumáticos - Neumático de Auto (225/55R17)
+
+📊 Estadísticas de Búsqueda:
+• Neumáticos encontrados: 3
+• Cantidad mostrada: 3
+• Tipo de neumático: Auto
+• Especificación de búsqueda: 225/55R17
+
+💰 Rango de precios: $1180.50 - $1450.25
+
+🏆 Neumáticos recomendados:
+225 55 R17 94W MICHELIN ENERGY SAVER+ - $1180.50
+225 55 R17 94V MICHELIN PRIMACY 4 - $1250.75
+225 55 R17 97Y MICHELIN PILOT SPORT 4 - $1450.25
+
+Todos disponibles para envío inmediato. ¿Cuál modelo le interesa?"
+6,Consulta de pedido,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,6,Mi número de pedido es TY202501001 por favor ayúdeme a consultar el estado logístico,¡Hola! El pedido TY202501001 ha sido encontrado: 4 neumáticos Michelin 225/60R16 fueron enviados ayer número de seguimiento SF1234567890 se espera que lleguen mañana por favor mantenga su teléfono disponible.
+7,Servicio domicilio,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,7,¿Ofrecen servicio de instalación a domicilio?,¡Hola! Sí ofrecemos servicio completo de instalación a domicilio. Incluye: transporte de neumáticos, instalación profesional, equilibrado dinámico, ajuste de presión. Zona urbana: gratis. Área metropolitana: $50-100 según distancia. Programamos cita que le convenga, horario 8:00 AM - 7:00 PM.
+8,Garantía,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,8,¿Cuál es el período de garantía de los neumáticos?,¡Hola! El período de garantía de neumáticos de marca es generalmente 3 años o 60,000 kilómetros (lo que ocurra primero), incluyendo defectos de fabricación, desgaste anormal etc. La garantía no incluye desgaste normal, daño por fuerza externa, daño causado por uso inapropiado.
+9,Formas de pago,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,9,¿Qué formas de pago aceptan?,¡Hola! Aceptamos múltiples formas de pago: efectivo, tarjetas de crédito/débito (Visa, Mastercard, American Express), transferencias bancarias, PayPal, y pago en línea. También ofrecemos planes de financiamiento a 3, 6 y 12 meses sin intereses con tarjetas participantes.
+10,Consulta especificación incorrecta,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,10,Necesito neumáticos medida 100/25R15 para mi auto,"ID Producto	Nombre del Producto	Stock	Precio
+-	No se encontraron neumáticos	-	-
+
+🌟 ¡Hola! Me complace atenderle. Soy su asistente de ventas de Llantasyservicios.mx (también conocido como Grupo Magno), su aliado en neumáticos y servicios automotrices en Ciudad de México.
+
+🔍 Búsqueda completada para neumáticos de Auto - Medida: 100/25R15
+
+📋 Información de su búsqueda:
+• ✅ Neumáticos encontrados: 0
+• 👁️ Resultados mostrados: 0
+• 🚗 Tipo: Auto
+• 📏 Especificación: 100/25R15
+
+❌ Lo siento, no se encontraron neumáticos de auto que coincidan con su búsqueda
+
+💡 Permítame sugerirle algunas opciones:
+• 🔍 Verifiquemos juntos si las especificaciones del neumático son correctas
+• 🛞 Puedo ayudarle a buscar con otras especificaciones de tamaño
+• 📞 También puede contactar directamente a nuestro equipo de servicio al cliente
+
+🌟 En Llantasyservicios.mx estamos comprometidos con encontrar la mejor solución para usted. ¡No se preocupe, seguro encontramos lo que necesita!"
+11,Consulta Honda Civic,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,11,Tengo un Honda Civic 2019 ¿qué neumáticos recomiendan?,"ID Producto	Nombre del Producto	Stock	Precio
+LL-H2156	215 55 R16 93V MICHELIN PRIMACY 4	18	$780.75
+LL-H2157	215 55 R16 93V BRIDGESTONE TURANZA T005	20	$720.25
+LL-H2158	215 55 R16 93V CONTINENTAL CONTICOMFORTCONTACT CC6	15	$650.50
+
+🔍 Resultados de Búsqueda de Neumáticos - Neumático de Auto (215/55R16)
+
+📊 Estadísticas de Búsqueda:
+• Neumáticos encontrados: 3
+• Cantidad mostrada: 3
+• Tipo de neumático: Auto
+• Especificación de búsqueda: Honda Civic 2019 (215/55R16)
+
+💰 Rango de precios: $650.50 - $780.75
+
+🏆 Neumáticos recomendados:
+215 55 R16 93V CONTINENTAL CONTICOMFORTCONTACT CC6 - $650.50
+215 55 R16 93V BRIDGESTONE TURANZA T005 - $720.25
+215 55 R16 93V MICHELIN PRIMACY 4 - $780.75
+
+Todos perfectos para su Honda Civic 2019. ¿Prefiere comodidad o rendimiento?"
+12,Financiamiento,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,12,¿Tienen planes de financiamiento?,¡Hola! Sí tenemos excelentes opciones de financiamiento: Plan 3 meses sin intereses, Plan 6 meses con 5% de interés anual, Plan 12 meses con 8% de interés anual. Aceptamos tarjetas de crédito principales. Aprobación inmediata en tienda. También trabajamos con financieras automotrices para montos mayores.
+13,Horarios,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,13,¿Cuáles son sus horarios de atención?,¡Hola! Nuestros horarios son: Lunes a Viernes: 8:00 AM - 7:00 PM, Sábados: 8:00 AM - 6:00 PM, Domingos: 9:00 AM - 3:00 PM. Servicio de emergencia 24/7 disponible con costo adicional. Atención en línea disponible las 24 horas para consultas y cotizaciones.
+14,Ubicación,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,14,¿Dónde están ubicados?,¡Hola! Estamos ubicados en múltiples puntos de Ciudad de México: Sucursal Centro: Av. Reforma 123, Col. Centro, Sucursal Norte: Av. Insurgentes Norte 456, Col. Lindavista, Sucursal Sur: Periférico Sur 789, Col. Pedregal. Todas con amplio estacionamiento y servicios completos.
+15,Tiempo de entrega,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,15,¿Cuánto tiempo tardan en entregar?,¡Hola! Tiempos de entrega: En Ciudad de México: mismo día si el pedido es antes de las 2:00 PM, Área metropolitana: 1-2 días hábiles, Interior de la República: 3-5 días hábiles. Envío gratuito en pedidos mayores a $2,000. Rastreo en tiempo real disponible.
+16,Servicios adicionales,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,16,¿Qué otros servicios ofrecen además de neumáticos?,¡Hola! Ofrecemos servicios completos: Alineación y balanceo ($150), Rotación de neumáticos ($80), Reparación de llantas ($120), Válvulas nuevas ($40), Inflado con nitrógeno ($60), Inspección gratuita, Limpieza de neumáticos ($30). Paquetes con descuento disponibles.
+17,Neumáticos de invierno,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,17,¿Tienen neumáticos de invierno disponibles?,"ID Producto	Nombre del Producto	Stock	Precio
+LL-W2055	205 55 R16 91H MICHELIN X-ICE SNOW	12	$890.75
+LL-W2056	205 55 R16 91T BRIDGESTONE BLIZZAK WS90	15	$820.25
+LL-W2057	205 55 R16 91H CONTINENTAL WINTERCONTACT TS870	10	$780.50
+
+🔍 Resultados de Búsqueda de Neumáticos - Neumático de Invierno (205/55R16)
+
+📊 Estadísticas de Búsqueda:
+• Neumáticos encontrados: 3
+• Cantidad mostrada: 3
+• Tipo de neumático: Invierno
+• Especificación de búsqueda: 205/55R16
+
+💰 Rango de precios: $780.50 - $890.75
+
+🏆 Neumáticos recomendados:
+205 55 R16 91H CONTINENTAL WINTERCONTACT TS870 - $780.50
+205 55 R16 91T BRIDGESTONE BLIZZAK WS90 - $820.25
+205 55 R16 91H MICHELIN X-ICE SNOW - $890.75
+
+Perfectos para condiciones de nieve y hielo. ¿Qué especificación necesita?"
+18,Consulta run flat,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,18,¿Qué son los neumáticos Run Flat?,¡Hola! Los neumáticos Run Flat (antipinchazo) son neumáticos reforzados con paredes laterales engrosadas que pueden seguir funcionando hasta 80-100 km sin presión de aire, con límite de velocidad de 80 km/h. Ideales para BMW, Mercedes-Benz. Mayor seguridad pero menos comodidad y precio más alto.
+19,Consulta deportivos,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,19,¿Tienen neumáticos deportivos de alto rendimiento?,"ID Producto	Nombre del Producto	Stock	Precio
+LL-S2255	225 45 R17 94Y MICHELIN PILOT SPORT 4	8	$1350.75
+LL-S2256	225 45 R17 94Y BRIDGESTONE POTENZA S007A	10	$1280.25
+LL-S2257	225 45 R17 94Y CONTINENTAL CONTISPORTCONTACT 5	12	$1200.50
+
+🔍 Resultados de Búsqueda de Neumáticos - Neumático Deportivo (225/45R17)
+
+📊 Estadísticas de Búsqueda:
+• Neumáticos encontrados: 3
+• Cantidad mostrada: 3
+• Tipo de neumático: Deportivo
+• Especificación de búsqueda: 225/45R17
+
+💰 Rango de precios: $1200.50 - $1350.75
+
+🏆 Neumáticos recomendados:
+225 45 R17 94Y CONTINENTAL CONTISPORTCONTACT 5 - $1200.50
+225 45 R17 94Y BRIDGESTONE POTENZA S007A - $1280.25
+225 45 R17 94Y MICHELIN PILOT SPORT 4 - $1350.75
+
+Máximo rendimiento para conducción deportiva. ¿Para qué vehículo?"
+20,Consulta económicos,Respuesta estándar FAQ,Fuente FAQ,Satisfecho,20,¿Cuáles son sus neumáticos más económicos?,"ID Producto	Nombre del Producto	Stock	Precio
+LL-E1856	185 65 R15 88H WINDFORCE CATCHFORS	30	$220.50
+LL-E1857	185 65 R15 88H GOODRIDE RP28	25	$240.25
+LL-E1858	185 65 R15 88H WESTLAKE RP18	28	$260.75
+
+🔍 Resultados de Búsqueda de Neumáticos - Neumático Económico (185/65R15)
+
+📊 Estadísticas de Búsqueda:
+• Neumáticos encontrados: 3
+• Cantidad mostrada: 3
+• Tipo de neumático: Económico
+• Especificación de búsqueda: 185/65R15
+
+💰 Rango de precios: $220.50 - $260.75
+
+🏆 Neumáticos recomendados:
+185 65 R15 88H WINDFORCE CATCHFORS - $220.50
+185 65 R15 88H GOODRIDE RP28 - $240.25
+185 65 R15 88H WESTLAKE RP18 - $260.75
+
+Excelente relación calidad-precio para uso diario. ¿Qué cantidad necesita?" 

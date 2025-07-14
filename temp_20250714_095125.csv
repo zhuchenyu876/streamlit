@@ -1,0 +1,691 @@
+﻿#,场景,子场景,数据来源,是否多轮,组别,测试数据,参考答案
+1,催收多轮对话场景,无,FAQ相似问,多轮,1,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+2,催收多轮对话场景,无,FAQ相似问,多轮,1,Maybe I'll pay next month.,We’re required to follow up. Could you tell us your plan to settle this?
+3,催收多轮对话场景,无,FAQ相似问,多轮,1,I don't think I owe anything.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+4,催收多轮对话场景,无,FAQ相似问,多轮,1,Stop bothering me.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+5,催收多轮对话场景,无,FAQ相似问,多轮,1,Can I pay part of it?,We’re required to follow up. Could you tell us your plan to settle this?
+6,催收多轮对话场景,无,FAQ相似问,多轮,1,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+7,催收多轮对话场景,无,FAQ相似问,多轮,1,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+8,催收多轮对话场景,无,FAQ相似问,多轮,1,I'm going to complain to OJK.,Waiting until next month is too long. Could you try resolving it this week?
+9,催收多轮对话场景,无,FAQ相似问,多轮,2,Brian,"Hi Mr. Brian, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+10,催收多轮对话场景,无,FAQ相似问,多轮,2,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+11,催收多轮对话场景,无,FAQ相似问,多轮,2,I don't think I owe anything.,We’re required to follow up. Could you tell us your plan to settle this?
+12,催收多轮对话场景,无,FAQ相似问,多轮,2,I don't have money now.,Our records confirm the balance. Can you check and update us by today?
+13,催收多轮对话场景,无,FAQ相似问,多轮,2,I already paid it.,Waiting until next month is too long. Could you try resolving it this week?
+14,催收多轮对话场景,无,FAQ相似问,多轮,2,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+15,催收多轮对话场景,无,FAQ相似问,多轮,3,Joe,"Hi Mr. Joe, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+16,催收多轮对话场景,无,FAQ相似问,多轮,3,I'm going to complain to OJK.,"We understand it’s stressful. Still, when can you complete the payment?"
+17,催收多轮对话场景,无,FAQ相似问,多轮,3,Maybe I'll pay next month.,We’re required to follow up. Could you tell us your plan to settle this?
+18,催收多轮对话场景,无,FAQ相似问,多轮,3,Stop bothering me.,Waiting until next month is too long. Could you try resolving it this week?
+19,催收多轮对话场景,无,FAQ相似问,多轮,3,Stop bothering me.,Our records confirm the balance. Can you check and update us by today?
+20,催收多轮对话场景,无,FAQ相似问,多轮,3,I don't have money now.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+21,催收多轮对话场景,无,FAQ相似问,多轮,3,I don't think I owe anything.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+22,催收多轮对话场景,无,FAQ相似问,多轮,3,I don't have money now.,When exactly is your salary due? It will help us avoid escalation.
+23,催收多轮对话场景,无,FAQ相似问,多轮,3,Stop bothering me.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+24,催收多轮对话场景,无,FAQ相似问,多轮,4,Jim,"Hi Mr. Jim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+25,催收多轮对话场景,无,FAQ相似问,多轮,4,I'll try asking my family.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+26,催收多轮对话场景,无,FAQ相似问,多轮,4,Stop bothering me.,Our records confirm the balance. Can you check and update us by today?
+27,催收多轮对话场景,无,FAQ相似问,多轮,4,I don't have money now.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+28,催收多轮对话场景,无,FAQ相似问,多轮,4,I don't think I owe anything.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+29,催收多轮对话场景,无,FAQ相似问,多轮,4,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+30,催收多轮对话场景,无,FAQ相似问,多轮,5,Jason,"Hi Mr. Jason, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+31,催收多轮对话场景,无,FAQ相似问,多轮,5,Maybe I'll pay next month.,Our records confirm the balance. Can you check and update us by today?
+32,催收多轮对话场景,无,FAQ相似问,多轮,5,I'm going to complain to OJK.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+33,催收多轮对话场景,无,FAQ相似问,多轮,5,Maybe I'll pay next month.,When exactly is your salary due? It will help us avoid escalation.
+34,催收多轮对话场景,无,FAQ相似问,多轮,5,I already paid it.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+35,催收多轮对话场景,无,FAQ相似问,多轮,5,I don't think I owe anything.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+36,催收多轮对话场景,无,FAQ相似问,多轮,5,I'm very stressed about this.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+37,催收多轮对话场景,无,FAQ相似问,多轮,5,I'll try asking my family.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+38,催收多轮对话场景,无,FAQ相似问,多轮,5,I'm waiting for my salary.,We’re required to follow up. Could you tell us your plan to settle this?
+39,催收多轮对话场景,无,FAQ相似问,多轮,6,Mark,"Hi Mr. Mark, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+40,催收多轮对话场景,无,FAQ相似问,多轮,6,I don't think I owe anything.,We’re required to follow up. Could you tell us your plan to settle this?
+41,催收多轮对话场景,无,FAQ相似问,多轮,6,Why is the amount so high?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+42,催收多轮对话场景,无,FAQ相似问,多轮,6,I'm very stressed about this.,When exactly is your salary due? It will help us avoid escalation.
+43,催收多轮对话场景,无,FAQ相似问,多轮,6,I'm very stressed about this.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+44,催收多轮对话场景,无,FAQ相似问,多轮,6,I'm waiting for my salary.,When exactly is your salary due? It will help us avoid escalation.
+45,催收多轮对话场景,无,FAQ相似问,多轮,7,Brian,"Hi Mr. Brian, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+46,催收多轮对话场景,无,FAQ相似问,多轮,7,Why is the amount so high?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+47,催收多轮对话场景,无,FAQ相似问,多轮,7,Why is the amount so high?,When exactly is your salary due? It will help us avoid escalation.
+48,催收多轮对话场景,无,FAQ相似问,多轮,7,Can I pay part of it?,Waiting until next month is too long. Could you try resolving it this week?
+49,催收多轮对话场景,无,FAQ相似问,多轮,7,Stop bothering me.,Waiting until next month is too long. Could you try resolving it this week?
+50,催收多轮对话场景,无,FAQ相似问,多轮,7,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+51,催收多轮对话场景,无,FAQ相似问,多轮,7,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+52,催收多轮对话场景,无,FAQ相似问,多轮,8,Jim,"Hi Mr. Jim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+53,催收多轮对话场景,无,FAQ相似问,多轮,8,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+54,催收多轮对话场景,无,FAQ相似问,多轮,8,I'm very stressed about this.,"We understand it’s stressful. Still, when can you complete the payment?"
+55,催收多轮对话场景,无,FAQ相似问,多轮,8,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+56,催收多轮对话场景,无,FAQ相似问,多轮,8,I don't think I owe anything.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+57,催收多轮对话场景,无,FAQ相似问,多轮,8,I don't think I owe anything.,Our records confirm the balance. Can you check and update us by today?
+58,催收多轮对话场景,无,FAQ相似问,多轮,8,I'm going to complain to OJK.,We’re required to follow up. Could you tell us your plan to settle this?
+59,催收多轮对话场景,无,FAQ相似问,多轮,8,I'm going to complain to OJK.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+60,催收多轮对话场景,无,FAQ相似问,多轮,8,I'm waiting for my salary.,That’s a good step. Can you confirm if you’ll pay within a few days?
+61,催收多轮对话场景,无,FAQ相似问,多轮,9,Kevin,"Hi Mr. Kevin, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+62,催收多轮对话场景,无,FAQ相似问,多轮,9,Maybe I'll pay next month.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+63,催收多轮对话场景,无,FAQ相似问,多轮,9,Maybe I'll pay next month.,We’re required to follow up. Could you tell us your plan to settle this?
+64,催收多轮对话场景,无,FAQ相似问,多轮,9,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+65,催收多轮对话场景,无,FAQ相似问,多轮,9,I don't think I owe anything.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+66,催收多轮对话场景,无,FAQ相似问,多轮,9,I'm going to complain to OJK.,When exactly is your salary due? It will help us avoid escalation.
+67,催收多轮对话场景,无,FAQ相似问,多轮,9,I don't think I owe anything.,We’re required to follow up. Could you tell us your plan to settle this?
+68,催收多轮对话场景,无,FAQ相似问,多轮,9,I'm very stressed about this.,"We understand it’s stressful. Still, when can you complete the payment?"
+69,催收多轮对话场景,无,FAQ相似问,多轮,9,Maybe I'll pay next month.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+70,催收多轮对话场景,无,FAQ相似问,多轮,10,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+71,催收多轮对话场景,无,FAQ相似问,多轮,10,Stop bothering me.,We’re required to follow up. Could you tell us your plan to settle this?
+72,催收多轮对话场景,无,FAQ相似问,多轮,10,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+73,催收多轮对话场景,无,FAQ相似问,多轮,10,Maybe I'll pay next month.,Our records confirm the balance. Can you check and update us by today?
+74,催收多轮对话场景,无,FAQ相似问,多轮,10,Can I pay part of it?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+75,催收多轮对话场景,无,FAQ相似问,多轮,10,I'm going to complain to OJK.,That’s a good step. Can you confirm if you’ll pay within a few days?
+76,催收多轮对话场景,无,FAQ相似问,多轮,10,Stop bothering me.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+77,催收多轮对话场景,无,FAQ相似问,多轮,10,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+78,催收多轮对话场景,无,FAQ相似问,多轮,10,Maybe I'll pay next month.,"We understand it’s stressful. Still, when can you complete the payment?"
+79,催收多轮对话场景,无,FAQ相似问,多轮,11,Jim,"Hi Mr. Jim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+80,催收多轮对话场景,无,FAQ相似问,多轮,11,Can I pay part of it?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+81,催收多轮对话场景,无,FAQ相似问,多轮,11,Can I pay part of it?,That’s a good step. Can you confirm if you’ll pay within a few days?
+82,催收多轮对话场景,无,FAQ相似问,多轮,11,Why is the amount so high?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+83,催收多轮对话场景,无,FAQ相似问,多轮,11,Can I pay part of it?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+84,催收多轮对话场景,无,FAQ相似问,多轮,12,Kevin,"Hi Mr. Kevin, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+85,催收多轮对话场景,无,FAQ相似问,多轮,12,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+86,催收多轮对话场景,无,FAQ相似问,多轮,12,I'm going to complain to OJK.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+87,催收多轮对话场景,无,FAQ相似问,多轮,12,I don't have money now.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+88,催收多轮对话场景,无,FAQ相似问,多轮,12,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+89,催收多轮对话场景,无,FAQ相似问,多轮,12,I'm waiting for my salary.,We’re required to follow up. Could you tell us your plan to settle this?
+90,催收多轮对话场景,无,FAQ相似问,多轮,12,I'll try asking my family.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+91,催收多轮对话场景,无,FAQ相似问,多轮,13,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+92,催收多轮对话场景,无,FAQ相似问,多轮,13,I already paid it.,Waiting until next month is too long. Could you try resolving it this week?
+93,催收多轮对话场景,无,FAQ相似问,多轮,13,Can I pay part of it?,We’re required to follow up. Could you tell us your plan to settle this?
+94,催收多轮对话场景,无,FAQ相似问,多轮,13,I'm going to complain to OJK.,Our records confirm the balance. Can you check and update us by today?
+95,催收多轮对话场景,无,FAQ相似问,多轮,13,Why is the amount so high?,"We understand it’s stressful. Still, when can you complete the payment?"
+96,催收多轮对话场景,无,FAQ相似问,多轮,14,Dave,"Hi Mr. Dave, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+97,催收多轮对话场景,无,FAQ相似问,多轮,14,Maybe I'll pay next month.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+98,催收多轮对话场景,无,FAQ相似问,多轮,14,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+99,催收多轮对话场景,无,FAQ相似问,多轮,14,Stop bothering me.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+100,催收多轮对话场景,无,FAQ相似问,多轮,14,I'm very stressed about this.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+101,催收多轮对话场景,无,FAQ相似问,多轮,15,Paul,"Hi Mr. Paul, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+102,催收多轮对话场景,无,FAQ相似问,多轮,15,Maybe I'll pay next month.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+103,催收多轮对话场景,无,FAQ相似问,多轮,15,I already paid it.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+104,催收多轮对话场景,无,FAQ相似问,多轮,15,I'll try asking my family.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+105,催收多轮对话场景,无,FAQ相似问,多轮,15,Maybe I'll pay next month.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+106,催收多轮对话场景,无,FAQ相似问,多轮,16,Brian,"Hi Mr. Brian, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+107,催收多轮对话场景,无,FAQ相似问,多轮,16,I'm very stressed about this.,When exactly is your salary due? It will help us avoid escalation.
+108,催收多轮对话场景,无,FAQ相似问,多轮,16,I'm going to complain to OJK.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+109,催收多轮对话场景,无,FAQ相似问,多轮,16,I'm going to complain to OJK.,When exactly is your salary due? It will help us avoid escalation.
+110,催收多轮对话场景,无,FAQ相似问,多轮,16,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+111,催收多轮对话场景,无,FAQ相似问,多轮,17,Joe,"Hi Mr. Joe, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+112,催收多轮对话场景,无,FAQ相似问,多轮,17,I'll try asking my family.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+113,催收多轮对话场景,无,FAQ相似问,多轮,17,Maybe I'll pay next month.,When exactly is your salary due? It will help us avoid escalation.
+114,催收多轮对话场景,无,FAQ相似问,多轮,17,I'll try asking my family.,Our records confirm the balance. Can you check and update us by today?
+115,催收多轮对话场景,无,FAQ相似问,多轮,17,Why is the amount so high?,Our records confirm the balance. Can you check and update us by today?
+116,催收多轮对话场景,无,FAQ相似问,多轮,17,I already paid it.,We’re required to follow up. Could you tell us your plan to settle this?
+117,催收多轮对话场景,无,FAQ相似问,多轮,18,Dan,"Hi Mr. Dan, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+118,催收多轮对话场景,无,FAQ相似问,多轮,18,I'm going to complain to OJK.,Waiting until next month is too long. Could you try resolving it this week?
+119,催收多轮对话场景,无,FAQ相似问,多轮,18,Stop bothering me.,We’re required to follow up. Could you tell us your plan to settle this?
+120,催收多轮对话场景,无,FAQ相似问,多轮,18,Stop bothering me.,That’s a good step. Can you confirm if you’ll pay within a few days?
+121,催收多轮对话场景,无,FAQ相似问,多轮,18,Maybe I'll pay next month.,Our records confirm the balance. Can you check and update us by today?
+122,催收多轮对话场景,无,FAQ相似问,多轮,18,Stop bothering me.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+123,催收多轮对话场景,无,FAQ相似问,多轮,18,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+124,催收多轮对话场景,无,FAQ相似问,多轮,18,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+125,催收多轮对话场景,无,FAQ相似问,多轮,19,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+126,催收多轮对话场景,无,FAQ相似问,多轮,19,Why is the amount so high?,That’s a good step. Can you confirm if you’ll pay within a few days?
+127,催收多轮对话场景,无,FAQ相似问,多轮,19,I already paid it.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+128,催收多轮对话场景,无,FAQ相似问,多轮,19,Maybe I'll pay next month.,That’s a good step. Can you confirm if you’ll pay within a few days?
+129,催收多轮对话场景,无,FAQ相似问,多轮,19,I'm going to complain to OJK.,When exactly is your salary due? It will help us avoid escalation.
+130,催收多轮对话场景,无,FAQ相似问,多轮,19,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+131,催收多轮对话场景,无,FAQ相似问,多轮,19,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+132,催收多轮对话场景,无,FAQ相似问,多轮,19,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+133,催收多轮对话场景,无,FAQ相似问,多轮,20,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+134,催收多轮对话场景,无,FAQ相似问,多轮,20,Can I pay part of it?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+135,催收多轮对话场景,无,FAQ相似问,多轮,20,Can I pay part of it?,That’s a good step. Can you confirm if you’ll pay within a few days?
+136,催收多轮对话场景,无,FAQ相似问,多轮,20,I'll try asking my family.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+137,催收多轮对话场景,无,FAQ相似问,多轮,20,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+138,催收多轮对话场景,无,FAQ相似问,多轮,21,Paul,"Hi Mr. Paul, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+139,催收多轮对话场景,无,FAQ相似问,多轮,21,I already paid it.,When exactly is your salary due? It will help us avoid escalation.
+140,催收多轮对话场景,无,FAQ相似问,多轮,21,Stop bothering me.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+141,催收多轮对话场景,无,FAQ相似问,多轮,21,I'm very stressed about this.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+142,催收多轮对话场景,无,FAQ相似问,多轮,21,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+143,催收多轮对话场景,无,FAQ相似问,多轮,21,Why is the amount so high?,Waiting until next month is too long. Could you try resolving it this week?
+144,催收多轮对话场景,无,FAQ相似问,多轮,21,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+145,催收多轮对话场景,无,FAQ相似问,多轮,21,I already paid it.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+146,催收多轮对话场景,无,FAQ相似问,多轮,22,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+147,催收多轮对话场景,无,FAQ相似问,多轮,22,Why is the amount so high?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+148,催收多轮对话场景,无,FAQ相似问,多轮,22,I already paid it.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+149,催收多轮对话场景,无,FAQ相似问,多轮,22,Maybe I'll pay next month.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+150,催收多轮对话场景,无,FAQ相似问,多轮,22,I'm waiting for my salary.,Our records confirm the balance. Can you check and update us by today?
+151,催收多轮对话场景,无,FAQ相似问,多轮,22,I'll try asking my family.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+152,催收多轮对话场景,无,FAQ相似问,多轮,22,I'll try asking my family.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+153,催收多轮对话场景,无,FAQ相似问,多轮,23,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+154,催收多轮对话场景,无,FAQ相似问,多轮,23,Can I pay part of it?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+155,催收多轮对话场景,无,FAQ相似问,多轮,23,Why is the amount so high?,"We understand it’s stressful. Still, when can you complete the payment?"
+156,催收多轮对话场景,无,FAQ相似问,多轮,23,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+157,催收多轮对话场景,无,FAQ相似问,多轮,23,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+158,催收多轮对话场景,无,FAQ相似问,多轮,24,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+159,催收多轮对话场景,无,FAQ相似问,多轮,24,Stop bothering me.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+160,催收多轮对话场景,无,FAQ相似问,多轮,24,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+161,催收多轮对话场景,无,FAQ相似问,多轮,24,Stop bothering me.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+162,催收多轮对话场景,无,FAQ相似问,多轮,24,I don't think I owe anything.,When exactly is your salary due? It will help us avoid escalation.
+163,催收多轮对话场景,无,FAQ相似问,多轮,24,Can I pay part of it?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+164,催收多轮对话场景,无,FAQ相似问,多轮,24,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+165,催收多轮对话场景,无,FAQ相似问,多轮,25,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+166,催收多轮对话场景,无,FAQ相似问,多轮,25,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+167,催收多轮对话场景,无,FAQ相似问,多轮,25,I'm very stressed about this.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+168,催收多轮对话场景,无,FAQ相似问,多轮,25,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+169,催收多轮对话场景,无,FAQ相似问,多轮,25,Can I pay part of it?,Our records confirm the balance. Can you check and update us by today?
+170,催收多轮对话场景,无,FAQ相似问,多轮,26,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+171,催收多轮对话场景,无,FAQ相似问,多轮,26,Stop bothering me.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+172,催收多轮对话场景,无,FAQ相似问,多轮,26,I don't think I owe anything.,Our records confirm the balance. Can you check and update us by today?
+173,催收多轮对话场景,无,FAQ相似问,多轮,26,Why is the amount so high?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+174,催收多轮对话场景,无,FAQ相似问,多轮,26,Can I pay part of it?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+175,催收多轮对话场景,无,FAQ相似问,多轮,26,Why is the amount so high?,"We understand it’s stressful. Still, when can you complete the payment?"
+176,催收多轮对话场景,无,FAQ相似问,多轮,26,I'm going to complain to OJK.,When exactly is your salary due? It will help us avoid escalation.
+177,催收多轮对话场景,无,FAQ相似问,多轮,27,Dave,"Hi Mr. Dave, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+178,催收多轮对话场景,无,FAQ相似问,多轮,27,Why is the amount so high?,"We understand it’s stressful. Still, when can you complete the payment?"
+179,催收多轮对话场景,无,FAQ相似问,多轮,27,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+180,催收多轮对话场景,无,FAQ相似问,多轮,27,Can I pay part of it?,We’re required to follow up. Could you tell us your plan to settle this?
+181,催收多轮对话场景,无,FAQ相似问,多轮,27,Stop bothering me.,"We understand it’s stressful. Still, when can you complete the payment?"
+182,催收多轮对话场景,无,FAQ相似问,多轮,27,Maybe I'll pay next month.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+183,催收多轮对话场景,无,FAQ相似问,多轮,27,I'm going to complain to OJK.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+184,催收多轮对话场景,无,FAQ相似问,多轮,27,Stop bothering me.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+185,催收多轮对话场景,无,FAQ相似问,多轮,28,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+186,催收多轮对话场景,无,FAQ相似问,多轮,28,I don't have money now.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+187,催收多轮对话场景,无,FAQ相似问,多轮,28,Why is the amount so high?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+188,催收多轮对话场景,无,FAQ相似问,多轮,28,I don't think I owe anything.,That’s a good step. Can you confirm if you’ll pay within a few days?
+189,催收多轮对话场景,无,FAQ相似问,多轮,28,I'm going to complain to OJK.,We’re required to follow up. Could you tell us your plan to settle this?
+190,催收多轮对话场景,无,FAQ相似问,多轮,28,I'm going to complain to OJK.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+191,催收多轮对话场景,无,FAQ相似问,多轮,28,Can I pay part of it?,Our records confirm the balance. Can you check and update us by today?
+192,催收多轮对话场景,无,FAQ相似问,多轮,29,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+193,催收多轮对话场景,无,FAQ相似问,多轮,29,I don't have money now.,When exactly is your salary due? It will help us avoid escalation.
+194,催收多轮对话场景,无,FAQ相似问,多轮,29,I'm waiting for my salary.,When exactly is your salary due? It will help us avoid escalation.
+195,催收多轮对话场景,无,FAQ相似问,多轮,29,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+196,催收多轮对话场景,无,FAQ相似问,多轮,29,Maybe I'll pay next month.,"We understand it’s stressful. Still, when can you complete the payment?"
+197,催收多轮对话场景,无,FAQ相似问,多轮,29,I'm going to complain to OJK.,Waiting until next month is too long. Could you try resolving it this week?
+198,催收多轮对话场景,无,FAQ相似问,多轮,29,Why is the amount so high?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+199,催收多轮对话场景,无,FAQ相似问,多轮,29,Why is the amount so high?,That’s a good step. Can you confirm if you’ll pay within a few days?
+200,催收多轮对话场景,无,FAQ相似问,多轮,30,Kevin,"Hi Mr. Kevin, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+201,催收多轮对话场景,无,FAQ相似问,多轮,30,I don't think I owe anything.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+202,催收多轮对话场景,无,FAQ相似问,多轮,30,I don't think I owe anything.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+203,催收多轮对话场景,无,FAQ相似问,多轮,30,I don't think I owe anything.,"We understand it’s stressful. Still, when can you complete the payment?"
+204,催收多轮对话场景,无,FAQ相似问,多轮,30,I'm waiting for my salary.,Our records confirm the balance. Can you check and update us by today?
+205,催收多轮对话场景,无,FAQ相似问,多轮,30,I'm waiting for my salary.,Waiting until next month is too long. Could you try resolving it this week?
+206,催收多轮对话场景,无,FAQ相似问,多轮,31,Paul,"Hi Mr. Paul, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+207,催收多轮对话场景,无,FAQ相似问,多轮,31,I'll try asking my family.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+208,催收多轮对话场景,无,FAQ相似问,多轮,31,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+209,催收多轮对话场景,无,FAQ相似问,多轮,31,I'll try asking my family.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+210,催收多轮对话场景,无,FAQ相似问,多轮,31,Can I pay part of it?,Waiting until next month is too long. Could you try resolving it this week?
+211,催收多轮对话场景,无,FAQ相似问,多轮,31,I'm going to complain to OJK.,Our records confirm the balance. Can you check and update us by today?
+212,催收多轮对话场景,无,FAQ相似问,多轮,31,I'm waiting for my salary.,That’s a good step. Can you confirm if you’ll pay within a few days?
+213,催收多轮对话场景,无,FAQ相似问,多轮,31,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+214,催收多轮对话场景,无,FAQ相似问,多轮,31,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+215,催收多轮对话场景,无,FAQ相似问,多轮,32,Harry,"Hi Mr. Harry, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+216,催收多轮对话场景,无,FAQ相似问,多轮,32,I don't think I owe anything.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+217,催收多轮对话场景,无,FAQ相似问,多轮,32,Stop bothering me.,Waiting until next month is too long. Could you try resolving it this week?
+218,催收多轮对话场景,无,FAQ相似问,多轮,32,I'm waiting for my salary.,That’s a good step. Can you confirm if you’ll pay within a few days?
+219,催收多轮对话场景,无,FAQ相似问,多轮,32,Why is the amount so high?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+220,催收多轮对话场景,无,FAQ相似问,多轮,32,I'm very stressed about this.,That’s a good step. Can you confirm if you’ll pay within a few days?
+221,催收多轮对话场景,无,FAQ相似问,多轮,33,Jim,"Hi Mr. Jim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+222,催收多轮对话场景,无,FAQ相似问,多轮,33,Can I pay part of it?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+223,催收多轮对话场景,无,FAQ相似问,多轮,33,Can I pay part of it?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+224,催收多轮对话场景,无,FAQ相似问,多轮,33,I don't have money now.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+225,催收多轮对话场景,无,FAQ相似问,多轮,33,Why is the amount so high?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+226,催收多轮对话场景,无,FAQ相似问,多轮,33,I don't have money now.,That’s a good step. Can you confirm if you’ll pay within a few days?
+227,催收多轮对话场景,无,FAQ相似问,多轮,33,Maybe I'll pay next month.,When exactly is your salary due? It will help us avoid escalation.
+228,催收多轮对话场景,无,FAQ相似问,多轮,33,I'm waiting for my salary.,"We understand it’s stressful. Still, when can you complete the payment?"
+229,催收多轮对话场景,无,FAQ相似问,多轮,34,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+230,催收多轮对话场景,无,FAQ相似问,多轮,34,Maybe I'll pay next month.,When exactly is your salary due? It will help us avoid escalation.
+231,催收多轮对话场景,无,FAQ相似问,多轮,34,I'm going to complain to OJK.,Waiting until next month is too long. Could you try resolving it this week?
+232,催收多轮对话场景,无,FAQ相似问,多轮,34,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+233,催收多轮对话场景,无,FAQ相似问,多轮,34,Maybe I'll pay next month.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+234,催收多轮对话场景,无,FAQ相似问,多轮,34,Can I pay part of it?,That’s a good step. Can you confirm if you’ll pay within a few days?
+235,催收多轮对话场景,无,FAQ相似问,多轮,35,Harry,"Hi Mr. Harry, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+236,催收多轮对话场景,无,FAQ相似问,多轮,35,I already paid it.,When exactly is your salary due? It will help us avoid escalation.
+237,催收多轮对话场景,无,FAQ相似问,多轮,35,I don't think I owe anything.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+238,催收多轮对话场景,无,FAQ相似问,多轮,35,I already paid it.,When exactly is your salary due? It will help us avoid escalation.
+239,催收多轮对话场景,无,FAQ相似问,多轮,35,I'm going to complain to OJK.,When exactly is your salary due? It will help us avoid escalation.
+240,催收多轮对话场景,无,FAQ相似问,多轮,35,I don't think I owe anything.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+241,催收多轮对话场景,无,FAQ相似问,多轮,35,I don't have money now.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+242,催收多轮对话场景,无,FAQ相似问,多轮,36,Paul,"Hi Mr. Paul, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+243,催收多轮对话场景,无,FAQ相似问,多轮,36,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+244,催收多轮对话场景,无,FAQ相似问,多轮,36,I don't have money now.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+245,催收多轮对话场景,无,FAQ相似问,多轮,36,I don't think I owe anything.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+246,催收多轮对话场景,无,FAQ相似问,多轮,36,I already paid it.,Waiting until next month is too long. Could you try resolving it this week?
+247,催收多轮对话场景,无,FAQ相似问,多轮,37,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+248,催收多轮对话场景,无,FAQ相似问,多轮,37,Why is the amount so high?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+249,催收多轮对话场景,无,FAQ相似问,多轮,37,I'm very stressed about this.,That’s a good step. Can you confirm if you’ll pay within a few days?
+250,催收多轮对话场景,无,FAQ相似问,多轮,37,I don't have money now.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+251,催收多轮对话场景,无,FAQ相似问,多轮,37,I don't think I owe anything.,Our records confirm the balance. Can you check and update us by today?
+252,催收多轮对话场景,无,FAQ相似问,多轮,38,Dan,"Hi Mr. Dan, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+253,催收多轮对话场景,无,FAQ相似问,多轮,38,I'm waiting for my salary.,We’re required to follow up. Could you tell us your plan to settle this?
+254,催收多轮对话场景,无,FAQ相似问,多轮,38,I don't think I owe anything.,When exactly is your salary due? It will help us avoid escalation.
+255,催收多轮对话场景,无,FAQ相似问,多轮,38,I don't have money now.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+256,催收多轮对话场景,无,FAQ相似问,多轮,38,Maybe I'll pay next month.,That’s a good step. Can you confirm if you’ll pay within a few days?
+257,催收多轮对话场景,无,FAQ相似问,多轮,38,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+258,催收多轮对话场景,无,FAQ相似问,多轮,39,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+259,催收多轮对话场景,无,FAQ相似问,多轮,39,Stop bothering me.,"We understand it’s stressful. Still, when can you complete the payment?"
+260,催收多轮对话场景,无,FAQ相似问,多轮,39,I'm waiting for my salary.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+261,催收多轮对话场景,无,FAQ相似问,多轮,39,I'll try asking my family.,Our records confirm the balance. Can you check and update us by today?
+262,催收多轮对话场景,无,FAQ相似问,多轮,39,I'm waiting for my salary.,When exactly is your salary due? It will help us avoid escalation.
+263,催收多轮对话场景,无,FAQ相似问,多轮,40,Tim,"Hi Mr. Tim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+264,催收多轮对话场景,无,FAQ相似问,多轮,40,Maybe I'll pay next month.,"We understand it’s stressful. Still, when can you complete the payment?"
+265,催收多轮对话场景,无,FAQ相似问,多轮,40,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+266,催收多轮对话场景,无,FAQ相似问,多轮,40,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+267,催收多轮对话场景,无,FAQ相似问,多轮,40,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+268,催收多轮对话场景,无,FAQ相似问,多轮,40,I already paid it.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+269,催收多轮对话场景,无,FAQ相似问,多轮,40,Can I pay part of it?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+270,催收多轮对话场景,无,FAQ相似问,多轮,40,I don't have money now.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+271,催收多轮对话场景,无,FAQ相似问,多轮,40,I'm very stressed about this.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+272,催收多轮对话场景,无,FAQ相似问,多轮,41,Dan,"Hi Mr. Dan, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+273,催收多轮对话场景,无,FAQ相似问,多轮,41,I'm very stressed about this.,Waiting until next month is too long. Could you try resolving it this week?
+274,催收多轮对话场景,无,FAQ相似问,多轮,41,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+275,催收多轮对话场景,无,FAQ相似问,多轮,41,I don't think I owe anything.,"We understand it’s stressful. Still, when can you complete the payment?"
+276,催收多轮对话场景,无,FAQ相似问,多轮,41,I don't have money now.,Our records confirm the balance. Can you check and update us by today?
+277,催收多轮对话场景,无,FAQ相似问,多轮,41,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+278,催收多轮对话场景,无,FAQ相似问,多轮,42,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+279,催收多轮对话场景,无,FAQ相似问,多轮,42,Maybe I'll pay next month.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+280,催收多轮对话场景,无,FAQ相似问,多轮,42,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+281,催收多轮对话场景,无,FAQ相似问,多轮,42,Maybe I'll pay next month.,We’re required to follow up. Could you tell us your plan to settle this?
+282,催收多轮对话场景,无,FAQ相似问,多轮,42,Stop bothering me.,That’s a good step. Can you confirm if you’ll pay within a few days?
+283,催收多轮对话场景,无,FAQ相似问,多轮,42,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+284,催收多轮对话场景,无,FAQ相似问,多轮,43,Dave,"Hi Mr. Dave, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+285,催收多轮对话场景,无,FAQ相似问,多轮,43,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+286,催收多轮对话场景,无,FAQ相似问,多轮,43,I don't think I owe anything.,"We understand it’s stressful. Still, when can you complete the payment?"
+287,催收多轮对话场景,无,FAQ相似问,多轮,43,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+288,催收多轮对话场景,无,FAQ相似问,多轮,43,I'm very stressed about this.,Our records confirm the balance. Can you check and update us by today?
+289,催收多轮对话场景,无,FAQ相似问,多轮,43,I already paid it.,When exactly is your salary due? It will help us avoid escalation.
+290,催收多轮对话场景,无,FAQ相似问,多轮,44,Sam,"Hi Mr. Sam, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+291,催收多轮对话场景,无,FAQ相似问,多轮,44,Maybe I'll pay next month.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+292,催收多轮对话场景,无,FAQ相似问,多轮,44,Why is the amount so high?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+293,催收多轮对话场景,无,FAQ相似问,多轮,44,Stop bothering me.,We’re required to follow up. Could you tell us your plan to settle this?
+294,催收多轮对话场景,无,FAQ相似问,多轮,44,I already paid it.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+295,催收多轮对话场景,无,FAQ相似问,多轮,44,I already paid it.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+296,催收多轮对话场景,无,FAQ相似问,多轮,44,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+297,催收多轮对话场景,无,FAQ相似问,多轮,44,I don't have money now.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+298,催收多轮对话场景,无,FAQ相似问,多轮,45,Jason,"Hi Mr. Jason, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+299,催收多轮对话场景,无,FAQ相似问,多轮,45,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+300,催收多轮对话场景,无,FAQ相似问,多轮,45,Why is the amount so high?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+301,催收多轮对话场景,无,FAQ相似问,多轮,45,I'm waiting for my salary.,"We understand it’s stressful. Still, when can you complete the payment?"
+302,催收多轮对话场景,无,FAQ相似问,多轮,45,Stop bothering me.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+303,催收多轮对话场景,无,FAQ相似问,多轮,45,I'm waiting for my salary.,Waiting until next month is too long. Could you try resolving it this week?
+304,催收多轮对话场景,无,FAQ相似问,多轮,46,Chris,"Hi Mr. Chris, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+305,催收多轮对话场景,无,FAQ相似问,多轮,46,I'm going to complain to OJK.,That’s a good step. Can you confirm if you’ll pay within a few days?
+306,催收多轮对话场景,无,FAQ相似问,多轮,46,I already paid it.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+307,催收多轮对话场景,无,FAQ相似问,多轮,46,I already paid it.,"We understand it’s stressful. Still, when can you complete the payment?"
+308,催收多轮对话场景,无,FAQ相似问,多轮,46,Maybe I'll pay next month.,When exactly is your salary due? It will help us avoid escalation.
+309,催收多轮对话场景,无,FAQ相似问,多轮,46,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+310,催收多轮对话场景,无,FAQ相似问,多轮,46,Why is the amount so high?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+311,催收多轮对话场景,无,FAQ相似问,多轮,46,Can I pay part of it?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+312,催收多轮对话场景,无,FAQ相似问,多轮,46,Stop bothering me.,That’s a good step. Can you confirm if you’ll pay within a few days?
+313,催收多轮对话场景,无,FAQ相似问,多轮,47,Chris,"Hi Mr. Chris, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+314,催收多轮对话场景,无,FAQ相似问,多轮,47,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+315,催收多轮对话场景,无,FAQ相似问,多轮,47,I'm going to complain to OJK.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+316,催收多轮对话场景,无,FAQ相似问,多轮,47,Why is the amount so high?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+317,催收多轮对话场景,无,FAQ相似问,多轮,47,Maybe I'll pay next month.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+318,催收多轮对话场景,无,FAQ相似问,多轮,47,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+319,催收多轮对话场景,无,FAQ相似问,多轮,48,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+320,催收多轮对话场景,无,FAQ相似问,多轮,48,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+321,催收多轮对话场景,无,FAQ相似问,多轮,48,I'll try asking my family.,That’s a good step. Can you confirm if you’ll pay within a few days?
+322,催收多轮对话场景,无,FAQ相似问,多轮,48,I'll try asking my family.,When exactly is your salary due? It will help us avoid escalation.
+323,催收多轮对话场景,无,FAQ相似问,多轮,48,I'll try asking my family.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+324,催收多轮对话场景,无,FAQ相似问,多轮,49,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+325,催收多轮对话场景,无,FAQ相似问,多轮,49,I already paid it.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+326,催收多轮对话场景,无,FAQ相似问,多轮,49,Can I pay part of it?,Waiting until next month is too long. Could you try resolving it this week?
+327,催收多轮对话场景,无,FAQ相似问,多轮,49,I already paid it.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+328,催收多轮对话场景,无,FAQ相似问,多轮,49,I'm very stressed about this.,When exactly is your salary due? It will help us avoid escalation.
+329,催收多轮对话场景,无,FAQ相似问,多轮,50,Paul,"Hi Mr. Paul, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+330,催收多轮对话场景,无,FAQ相似问,多轮,50,I'm very stressed about this.,Our records confirm the balance. Can you check and update us by today?
+331,催收多轮对话场景,无,FAQ相似问,多轮,50,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+332,催收多轮对话场景,无,FAQ相似问,多轮,50,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+333,催收多轮对话场景,无,FAQ相似问,多轮,50,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+334,催收多轮对话场景,无,FAQ相似问,多轮,50,Maybe I'll pay next month.,That’s a good step. Can you confirm if you’ll pay within a few days?
+335,催收多轮对话场景,无,FAQ相似问,多轮,51,Jim,"Hi Mr. Jim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+336,催收多轮对话场景,无,FAQ相似问,多轮,51,Maybe I'll pay next month.,Waiting until next month is too long. Could you try resolving it this week?
+337,催收多轮对话场景,无,FAQ相似问,多轮,51,I don't think I owe anything.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+338,催收多轮对话场景,无,FAQ相似问,多轮,51,I don't think I owe anything.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+339,催收多轮对话场景,无,FAQ相似问,多轮,51,I already paid it.,"We understand it’s stressful. Still, when can you complete the payment?"
+340,催收多轮对话场景,无,FAQ相似问,多轮,52,Tim,"Hi Mr. Tim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+341,催收多轮对话场景,无,FAQ相似问,多轮,52,Why is the amount so high?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+342,催收多轮对话场景,无,FAQ相似问,多轮,52,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+343,催收多轮对话场景,无,FAQ相似问,多轮,52,I'll try asking my family.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+344,催收多轮对话场景,无,FAQ相似问,多轮,52,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+345,催收多轮对话场景,无,FAQ相似问,多轮,52,I'm going to complain to OJK.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+346,催收多轮对话场景,无,FAQ相似问,多轮,52,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+347,催收多轮对话场景,无,FAQ相似问,多轮,52,I'm going to complain to OJK.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+348,催收多轮对话场景,无,FAQ相似问,多轮,52,I'm going to complain to OJK.,That’s a good step. Can you confirm if you’ll pay within a few days?
+349,催收多轮对话场景,无,FAQ相似问,多轮,53,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+350,催收多轮对话场景,无,FAQ相似问,多轮,53,I don't think I owe anything.,When exactly is your salary due? It will help us avoid escalation.
+351,催收多轮对话场景,无,FAQ相似问,多轮,53,Why is the amount so high?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+352,催收多轮对话场景,无,FAQ相似问,多轮,53,I'm going to complain to OJK.,That’s a good step. Can you confirm if you’ll pay within a few days?
+353,催收多轮对话场景,无,FAQ相似问,多轮,53,Why is the amount so high?,Waiting until next month is too long. Could you try resolving it this week?
+354,催收多轮对话场景,无,FAQ相似问,多轮,53,I'm waiting for my salary.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+355,催收多轮对话场景,无,FAQ相似问,多轮,53,I already paid it.,When exactly is your salary due? It will help us avoid escalation.
+356,催收多轮对话场景,无,FAQ相似问,多轮,53,I'll try asking my family.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+357,催收多轮对话场景,无,FAQ相似问,多轮,54,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+358,催收多轮对话场景,无,FAQ相似问,多轮,54,Maybe I'll pay next month.,That’s a good step. Can you confirm if you’ll pay within a few days?
+359,催收多轮对话场景,无,FAQ相似问,多轮,54,I'll try asking my family.,"We understand it’s stressful. Still, when can you complete the payment?"
+360,催收多轮对话场景,无,FAQ相似问,多轮,54,I don't think I owe anything.,That’s a good step. Can you confirm if you’ll pay within a few days?
+361,催收多轮对话场景,无,FAQ相似问,多轮,54,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+362,催收多轮对话场景,无,FAQ相似问,多轮,54,Why is the amount so high?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+363,催收多轮对话场景,无,FAQ相似问,多轮,55,Paul,"Hi Mr. Paul, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+364,催收多轮对话场景,无,FAQ相似问,多轮,55,I already paid it.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+365,催收多轮对话场景,无,FAQ相似问,多轮,55,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+366,催收多轮对话场景,无,FAQ相似问,多轮,55,I'm going to complain to OJK.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+367,催收多轮对话场景,无,FAQ相似问,多轮,55,Why is the amount so high?,That’s a good step. Can you confirm if you’ll pay within a few days?
+368,催收多轮对话场景,无,FAQ相似问,多轮,55,Stop bothering me.,Our records confirm the balance. Can you check and update us by today?
+369,催收多轮对话场景,无,FAQ相似问,多轮,55,I'm waiting for my salary.,We’re required to follow up. Could you tell us your plan to settle this?
+370,催收多轮对话场景,无,FAQ相似问,多轮,55,Maybe I'll pay next month.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+371,催收多轮对话场景,无,FAQ相似问,多轮,55,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+372,催收多轮对话场景,无,FAQ相似问,多轮,56,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+373,催收多轮对话场景,无,FAQ相似问,多轮,56,I'll try asking my family.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+374,催收多轮对话场景,无,FAQ相似问,多轮,56,I don't have money now.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+375,催收多轮对话场景,无,FAQ相似问,多轮,56,Why is the amount so high?,"We understand it’s stressful. Still, when can you complete the payment?"
+376,催收多轮对话场景,无,FAQ相似问,多轮,56,I'm waiting for my salary.,That’s a good step. Can you confirm if you’ll pay within a few days?
+377,催收多轮对话场景,无,FAQ相似问,多轮,56,Can I pay part of it?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+378,催收多轮对话场景,无,FAQ相似问,多轮,56,I don't have money now.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+379,催收多轮对话场景,无,FAQ相似问,多轮,57,Steve,"Hi Mr. Steve, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+380,催收多轮对话场景,无,FAQ相似问,多轮,57,I'm waiting for my salary.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+381,催收多轮对话场景,无,FAQ相似问,多轮,57,I'm very stressed about this.,Our records confirm the balance. Can you check and update us by today?
+382,催收多轮对话场景,无,FAQ相似问,多轮,57,Can I pay part of it?,When exactly is your salary due? It will help us avoid escalation.
+383,催收多轮对话场景,无,FAQ相似问,多轮,57,I'm going to complain to OJK.,Our records confirm the balance. Can you check and update us by today?
+384,催收多轮对话场景,无,FAQ相似问,多轮,57,Why is the amount so high?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+385,催收多轮对话场景,无,FAQ相似问,多轮,57,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+386,催收多轮对话场景,无,FAQ相似问,多轮,57,Can I pay part of it?,That’s a good step. Can you confirm if you’ll pay within a few days?
+387,催收多轮对话场景,无,FAQ相似问,多轮,57,I already paid it.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+388,催收多轮对话场景,无,FAQ相似问,多轮,58,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+389,催收多轮对话场景,无,FAQ相似问,多轮,58,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+390,催收多轮对话场景,无,FAQ相似问,多轮,58,Why is the amount so high?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+391,催收多轮对话场景,无,FAQ相似问,多轮,58,Maybe I'll pay next month.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+392,催收多轮对话场景,无,FAQ相似问,多轮,58,I'm going to complain to OJK.,That’s a good step. Can you confirm if you’ll pay within a few days?
+393,催收多轮对话场景,无,FAQ相似问,多轮,58,I'm going to complain to OJK.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+394,催收多轮对话场景,无,FAQ相似问,多轮,58,I don't have money now.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+395,催收多轮对话场景,无,FAQ相似问,多轮,58,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+396,催收多轮对话场景,无,FAQ相似问,多轮,59,Brian,"Hi Mr. Brian, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+397,催收多轮对话场景,无,FAQ相似问,多轮,59,I already paid it.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+398,催收多轮对话场景,无,FAQ相似问,多轮,59,Stop bothering me.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+399,催收多轮对话场景,无,FAQ相似问,多轮,59,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+400,催收多轮对话场景,无,FAQ相似问,多轮,59,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+401,催收多轮对话场景,无,FAQ相似问,多轮,59,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+402,催收多轮对话场景,无,FAQ相似问,多轮,60,Kevin,"Hi Mr. Kevin, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+403,催收多轮对话场景,无,FAQ相似问,多轮,60,Stop bothering me.,Our records confirm the balance. Can you check and update us by today?
+404,催收多轮对话场景,无,FAQ相似问,多轮,60,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+405,催收多轮对话场景,无,FAQ相似问,多轮,60,Stop bothering me.,That’s a good step. Can you confirm if you’ll pay within a few days?
+406,催收多轮对话场景,无,FAQ相似问,多轮,60,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+407,催收多轮对话场景,无,FAQ相似问,多轮,60,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+408,催收多轮对话场景,无,FAQ相似问,多轮,60,I'm waiting for my salary.,We’re required to follow up. Could you tell us your plan to settle this?
+409,催收多轮对话场景,无,FAQ相似问,多轮,60,I'm very stressed about this.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+410,催收多轮对话场景,无,FAQ相似问,多轮,61,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+411,催收多轮对话场景,无,FAQ相似问,多轮,61,I don't think I owe anything.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+412,催收多轮对话场景,无,FAQ相似问,多轮,61,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+413,催收多轮对话场景,无,FAQ相似问,多轮,61,I already paid it.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+414,催收多轮对话场景,无,FAQ相似问,多轮,61,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+415,催收多轮对话场景,无,FAQ相似问,多轮,61,Stop bothering me.,"We understand it’s stressful. Still, when can you complete the payment?"
+416,催收多轮对话场景,无,FAQ相似问,多轮,61,I don't have money now.,Our records confirm the balance. Can you check and update us by today?
+417,催收多轮对话场景,无,FAQ相似问,多轮,61,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+418,催收多轮对话场景,无,FAQ相似问,多轮,61,I don't have money now.,Our records confirm the balance. Can you check and update us by today?
+419,催收多轮对话场景,无,FAQ相似问,多轮,62,Mike,"Hi Mr. Mike, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+420,催收多轮对话场景,无,FAQ相似问,多轮,62,Stop bothering me.,We’re required to follow up. Could you tell us your plan to settle this?
+421,催收多轮对话场景,无,FAQ相似问,多轮,62,I'm very stressed about this.,That’s a good step. Can you confirm if you’ll pay within a few days?
+422,催收多轮对话场景,无,FAQ相似问,多轮,62,I'm waiting for my salary.,We’re required to follow up. Could you tell us your plan to settle this?
+423,催收多轮对话场景,无,FAQ相似问,多轮,62,I'm going to complain to OJK.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+424,催收多轮对话场景,无,FAQ相似问,多轮,63,Sam,"Hi Mr. Sam, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+425,催收多轮对话场景,无,FAQ相似问,多轮,63,Stop bothering me.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+426,催收多轮对话场景,无,FAQ相似问,多轮,63,I'm very stressed about this.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+427,催收多轮对话场景,无,FAQ相似问,多轮,63,I don't think I owe anything.,We’re required to follow up. Could you tell us your plan to settle this?
+428,催收多轮对话场景,无,FAQ相似问,多轮,63,I'm very stressed about this.,We’re required to follow up. Could you tell us your plan to settle this?
+429,催收多轮对话场景,无,FAQ相似问,多轮,64,Chris,"Hi Mr. Chris, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+430,催收多轮对话场景,无,FAQ相似问,多轮,64,I'm very stressed about this.,Waiting until next month is too long. Could you try resolving it this week?
+431,催收多轮对话场景,无,FAQ相似问,多轮,64,I don't have money now.,Our records confirm the balance. Can you check and update us by today?
+432,催收多轮对话场景,无,FAQ相似问,多轮,64,I don't think I owe anything.,"We understand it’s stressful. Still, when can you complete the payment?"
+433,催收多轮对话场景,无,FAQ相似问,多轮,64,Stop bothering me.,We’re required to follow up. Could you tell us your plan to settle this?
+434,催收多轮对话场景,无,FAQ相似问,多轮,64,I'm waiting for my salary.,Our records confirm the balance. Can you check and update us by today?
+435,催收多轮对话场景,无,FAQ相似问,多轮,64,I'm waiting for my salary.,That’s a good step. Can you confirm if you’ll pay within a few days?
+436,催收多轮对话场景,无,FAQ相似问,多轮,65,Harry,"Hi Mr. Harry, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+437,催收多轮对话场景,无,FAQ相似问,多轮,65,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+438,催收多轮对话场景,无,FAQ相似问,多轮,65,I don't have money now.,When exactly is your salary due? It will help us avoid escalation.
+439,催收多轮对话场景,无,FAQ相似问,多轮,65,I'm waiting for my salary.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+440,催收多轮对话场景,无,FAQ相似问,多轮,65,I'm waiting for my salary.,We’re required to follow up. Could you tell us your plan to settle this?
+441,催收多轮对话场景,无,FAQ相似问,多轮,65,I'm going to complain to OJK.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+442,催收多轮对话场景,无,FAQ相似问,多轮,66,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+443,催收多轮对话场景,无,FAQ相似问,多轮,66,Why is the amount so high?,We’re required to follow up. Could you tell us your plan to settle this?
+444,催收多轮对话场景,无,FAQ相似问,多轮,66,I don't have money now.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+445,催收多轮对话场景,无,FAQ相似问,多轮,66,Stop bothering me.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+446,催收多轮对话场景,无,FAQ相似问,多轮,66,Why is the amount so high?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+447,催收多轮对话场景,无,FAQ相似问,多轮,66,I'll try asking my family.,Our records confirm the balance. Can you check and update us by today?
+448,催收多轮对话场景,无,FAQ相似问,多轮,66,I'm waiting for my salary.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+449,催收多轮对话场景,无,FAQ相似问,多轮,66,I'm waiting for my salary.,When exactly is your salary due? It will help us avoid escalation.
+450,催收多轮对话场景,无,FAQ相似问,多轮,66,I don't think I owe anything.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+451,催收多轮对话场景,无,FAQ相似问,多轮,67,Harry,"Hi Mr. Harry, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+452,催收多轮对话场景,无,FAQ相似问,多轮,67,I'm going to complain to OJK.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+453,催收多轮对话场景,无,FAQ相似问,多轮,67,Can I pay part of it?,We’re required to follow up. Could you tell us your plan to settle this?
+454,催收多轮对话场景,无,FAQ相似问,多轮,67,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+455,催收多轮对话场景,无,FAQ相似问,多轮,67,I'm going to complain to OJK.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+456,催收多轮对话场景,无,FAQ相似问,多轮,67,Why is the amount so high?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+457,催收多轮对话场景,无,FAQ相似问,多轮,67,I already paid it.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+458,催收多轮对话场景,无,FAQ相似问,多轮,67,I'm going to complain to OJK.,Waiting until next month is too long. Could you try resolving it this week?
+459,催收多轮对话场景,无,FAQ相似问,多轮,67,Can I pay part of it?,"We understand it’s stressful. Still, when can you complete the payment?"
+460,催收多轮对话场景,无,FAQ相似问,多轮,68,Tom,"Hi Mr. Tom, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+461,催收多轮对话场景,无,FAQ相似问,多轮,68,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+462,催收多轮对话场景,无,FAQ相似问,多轮,68,Why is the amount so high?,We’re required to follow up. Could you tell us your plan to settle this?
+463,催收多轮对话场景,无,FAQ相似问,多轮,68,I'm going to complain to OJK.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+464,催收多轮对话场景,无,FAQ相似问,多轮,68,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+465,催收多轮对话场景,无,FAQ相似问,多轮,68,I'll try asking my family.,That’s a good step. Can you confirm if you’ll pay within a few days?
+466,催收多轮对话场景,无,FAQ相似问,多轮,68,I'm very stressed about this.,When exactly is your salary due? It will help us avoid escalation.
+467,催收多轮对话场景,无,FAQ相似问,多轮,68,I'm going to complain to OJK.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+468,催收多轮对话场景,无,FAQ相似问,多轮,68,I don't think I owe anything.,"We understand it’s stressful. Still, when can you complete the payment?"
+469,催收多轮对话场景,无,FAQ相似问,多轮,69,Kevin,"Hi Mr. Kevin, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+470,催收多轮对话场景,无,FAQ相似问,多轮,69,I don't think I owe anything.,That’s a good step. Can you confirm if you’ll pay within a few days?
+471,催收多轮对话场景,无,FAQ相似问,多轮,69,Can I pay part of it?,"We understand it’s stressful. Still, when can you complete the payment?"
+472,催收多轮对话场景,无,FAQ相似问,多轮,69,Maybe I'll pay next month.,We’re required to follow up. Could you tell us your plan to settle this?
+473,催收多轮对话场景,无,FAQ相似问,多轮,69,Stop bothering me.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+474,催收多轮对话场景,无,FAQ相似问,多轮,69,I'll try asking my family.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+475,催收多轮对话场景,无,FAQ相似问,多轮,70,Mike,"Hi Mr. Mike, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+476,催收多轮对话场景,无,FAQ相似问,多轮,70,Maybe I'll pay next month.,Our records confirm the balance. Can you check and update us by today?
+477,催收多轮对话场景,无,FAQ相似问,多轮,70,I'm very stressed about this.,Waiting until next month is too long. Could you try resolving it this week?
+478,催收多轮对话场景,无,FAQ相似问,多轮,70,I don't think I owe anything.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+479,催收多轮对话场景,无,FAQ相似问,多轮,70,I already paid it.,We’re required to follow up. Could you tell us your plan to settle this?
+480,催收多轮对话场景,无,FAQ相似问,多轮,71,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+481,催收多轮对话场景,无,FAQ相似问,多轮,71,I'm going to complain to OJK.,We’re required to follow up. Could you tell us your plan to settle this?
+482,催收多轮对话场景,无,FAQ相似问,多轮,71,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+483,催收多轮对话场景,无,FAQ相似问,多轮,71,Why is the amount so high?,We’re required to follow up. Could you tell us your plan to settle this?
+484,催收多轮对话场景,无,FAQ相似问,多轮,71,Why is the amount so high?,That’s a good step. Can you confirm if you’ll pay within a few days?
+485,催收多轮对话场景,无,FAQ相似问,多轮,71,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+486,催收多轮对话场景,无,FAQ相似问,多轮,71,I'm going to complain to OJK.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+487,催收多轮对话场景,无,FAQ相似问,多轮,71,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+488,催收多轮对话场景,无,FAQ相似问,多轮,71,I'm very stressed about this.,We’re required to follow up. Could you tell us your plan to settle this?
+489,催收多轮对话场景,无,FAQ相似问,多轮,72,Tim,"Hi Mr. Tim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+490,催收多轮对话场景,无,FAQ相似问,多轮,72,Maybe I'll pay next month.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+491,催收多轮对话场景,无,FAQ相似问,多轮,72,I'll try asking my family.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+492,催收多轮对话场景,无,FAQ相似问,多轮,72,Stop bothering me.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+493,催收多轮对话场景,无,FAQ相似问,多轮,72,I'm going to complain to OJK.,We’re required to follow up. Could you tell us your plan to settle this?
+494,催收多轮对话场景,无,FAQ相似问,多轮,72,Can I pay part of it?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+495,催收多轮对话场景,无,FAQ相似问,多轮,72,I don't have money now.,When exactly is your salary due? It will help us avoid escalation.
+496,催收多轮对话场景,无,FAQ相似问,多轮,73,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+497,催收多轮对话场景,无,FAQ相似问,多轮,73,I'm very stressed about this.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+498,催收多轮对话场景,无,FAQ相似问,多轮,73,I already paid it.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+499,催收多轮对话场景,无,FAQ相似问,多轮,73,Why is the amount so high?,We’re required to follow up. Could you tell us your plan to settle this?
+500,催收多轮对话场景,无,FAQ相似问,多轮,73,Why is the amount so high?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+501,催收多轮对话场景,无,FAQ相似问,多轮,73,Stop bothering me.,We’re required to follow up. Could you tell us your plan to settle this?
+502,催收多轮对话场景,无,FAQ相似问,多轮,73,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+503,催收多轮对话场景,无,FAQ相似问,多轮,73,I'm going to complain to OJK.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+504,催收多轮对话场景,无,FAQ相似问,多轮,73,Why is the amount so high?,That’s a good step. Can you confirm if you’ll pay within a few days?
+505,催收多轮对话场景,无,FAQ相似问,多轮,74,Steve,"Hi Mr. Steve, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+506,催收多轮对话场景,无,FAQ相似问,多轮,74,I already paid it.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+507,催收多轮对话场景,无,FAQ相似问,多轮,74,Maybe I'll pay next month.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+508,催收多轮对话场景,无,FAQ相似问,多轮,74,Maybe I'll pay next month.,We’re required to follow up. Could you tell us your plan to settle this?
+509,催收多轮对话场景,无,FAQ相似问,多轮,74,I'm very stressed about this.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+510,催收多轮对话场景,无,FAQ相似问,多轮,74,Why is the amount so high?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+511,催收多轮对话场景,无,FAQ相似问,多轮,75,Joe,"Hi Mr. Joe, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+512,催收多轮对话场景,无,FAQ相似问,多轮,75,I'm waiting for my salary.,Our records confirm the balance. Can you check and update us by today?
+513,催收多轮对话场景,无,FAQ相似问,多轮,75,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+514,催收多轮对话场景,无,FAQ相似问,多轮,75,I'm going to complain to OJK.,We’re required to follow up. Could you tell us your plan to settle this?
+515,催收多轮对话场景,无,FAQ相似问,多轮,75,Stop bothering me.,That’s a good step. Can you confirm if you’ll pay within a few days?
+516,催收多轮对话场景,无,FAQ相似问,多轮,75,Why is the amount so high?,Our records confirm the balance. Can you check and update us by today?
+517,催收多轮对话场景,无,FAQ相似问,多轮,75,Stop bothering me.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+518,催收多轮对话场景,无,FAQ相似问,多轮,75,I'm very stressed about this.,Waiting until next month is too long. Could you try resolving it this week?
+519,催收多轮对话场景,无,FAQ相似问,多轮,76,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+520,催收多轮对话场景,无,FAQ相似问,多轮,76,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+521,催收多轮对话场景,无,FAQ相似问,多轮,76,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+522,催收多轮对话场景,无,FAQ相似问,多轮,76,I'm going to complain to OJK.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+523,催收多轮对话场景,无,FAQ相似问,多轮,76,I don't have money now.,That’s a good step. Can you confirm if you’ll pay within a few days?
+524,催收多轮对话场景,无,FAQ相似问,多轮,76,Stop bothering me.,When exactly is your salary due? It will help us avoid escalation.
+525,催收多轮对话场景,无,FAQ相似问,多轮,76,Stop bothering me.,That’s a good step. Can you confirm if you’ll pay within a few days?
+526,催收多轮对话场景,无,FAQ相似问,多轮,76,I'm very stressed about this.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+527,催收多轮对话场景,无,FAQ相似问,多轮,77,Dan,"Hi Mr. Dan, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+528,催收多轮对话场景,无,FAQ相似问,多轮,77,I already paid it.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+529,催收多轮对话场景,无,FAQ相似问,多轮,77,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+530,催收多轮对话场景,无,FAQ相似问,多轮,77,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+531,催收多轮对话场景,无,FAQ相似问,多轮,77,I'm very stressed about this.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+532,催收多轮对话场景,无,FAQ相似问,多轮,77,I don't think I owe anything.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+533,催收多轮对话场景,无,FAQ相似问,多轮,77,Stop bothering me.,"We understand it’s stressful. Still, when can you complete the payment?"
+534,催收多轮对话场景,无,FAQ相似问,多轮,77,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+535,催收多轮对话场景,无,FAQ相似问,多轮,77,I don't have money now.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+536,催收多轮对话场景,无,FAQ相似问,多轮,78,Tim,"Hi Mr. Tim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+537,催收多轮对话场景,无,FAQ相似问,多轮,78,Stop bothering me.,Our records confirm the balance. Can you check and update us by today?
+538,催收多轮对话场景,无,FAQ相似问,多轮,78,I'll try asking my family.,We’re required to follow up. Could you tell us your plan to settle this?
+539,催收多轮对话场景,无,FAQ相似问,多轮,78,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+540,催收多轮对话场景,无,FAQ相似问,多轮,78,I don't think I owe anything.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+541,催收多轮对话场景,无,FAQ相似问,多轮,78,I already paid it.,"We understand it’s stressful. Still, when can you complete the payment?"
+542,催收多轮对话场景,无,FAQ相似问,多轮,78,I'm going to complain to OJK.,When exactly is your salary due? It will help us avoid escalation.
+543,催收多轮对话场景,无,FAQ相似问,多轮,78,I already paid it.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+544,催收多轮对话场景,无,FAQ相似问,多轮,78,I already paid it.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+545,催收多轮对话场景,无,FAQ相似问,多轮,79,Paul,"Hi Mr. Paul, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+546,催收多轮对话场景,无,FAQ相似问,多轮,79,Why is the amount so high?,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+547,催收多轮对话场景,无,FAQ相似问,多轮,79,Why is the amount so high?,When exactly is your salary due? It will help us avoid escalation.
+548,催收多轮对话场景,无,FAQ相似问,多轮,79,I'm waiting for my salary.,When exactly is your salary due? It will help us avoid escalation.
+549,催收多轮对话场景,无,FAQ相似问,多轮,79,I don't think I owe anything.,That’s a good step. Can you confirm if you’ll pay within a few days?
+550,催收多轮对话场景,无,FAQ相似问,多轮,80,Harry,"Hi Mr. Harry, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+551,催收多轮对话场景,无,FAQ相似问,多轮,80,I'll try asking my family.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+552,催收多轮对话场景,无,FAQ相似问,多轮,80,Why is the amount so high?,Waiting until next month is too long. Could you try resolving it this week?
+553,催收多轮对话场景,无,FAQ相似问,多轮,80,I don't have money now.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+554,催收多轮对话场景,无,FAQ相似问,多轮,80,I'm going to complain to OJK.,That’s a good step. Can you confirm if you’ll pay within a few days?
+555,催收多轮对话场景,无,FAQ相似问,多轮,80,I'll try asking my family.,"We understand it’s stressful. Still, when can you complete the payment?"
+556,催收多轮对话场景,无,FAQ相似问,多轮,80,I'm waiting for my salary.,Our records confirm the balance. Can you check and update us by today?
+557,催收多轮对话场景,无,FAQ相似问,多轮,81,Mike,"Hi Mr. Mike, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+558,催收多轮对话场景,无,FAQ相似问,多轮,81,Why is the amount so high?,That’s a good step. Can you confirm if you’ll pay within a few days?
+559,催收多轮对话场景,无,FAQ相似问,多轮,81,I'm going to complain to OJK.,Waiting until next month is too long. Could you try resolving it this week?
+560,催收多轮对话场景,无,FAQ相似问,多轮,81,I'll try asking my family.,When exactly is your salary due? It will help us avoid escalation.
+561,催收多轮对话场景,无,FAQ相似问,多轮,81,Can I pay part of it?,"We understand it’s stressful. Still, when can you complete the payment?"
+562,催收多轮对话场景,无,FAQ相似问,多轮,82,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+563,催收多轮对话场景,无,FAQ相似问,多轮,82,I'm very stressed about this.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+564,催收多轮对话场景,无,FAQ相似问,多轮,82,I don't think I owe anything.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+565,催收多轮对话场景,无,FAQ相似问,多轮,82,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+566,催收多轮对话场景,无,FAQ相似问,多轮,82,Stop bothering me.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+567,催收多轮对话场景,无,FAQ相似问,多轮,82,Can I pay part of it?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+568,催收多轮对话场景,无,FAQ相似问,多轮,82,I'll try asking my family.,"We understand it’s stressful. Still, when can you complete the payment?"
+569,催收多轮对话场景,无,FAQ相似问,多轮,82,I don't think I owe anything.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+570,催收多轮对话场景,无,FAQ相似问,多轮,82,I'm going to complain to OJK.,Our records confirm the balance. Can you check and update us by today?
+571,催收多轮对话场景,无,FAQ相似问,多轮,83,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+572,催收多轮对话场景,无,FAQ相似问,多轮,83,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+573,催收多轮对话场景,无,FAQ相似问,多轮,83,Why is the amount so high?,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+574,催收多轮对话场景,无,FAQ相似问,多轮,83,I'll try asking my family.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+575,催收多轮对话场景,无,FAQ相似问,多轮,83,I'm very stressed about this.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+576,催收多轮对话场景,无,FAQ相似问,多轮,83,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+577,催收多轮对话场景,无,FAQ相似问,多轮,84,Brian,"Hi Mr. Brian, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+578,催收多轮对话场景,无,FAQ相似问,多轮,84,I don't think I owe anything.,Our records confirm the balance. Can you check and update us by today?
+579,催收多轮对话场景,无,FAQ相似问,多轮,84,I'm waiting for my salary.,When exactly is your salary due? It will help us avoid escalation.
+580,催收多轮对话场景,无,FAQ相似问,多轮,84,I don't have money now.,That’s a good step. Can you confirm if you’ll pay within a few days?
+581,催收多轮对话场景,无,FAQ相似问,多轮,84,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+582,催收多轮对话场景,无,FAQ相似问,多轮,84,Stop bothering me.,"We understand it’s stressful. Still, when can you complete the payment?"
+583,催收多轮对话场景,无,FAQ相似问,多轮,84,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+584,催收多轮对话场景,无,FAQ相似问,多轮,85,Dan,"Hi Mr. Dan, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+585,催收多轮对话场景,无,FAQ相似问,多轮,85,I'm very stressed about this.,Our records confirm the balance. Can you check and update us by today?
+586,催收多轮对话场景,无,FAQ相似问,多轮,85,I don't think I owe anything.,"We understand it’s stressful. Still, when can you complete the payment?"
+587,催收多轮对话场景,无,FAQ相似问,多轮,85,I don't think I owe anything.,We’re required to follow up. Could you tell us your plan to settle this?
+588,催收多轮对话场景,无,FAQ相似问,多轮,85,I don't have money now.,We’re required to follow up. Could you tell us your plan to settle this?
+589,催收多轮对话场景,无,FAQ相似问,多轮,85,Can I pay part of it?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+590,催收多轮对话场景,无,FAQ相似问,多轮,85,I don't have money now.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+591,催收多轮对话场景,无,FAQ相似问,多轮,86,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+592,催收多轮对话场景,无,FAQ相似问,多轮,86,I'm going to complain to OJK.,We’re required to follow up. Could you tell us your plan to settle this?
+593,催收多轮对话场景,无,FAQ相似问,多轮,86,Maybe I'll pay next month.,"We understand it’s stressful. Still, when can you complete the payment?"
+594,催收多轮对话场景,无,FAQ相似问,多轮,86,Can I pay part of it?,Waiting until next month is too long. Could you try resolving it this week?
+595,催收多轮对话场景,无,FAQ相似问,多轮,86,I don't think I owe anything.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+596,催收多轮对话场景,无,FAQ相似问,多轮,86,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+597,催收多轮对话场景,无,FAQ相似问,多轮,87,Harry,"Hi Mr. Harry, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+598,催收多轮对话场景,无,FAQ相似问,多轮,87,I don't have money now.,Waiting until next month is too long. Could you try resolving it this week?
+599,催收多轮对话场景,无,FAQ相似问,多轮,87,I don't think I owe anything.,Our records confirm the balance. Can you check and update us by today?
+600,催收多轮对话场景,无,FAQ相似问,多轮,87,Maybe I'll pay next month.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+601,催收多轮对话场景,无,FAQ相似问,多轮,87,I don't have money now.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+602,催收多轮对话场景,无,FAQ相似问,多轮,88,Jason,"Hi Mr. Jason, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+603,催收多轮对话场景,无,FAQ相似问,多轮,88,Stop bothering me.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+604,催收多轮对话场景,无,FAQ相似问,多轮,88,I don't think I owe anything.,That’s a good step. Can you confirm if you’ll pay within a few days?
+605,催收多轮对话场景,无,FAQ相似问,多轮,88,I already paid it.,"We understand it’s stressful. Still, when can you complete the payment?"
+606,催收多轮对话场景,无,FAQ相似问,多轮,88,I'm waiting for my salary.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+607,催收多轮对话场景,无,FAQ相似问,多轮,88,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+608,催收多轮对话场景,无,FAQ相似问,多轮,88,I don't have money now.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+609,催收多轮对话场景,无,FAQ相似问,多轮,88,I don't think I owe anything.,We’re required to follow up. Could you tell us your plan to settle this?
+610,催收多轮对话场景,无,FAQ相似问,多轮,88,Maybe I'll pay next month.,When exactly is your salary due? It will help us avoid escalation.
+611,催收多轮对话场景,无,FAQ相似问,多轮,89,Matt,"Hi Mr. Matt, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+612,催收多轮对话场景,无,FAQ相似问,多轮,89,I already paid it.,Waiting until next month is too long. Could you try resolving it this week?
+613,催收多轮对话场景,无,FAQ相似问,多轮,89,I'll try asking my family.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+614,催收多轮对话场景,无,FAQ相似问,多轮,89,Why is the amount so high?,Our records confirm the balance. Can you check and update us by today?
+615,催收多轮对话场景,无,FAQ相似问,多轮,89,I don't think I owe anything.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+616,催收多轮对话场景,无,FAQ相似问,多轮,89,I'm going to complain to OJK.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+617,催收多轮对话场景,无,FAQ相似问,多轮,90,Jim,"Hi Mr. Jim, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+618,催收多轮对话场景,无,FAQ相似问,多轮,90,I already paid it.,"We understand it’s stressful. Still, when can you complete the payment?"
+619,催收多轮对话场景,无,FAQ相似问,多轮,90,Stop bothering me.,When exactly is your salary due? It will help us avoid escalation.
+620,催收多轮对话场景,无,FAQ相似问,多轮,90,I already paid it.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+621,催收多轮对话场景,无,FAQ相似问,多轮,90,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+622,催收多轮对话场景,无,FAQ相似问,多轮,91,Brian,"Hi Mr. Brian, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+623,催收多轮对话场景,无,FAQ相似问,多轮,91,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+624,催收多轮对话场景,无,FAQ相似问,多轮,91,Why is the amount so high?,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+625,催收多轮对话场景,无,FAQ相似问,多轮,91,I don't think I owe anything.,Our records confirm the balance. Can you check and update us by today?
+626,催收多轮对话场景,无,FAQ相似问,多轮,91,I'm going to complain to OJK.,When exactly is your salary due? It will help us avoid escalation.
+627,催收多轮对话场景,无,FAQ相似问,多轮,91,I don't have money now.,That’s a good step. Can you confirm if you’ll pay within a few days?
+628,催收多轮对话场景,无,FAQ相似问,多轮,92,Sam,"Hi Mr. Sam, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+629,催收多轮对话场景,无,FAQ相似问,多轮,92,I'll try asking my family.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+630,催收多轮对话场景,无,FAQ相似问,多轮,92,I don't think I owe anything.,That’s a good step. Can you confirm if you’ll pay within a few days?
+631,催收多轮对话场景,无,FAQ相似问,多轮,92,I'm going to complain to OJK.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+632,催收多轮对话场景,无,FAQ相似问,多轮,92,Why is the amount so high?,Our records confirm the balance. Can you check and update us by today?
+633,催收多轮对话场景,无,FAQ相似问,多轮,92,I don't think I owe anything.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+634,催收多轮对话场景,无,FAQ相似问,多轮,92,Maybe I'll pay next month.,Waiting until next month is too long. Could you try resolving it this week?
+635,催收多轮对话场景,无,FAQ相似问,多轮,93,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+636,催收多轮对话场景,无,FAQ相似问,多轮,93,I already paid it.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+637,催收多轮对话场景,无,FAQ相似问,多轮,93,I'm very stressed about this.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+638,催收多轮对话场景,无,FAQ相似问,多轮,93,Can I pay part of it?,That’s a good step. Can you confirm if you’ll pay within a few days?
+639,催收多轮对话场景,无,FAQ相似问,多轮,93,Maybe I'll pay next month.,"We understand it’s stressful. Still, when can you complete the payment?"
+640,催收多轮对话场景,无,FAQ相似问,多轮,94,Chris,"Hi Mr. Chris, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+641,催收多轮对话场景,无,FAQ相似问,多轮,94,Stop bothering me.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+642,催收多轮对话场景,无,FAQ相似问,多轮,94,Can I pay part of it?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+643,催收多轮对话场景,无,FAQ相似问,多轮,94,I already paid it.,"Hi, we always follow OJK rules. You may complain if needed, but we still must resolve this."
+644,催收多轮对话场景,无,FAQ相似问,多轮,94,Maybe I'll pay next month.,Our records confirm the balance. Can you check and update us by today?
+645,催收多轮对话场景,无,FAQ相似问,多轮,95,Jack,"Hi Mr. Jack, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+646,催收多轮对话场景,无,FAQ相似问,多轮,95,I'll try asking my family.,Our records confirm the balance. Can you check and update us by today?
+647,催收多轮对话场景,无,FAQ相似问,多轮,95,Can I pay part of it?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+648,催收多轮对话场景,无,FAQ相似问,多轮,95,I'll try asking my family.,When exactly is your salary due? It will help us avoid escalation.
+649,催收多轮对话场景,无,FAQ相似问,多轮,95,Maybe I'll pay next month.,Waiting until next month is too long. Could you try resolving it this week?
+650,催收多轮对话场景,无,FAQ相似问,多轮,95,I'm very stressed about this.,When exactly is your salary due? It will help us avoid escalation.
+651,催收多轮对话场景,无,FAQ相似问,多轮,95,I already paid it.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+652,催收多轮对话场景,无,FAQ相似问,多轮,96,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+653,催收多轮对话场景,无,FAQ相似问,多轮,96,I'm going to complain to OJK.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+654,催收多轮对话场景,无,FAQ相似问,多轮,96,Why is the amount so high?,We’re required to follow up. Could you tell us your plan to settle this?
+655,催收多轮对话场景,无,FAQ相似问,多轮,96,I'll try asking my family.,"We understand it’s stressful. Still, when can you complete the payment?"
+656,催收多轮对话场景,无,FAQ相似问,多轮,96,Can I pay part of it?,When exactly is your salary due? It will help us avoid escalation.
+657,催收多轮对话场景,无,FAQ相似问,多轮,96,Can I pay part of it?,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+658,催收多轮对话场景,无,FAQ相似问,多轮,96,I don't have money now.,When exactly is your salary due? It will help us avoid escalation.
+659,催收多轮对话场景,无,FAQ相似问,多轮,97,Bob,"Hi Mr. Bob, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+660,催收多轮对话场景,无,FAQ相似问,多轮,97,Can I pay part of it?,That’s a good step. Can you confirm if you’ll pay within a few days?
+661,催收多轮对话场景,无,FAQ相似问,多轮,97,I don't think I owe anything.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+662,催收多轮对话场景,无,FAQ相似问,多轮,97,Stop bothering me.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+663,催收多轮对话场景,无,FAQ相似问,多轮,97,I already paid it.,That’s a good step. Can you confirm if you’ll pay within a few days?
+664,催收多轮对话场景,无,FAQ相似问,多轮,97,I don't think I owe anything.,Waiting until next month is too long. Could you try resolving it this week?
+665,催收多轮对话场景,无,FAQ相似问,多轮,97,I'm very stressed about this.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+666,催收多轮对话场景,无,FAQ相似问,多轮,97,I'll try asking my family.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+667,催收多轮对话场景,无,FAQ相似问,多轮,98,Peter,"Hi Mr. Peter, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+668,催收多轮对话场景,无,FAQ相似问,多轮,98,Maybe I'll pay next month.,When exactly is your salary due? It will help us avoid escalation.
+669,催收多轮对话场景,无,FAQ相似问,多轮,98,I'll try asking my family.,Waiting until next month is too long. Could you try resolving it this week?
+670,催收多轮对话场景,无,FAQ相似问,多轮,98,Can I pay part of it?,"We understand it’s stressful. Still, when can you complete the payment?"
+671,催收多轮对话场景,无,FAQ相似问,多轮,98,I already paid it.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+672,催收多轮对话场景,无,FAQ相似问,多轮,98,Maybe I'll pay next month.,"We understand it’s stressful. Still, when can you complete the payment?"
+673,催收多轮对话场景,无,FAQ相似问,多轮,98,Maybe I'll pay next month.,That’s a good step. Can you confirm if you’ll pay within a few days?
+674,催收多轮对话场景,无,FAQ相似问,多轮,99,Tom,"Hi Mr. Tom, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+675,催收多轮对话场景,无,FAQ相似问,多轮,99,I don't have money now.,"We understand it’s stressful. Still, when can you complete the payment?"
+676,催收多轮对话场景,无,FAQ相似问,多轮,99,I'm very stressed about this.,Thank you for telling us. Please provide proof of payment so we can stop the reminders.
+677,催收多轮对话场景,无,FAQ相似问,多轮,99,Why is the amount so high?,That’s a good step. Can you confirm if you’ll pay within a few days?
+678,催收多轮对话场景,无,FAQ相似问,多轮,99,Can I pay part of it?,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+679,催收多轮对话场景,无,FAQ相似问,多轮,99,I don't think I owe anything.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+680,催收多轮对话场景,无,FAQ相似问,多轮,99,I'm going to complain to OJK.,Our records confirm the balance. Can you check and update us by today?
+681,催收多轮对话场景,无,FAQ相似问,多轮,99,I don't think I owe anything.,"Currently, a minimum repayment of 30% is required within 24 hours. Can you do that?"
+682,催收多轮对话场景,无,FAQ相似问,多轮,99,Can I pay part of it?,Waiting until next month is too long. Could you try resolving it this week?
+683,催收多轮对话场景,无,FAQ相似问,多轮,100,Sam,"Hi Mr. Sam, this is Jack from DynaCash. Your loan is overdue. To avoid fees or credit impact, please pay soon. When can we expect your payment?"
+684,催收多轮对话场景,无,FAQ相似问,多轮,100,I already paid it.,Our records confirm the balance. Can you check and update us by today?
+685,催收多轮对话场景,无,FAQ相似问,多轮,100,I'm very stressed about this.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+686,催收多轮对话场景,无,FAQ相似问,多轮,100,I'm waiting for my salary.,"We understand it’s stressful. Still, when can you complete the payment?"
+687,催收多轮对话场景,无,FAQ相似问,多轮,100,I'm waiting for my salary.,"That amount includes principal, interest, and late fees. Please confirm when you'll pay."
+688,催收多轮对话场景,无,FAQ相似问,多轮,100,Stop bothering me.,We’re required to follow up. Could you tell us your plan to settle this?
+689,催收多轮对话场景,无,FAQ相似问,多轮,100,Maybe I'll pay next month.,"I understand your concern, but delaying will lead to fees. When can you arrange payment?"
+690,催收多轮对话场景,无,FAQ相似问,多轮,100,Can I pay part of it?,"We understand it’s stressful. Still, when can you complete the payment?"
