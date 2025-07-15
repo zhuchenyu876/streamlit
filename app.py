@@ -209,8 +209,25 @@ class QAAnalyzer:
                     current_group = group
                 
                 question = df.loc[idx, '测试数据']
-                # 使用带有40秒超时的方法来调用
-                answer = self.client.websocket_chat_with_timeout(question, timeout=40)
+                
+                # 检查是否启用首字响应时间记录
+                enable_first_token_timing = st.session_state.get('enable_first_token_timing', False)
+                
+                if enable_first_token_timing:
+                    # 使用带有时间记录的方法
+                    result = self.client.websocket_chat_with_timeout_and_timing(question, timeout=40, record_timing=True)
+                    answer = result['answer']
+                    
+                    # 记录时间信息
+                    if result['first_token_response_time'] is not None:
+                        df.loc[idx, f'{col_name}_first_token_time'] = result['first_token_response_time']
+                    if result['total_response_time'] is not None:
+                        df.loc[idx, f'{col_name}_total_time'] = result['total_response_time']
+                    df.loc[idx, f'{col_name}_attempt'] = result['attempt']
+                else:
+                    # 使用原来的方法
+                    answer = self.client.websocket_chat_with_timeout(question, timeout=40)
+                
                 time.sleep(1)
                 
                 df.loc[idx, col_name] = self.extract_answer(answer)

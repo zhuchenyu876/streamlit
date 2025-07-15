@@ -2,7 +2,7 @@ import json
 import ssl
 import traceback
 import logging
-from websockets.sync.client import connect, Connection
+from websockets.sync.client import connect
 import requests
 import time
 import threading
@@ -129,6 +129,54 @@ class Client:
         
         return result[0]
 
+    def websocket_chat_with_timeout_and_timing(self, question: str, timeout: int = 40, record_timing: bool = True):
+        """
+        Run websocket_chat_with_timing with a timeout
+        
+        Args:
+            question: The question to ask
+            timeout: Timeout in seconds
+            record_timing: Whether to record timing information
+            
+        Returns:
+            Dict containing answer and timing information
+        """
+        result = [{
+            'answer': f"Request failed: Timeout after {timeout} seconds",
+            'first_token_response_time': None,
+            'total_response_time': None,
+            'attempt': 1
+        }]
+        
+        def target():
+            nonlocal result
+            try:
+                result[0] = self.websocket_chat_with_timing(question, record_timing=record_timing)
+            except Exception as e:
+                result[0] = {
+                    'answer': f"Request failed: {str(e)}",
+                    'first_token_response_time': None,
+                    'total_response_time': None,
+                    'attempt': 1
+                }
+        
+        # Create and start the thread
+        thread = threading.Thread(target=target)
+        thread.daemon = True
+        thread.start()
+        
+        # Wait for the thread to complete or timeout
+        thread.join(timeout)
+        if thread.is_alive():
+            return {
+                'answer': f"Request failed: Timeout after {timeout} seconds",
+                'first_token_response_time': None,
+                'total_response_time': None,
+                'attempt': 1
+            }
+        
+        return result[0]
+
     def websocket_chat(self, question: str, max_retries: int = 3) -> str:
         """
         Send question and receive answer using WebSocket connection
@@ -139,6 +187,21 @@ class Client:
             
         Returns:
             Answer text or error message
+        """
+        result = self.websocket_chat_with_timing(question, max_retries, record_timing=False)
+        return result['answer']
+    
+    def websocket_chat_with_timing(self, question: str, max_retries: int = 3, record_timing: bool = True) -> dict:
+        """
+        Send question and receive answer using WebSocket connection with timing information
+        
+        Args:
+            question: The question to ask
+            max_retries: Maximum number of connection retry attempts
+            record_timing: Whether to record timing information
+            
+        Returns:
+            Dict containing answer and timing information
         """
         # Create a new segment code for this chat if needed
         if not self.segment_code:
@@ -158,6 +221,9 @@ class Client:
                 # Note: connect() doesn't accept a timeout parameter directly
                 # We'll rely on the thread-based timeout in websocket_chat_with_timeout
                 with connect(self.url, ssl_context=ssl_context) as websocket:
+                    # Record start time
+                    start_time = time.time() if record_timing else None
+                    
                     # Send the question
                     self.send_msg(websocket, question)
                     
@@ -165,6 +231,7 @@ class Client:
                     receive_message = ""
                     receive_count = 0
                     use_send_again = False
+                    first_response_time = None
                     
                     while True:
                         receive_count += 1
@@ -186,6 +253,11 @@ class Client:
                             if message_json.get("index") not in [-1, -2]:
                                 if message_json.get('code') == "000000":
                                     _message = message_json.get("data", "")
+                                    
+                                    # Record first response time
+                                    if record_timing and first_response_time is None and _message and start_time is not None:
+                                        first_response_time = time.time() - start_time
+                                    
                                     receive_message += _message
 
                             if message_json.get("finish") == "y" or receive_count > 100:
@@ -199,6 +271,10 @@ class Client:
                                     receive_message = json.dumps(answer, ensure_ascii=False)
                                 else:
                                     receive_message = answer
+                                
+                                # Record first response time for JSON responses
+                                if record_timing and first_response_time is None and receive_message and start_time is not None:
+                                    first_response_time = time.time() - start_time
                             break
                             
                         # Process flow type messages
@@ -210,7 +286,13 @@ class Client:
                                         use_send_again = True
                                         break
                                     else:
-                                        receive_message += message_json["data"].get('answer', "")
+                                        flow_answer = message_json["data"].get('answer', "")
+                                        
+                                        # Record first response time for flow responses
+                                        if record_timing and first_response_time is None and flow_answer and start_time is not None:
+                                            first_response_time = time.time() - start_time
+                                        
+                                        receive_message += flow_answer
 
                                 if message_json['data'].get('node_answer_finish') == "y" or receive_count > 100:
                                     break
@@ -259,14 +341,33 @@ class Client:
                                     if message_json['data'].get('node_answer_finish') == "y" or receive_count > 100:
                                         break
                 
-                return receive_message
+                # Calculate total response time
+                total_response_time = time.time() - start_time if start_time is not None else None
+                
+                # Return result with timing information
+                return {
+                    'answer': receive_message,
+                    'first_token_response_time': first_response_time,
+                    'total_response_time': total_response_time,
+                    'attempt': attempt + 1
+                }
                 
             except Exception as e:
                 attempt += 1
                 error_msg = f"WebSocket chat error (attempt {attempt}/{max_retries}): {str(e)}"
                 logging.error(error_msg)
                 if attempt >= max_retries:
-                    return f"Request failed after {max_retries} attempts: {str(e)}"
+                    return {
+                        'answer': f"Request failed after {max_retries} attempts: {str(e)}",
+                        'first_token_response_time': None,
+                        'total_response_time': None,
+                        'attempt': attempt
+                    }
                 time.sleep(self.retry_secs)
         
-        return "Failed to get response after multiple attempts"
+        return {
+            'answer': "Failed to get response after multiple attempts",
+            'first_token_response_time': None,
+            'total_response_time': None,
+            'attempt': max_retries
+        }
