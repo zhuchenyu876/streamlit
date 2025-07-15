@@ -11,3 +11,4 @@ openai
 websockets
 jieba
 xlsxwriter
+scikit-learn
