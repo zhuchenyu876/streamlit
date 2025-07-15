@@ -1,8 +1,17 @@
+import streamlit as st
+
+# 必须在所有其他导入之前设置页面配置
+st.set_page_config(
+    page_title="🚀 智能QA分析系统",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 import os
 import ast
 import logging
 import pandas as pd
-import streamlit as st
 from datetime import datetime
 from dotenv import load_dotenv, find_dotenv
 from client import Client
@@ -479,13 +488,6 @@ def save_agents(df):
         st.info("💾 Agent配置已保存到会话中（云端模式）")
 
 def main():
-    st.set_page_config(
-        page_title="🚀 智能QA分析系统",
-        page_icon="🤖",
-        layout="wide",
-        initial_sidebar_state="expanded"
-    )
-    
     # 添加全局CSS样式
     st.markdown("""
     <style>
@@ -1140,6 +1142,24 @@ def main():
                 </p>
             </div>
             """, unsafe_allow_html=True)
+        
+        # 首字响应时间选项
+        st.markdown("---")
+        st.subheader("⚡ 性能监控选项")
+        
+        enable_first_token_timing = st.checkbox(
+            "⚡ 记录首字响应时间",
+            value=False,
+            help="记录从请求发送到接收第一个响应字符的时间，用于分析API性能"
+        )
+        
+        # 保存首字响应时间选项到session state
+        st.session_state.enable_first_token_timing = enable_first_token_timing
+        
+        if enable_first_token_timing:
+            st.info("📊 将记录每个请求的首字响应时间，用于性能分析")
+        else:
+            st.caption("不记录首字响应时间数据")
         
         # Analysis execution
         st.markdown("---")

@@ -3,6 +3,8 @@ import pandas as pd
 from datetime import datetime
 import os
 
+# 注意：已移除matplotlib，使用plotly代替
+
 class UserGuideComponents:
     """用户引导组件类"""
     
@@ -623,25 +625,70 @@ class ResultDisplayComponents:
         
         st.subheader("📈 分析摘要")
         
-        col1, col2, col3, col4 = st.columns(4)
+        # 检查是否有流式响应相关指标
+        has_streaming_metrics = any('first_token' in col.lower() or 'total_response_time' in col.lower() 
+                                   for col in df.columns)
         
-        with col1:
-            st.metric("总样本数", len(df))
-        
-        with col2:
-            if '语义稳定性' in df.columns:
-                avg_stability = df['语义稳定性'].mean()
-                st.metric("平均语义稳定性", f"{avg_stability:.2%}")
-        
-        with col3:
-            if '相关度' in df.columns:
-                avg_relevance = df['相关度'].mean()
-                st.metric("平均相关度", f"{avg_relevance:.2%}")
-        
-        with col4:
-            if '完整度' in df.columns:
-                avg_completeness = df['完整度'].mean()
-                st.metric("平均完整度", f"{avg_completeness:.2%}")
+        if has_streaming_metrics:
+            # 显示流式响应指标
+            col1, col2, col3, col4, col5 = st.columns(5)
+            
+            with col1:
+                st.metric("总样本数", len(df))
+            
+            # 首字响应时间
+            first_token_cols = [col for col in df.columns if 'first_token' in col.lower()]
+            if first_token_cols:
+                with col2:
+                    avg_first_token = df[first_token_cols[0]].mean()
+                    st.metric("平均首字响应", f"{avg_first_token:.3f}s")
+            
+            # 总响应时间
+            total_time_cols = [col for col in df.columns if 'total_response_time' in col.lower()]
+            if total_time_cols:
+                with col3:
+                    avg_total_time = df[total_time_cols[0]].mean()
+                    st.metric("平均总响应", f"{avg_total_time:.3f}s")
+            
+            # 其他指标
+            with col4:
+                if '语义稳定性' in df.columns:
+                    avg_stability = df['语义稳定性'].mean()
+                    st.metric("平均语义稳定性", f"{avg_stability:.2%}")
+                elif '相关度' in df.columns:
+                    avg_relevance = df['相关度'].mean()
+                    st.metric("平均相关度", f"{avg_relevance:.2%}")
+            
+            with col5:
+                if '完整度' in df.columns:
+                    avg_completeness = df['完整度'].mean()
+                    st.metric("平均完整度", f"{avg_completeness:.2%}")
+            
+            # 显示详细的流式响应指标
+            with st.expander("🚀 详细流式响应指标"):
+                StreamingResponseMetricsComponents.show_streaming_metrics(df)
+                StreamingResponseMetricsComponents.show_performance_recommendations(df)
+        else:
+            # 传统指标显示
+            col1, col2, col3, col4 = st.columns(4)
+            
+            with col1:
+                st.metric("总样本数", len(df))
+            
+            with col2:
+                if '语义稳定性' in df.columns:
+                    avg_stability = df['语义稳定性'].mean()
+                    st.metric("平均语义稳定性", f"{avg_stability:.2%}")
+            
+            with col3:
+                if '相关度' in df.columns:
+                    avg_relevance = df['相关度'].mean()
+                    st.metric("平均相关度", f"{avg_relevance:.2%}")
+            
+            with col4:
+                if '完整度' in df.columns:
+                    avg_completeness = df['完整度'].mean()
+                    st.metric("平均完整度", f"{avg_completeness:.2%}")
     
     @staticmethod
     def show_export_options(df, filename_prefix="analysis_results"):
@@ -1189,6 +1236,266 @@ class ConfigurationComponents:
         """测试连接"""
         # 这里应该实现实际的连接测试逻辑
         return True, "连接成功"
+
+class StreamingResponseMetricsComponents:
+    """流式响应指标组件类"""
+    
+    @staticmethod
+    def show_streaming_metrics(df: pd.DataFrame):
+        """显示流式响应性能指标"""
+        st.subheader("🚀 流式响应性能指标")
+        
+        # 检查是否有流式响应相关的列
+        streaming_columns = [col for col in df.columns if 'time' in col.lower() or 'streaming' in col.lower()]
+        
+        if not streaming_columns:
+            st.warning("⚠️ 没有找到流式响应相关指标")
+            return
+        
+        # 首字响应时间分析
+        first_token_col = [col for col in df.columns if 'first_token' in col.lower()]
+        if first_token_col:
+            first_token_times = df[first_token_col[0]].dropna()
+            if len(first_token_times) > 0:
+                col1, col2, col3, col4 = st.columns(4)
+                
+                with col1:
+                    st.metric(
+                        "⚡ 平均首字响应时间", 
+                        f"{first_token_times.mean():.3f}s",
+                        delta=f"±{first_token_times.std():.3f}s"
+                    )
+                
+                with col2:
+                    st.metric(
+                        "🏃 最快首字响应", 
+                        f"{first_token_times.min():.3f}s",
+                        delta="最佳"
+                    )
+                
+                with col3:
+                    st.metric(
+                        "🐌 最慢首字响应", 
+                        f"{first_token_times.max():.3f}s",
+                        delta="最差"
+                    )
+                
+                with col4:
+                    # 计算优秀率（小于1秒的比例）
+                    excellent_rate = (first_token_times < 1.0).sum() / len(first_token_times) * 100
+                    st.metric(
+                        "🎯 优秀率 (<1s)", 
+                        f"{excellent_rate:.1f}%",
+                        delta="目标: >90%"
+                    )
+                
+                # 首字响应时间分布图
+                st.subheader("📊 首字响应时间分布")
+                
+                # 使用plotly创建直方图
+                import plotly.graph_objects as go
+                
+                fig = go.Figure()
+                
+                # 添加直方图
+                fig.add_trace(go.Histogram(
+                    x=first_token_times,
+                    nbinsx=20,
+                    name='首字响应时间',
+                    marker_color='skyblue',
+                    opacity=0.7
+                ))
+                
+                # 添加统计线
+                fig.add_vline(
+                    x=first_token_times.mean(),
+                    line_dash="dash",
+                    line_color="red",
+                    annotation_text=f"平均值: {first_token_times.mean():.3f}s"
+                )
+                
+                fig.add_vline(
+                    x=first_token_times.median(),
+                    line_dash="dash",
+                    line_color="green",
+                    annotation_text=f"中位数: {first_token_times.median():.3f}s"
+                )
+                
+                fig.update_layout(
+                    title="首字响应时间分布",
+                    xaxis_title="首字响应时间 (秒)",
+                    yaxis_title="频率",
+                    showlegend=True
+                )
+                
+                st.plotly_chart(fig, use_container_width=True)
+        
+        # 总响应时间分析
+        total_time_col = [col for col in df.columns if 'total_response_time' in col.lower()]
+        if total_time_col:
+            total_times = df[total_time_col[0]].dropna()
+            if len(total_times) > 0:
+                st.subheader("⏱️ 总响应时间分析")
+                
+                col1, col2, col3, col4 = st.columns(4)
+                
+                with col1:
+                    st.metric(
+                        "⏱️ 平均总响应时间", 
+                        f"{total_times.mean():.3f}s",
+                        delta=f"±{total_times.std():.3f}s"
+                    )
+                
+                with col2:
+                    st.metric(
+                        "🏃 最快总响应", 
+                        f"{total_times.min():.3f}s",
+                        delta="最佳"
+                    )
+                
+                with col3:
+                    st.metric(
+                        "🐌 最慢总响应", 
+                        f"{total_times.max():.3f}s",
+                        delta="最差"
+                    )
+                
+                with col4:
+                    # 计算满意率（小于10秒的比例）
+                    satisfaction_rate = (total_times < 10.0).sum() / len(total_times) * 100
+                    st.metric(
+                        "😊 满意率 (<10s)", 
+                        f"{satisfaction_rate:.1f}%",
+                        delta="目标: >95%"
+                    )
+        
+        # 响应时间对比表
+        if first_token_col and total_time_col:
+            st.subheader("📈 响应时间对比")
+            
+            # 创建对比DataFrame
+            comparison_df = pd.DataFrame({
+                '指标': ['首字响应时间', '总响应时间'],
+                '平均值 (秒)': [
+                    df[first_token_col[0]].mean(),
+                    df[total_time_col[0]].mean()
+                ],
+                '最小值 (秒)': [
+                    df[first_token_col[0]].min(),
+                    df[total_time_col[0]].min()
+                ],
+                '最大值 (秒)': [
+                    df[first_token_col[0]].max(),
+                    df[total_time_col[0]].max()
+                ],
+                '标准差 (秒)': [
+                    df[first_token_col[0]].std(),
+                    df[total_time_col[0]].std()
+                ]
+            })
+            
+            # 格式化数值
+            for col in ['平均值 (秒)', '最小值 (秒)', '最大值 (秒)', '标准差 (秒)']:
+                comparison_df[col] = comparison_df[col].apply(lambda x: f"{x:.3f}" if not pd.isna(x) else "N/A")
+            
+            st.dataframe(comparison_df, use_container_width=True)
+        
+        # API重试次数分析
+        attempt_col = [col for col in df.columns if 'attempt' in col.lower()]
+        if attempt_col:
+            attempts = df[attempt_col[0]].dropna()
+            if len(attempts) > 0:
+                st.subheader("🔄 API重试分析")
+                
+                col1, col2, col3 = st.columns(3)
+                
+                with col1:
+                    st.metric(
+                        "🔄 平均重试次数", 
+                        f"{attempts.mean():.1f}",
+                        delta=f"标准差: {attempts.std():.1f}"
+                    )
+                
+                with col2:
+                    success_rate = (attempts == 1).sum() / len(attempts) * 100
+                    st.metric(
+                        "✅ 首次成功率", 
+                        f"{success_rate:.1f}%",
+                        delta="目标: >95%"
+                    )
+                
+                with col3:
+                    max_attempts = attempts.max()
+                    st.metric(
+                        "🔄 最大重试次数", 
+                        f"{max_attempts:.0f}",
+                        delta="期望: ≤3"
+                    )
+    
+    @staticmethod
+    def show_performance_recommendations(df: pd.DataFrame):
+        """显示性能优化建议"""
+        st.subheader("💡 性能优化建议")
+        
+        # 分析性能数据并给出建议
+        recommendations = []
+        
+        # 首字响应时间建议
+        first_token_col = [col for col in df.columns if 'first_token' in col.lower()]
+        if first_token_col:
+            first_token_times = df[first_token_col[0]].dropna()
+            if len(first_token_times) > 0:
+                avg_first_token = first_token_times.mean()
+                if avg_first_token > 2.0:
+                    recommendations.append({
+                        'icon': '🐌',
+                        'type': '首字响应时间',
+                        'issue': f'平均首字响应时间 {avg_first_token:.3f}s 过长',
+                        'suggestion': '建议检查网络连接、服务器负载，或考虑使用更快的API端点'
+                    })
+                elif avg_first_token < 0.5:
+                    recommendations.append({
+                        'icon': '🚀',
+                        'type': '首字响应时间',
+                        'issue': f'平均首字响应时间 {avg_first_token:.3f}s 表现优秀',
+                        'suggestion': '当前响应速度很好，保持现有配置'
+                    })
+        
+        # 总响应时间建议
+        total_time_col = [col for col in df.columns if 'total_response_time' in col.lower()]
+        if total_time_col:
+            total_times = df[total_time_col[0]].dropna()
+            if len(total_times) > 0:
+                avg_total = total_times.mean()
+                if avg_total > 15.0:
+                    recommendations.append({
+                        'icon': '⏰',
+                        'type': '总响应时间',
+                        'issue': f'平均总响应时间 {avg_total:.3f}s 过长',
+                        'suggestion': '建议优化提示词长度、减少复杂度，或使用更快的模型'
+                    })
+        
+        # 重试次数建议
+        attempt_col = [col for col in df.columns if 'attempt' in col.lower()]
+        if attempt_col:
+            attempts = df[attempt_col[0]].dropna()
+            if len(attempts) > 0:
+                avg_attempts = attempts.mean()
+                if avg_attempts > 1.5:
+                    recommendations.append({
+                        'icon': '🔄',
+                        'type': 'API重试',
+                        'issue': f'平均重试次数 {avg_attempts:.1f} 过高',
+                        'suggestion': '建议检查API稳定性、网络连接，或增加超时时间'
+                    })
+        
+        # 显示建议
+        if recommendations:
+            for rec in recommendations:
+                with st.expander(f"{rec['icon']} {rec['type']} - {rec['issue']}"):
+                    st.write(f"**建议：** {rec['suggestion']}")
+        else:
+            st.success("�� 所有性能指标都在正常范围内！")
 
 class ErrorHandlingComponents:
     """错误处理组件类"""

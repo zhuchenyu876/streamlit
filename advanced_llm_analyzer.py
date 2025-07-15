@@ -323,6 +323,134 @@ class AdvancedLLMAnalyzer:
         
         raise Exception(f"所有重试都失败了，请检查网络连接和API服务状态")
 
+    def send_evaluation_request_streaming(self, prompt: str, timeout: int = 120, max_retries: int = 3) -> Dict:
+        """
+        发送评估请求到API - 流式响应版本，测量首字响应时间
+        
+        Args:
+            prompt (str): 评估提示
+            timeout (int): 超时时间（秒）
+            max_retries (int): 最大重试次数
+            
+        Returns:
+            Dict: 包含响应内容和时间指标的字典
+        """
+        
+        for attempt in range(max_retries):
+            try:
+                # 记录请求开始时间
+                request_start_time = time.time()
+                self.logger.info(f"发送流式API请求 (尝试 {attempt + 1}/{max_retries})")
+                
+                # 准备请求数据
+                data = {
+                    'username': self.config['username'],
+                    'question': prompt,
+                    'segment_code': str(uuid.uuid4())
+                }
+                
+                headers = {
+                    'cybertron-robot-key': self.config['robot_key'],
+                    'cybertron-robot-token': self.config['robot_token'],
+                    'Content-Type': 'application/json'
+                }
+                
+                # 发送流式请求
+                response = requests.post(
+                    self.config['url'],
+                    json=data,
+                    headers=headers,
+                    timeout=timeout,
+                    stream=True  # 启用流式响应
+                )
+                
+                if response.status_code == 200:
+                    # 首字响应时间
+                    first_byte_time = None
+                    # 完整内容
+                    full_content = ""
+                    
+                    # 逐块读取响应
+                    for chunk in response.iter_content(chunk_size=1, decode_unicode=True):
+                        if chunk:
+                            # 记录首字响应时间
+                            if first_byte_time is None:
+                                first_byte_time = time.time()
+                                first_token_response_time = first_byte_time - request_start_time
+                                self.logger.info(f"首字响应时间: {first_token_response_time:.3f}秒")
+                            
+                            full_content += chunk
+                    
+                    # 总响应时间
+                    total_response_time = time.time() - request_start_time
+                    
+                    # 解析响应内容
+                    try:
+                        result = json.loads(full_content)
+                        if result.get('code') == '000000':
+                            content = result['data']['answer'] if 'data' in result and 'answer' in result['data'] else str(result.get('data', {}))
+                            
+                            return {
+                                'content': content,
+                                'first_token_response_time': first_token_response_time if first_byte_time else None,
+                                'total_response_time': total_response_time,
+                                'success': True,
+                                'attempt': attempt + 1
+                            }
+                        else:
+                            error_msg = result.get('message', 'Unknown error')
+                            self.logger.warning(f"API返回错误: {error_msg}")
+                            raise Exception(f"API错误: {error_msg}")
+                    except json.JSONDecodeError:
+                        # 如果不是JSON格式，直接返回文本内容
+                        return {
+                            'content': full_content,
+                            'first_token_response_time': first_token_response_time if first_byte_time else None,
+                            'total_response_time': total_response_time,
+                            'success': True,
+                            'attempt': attempt + 1
+                        }
+                else:
+                    self.logger.warning(f"HTTP错误: {response.status_code}")
+                    raise Exception(f"HTTP错误: {response.status_code}")
+                    
+            except requests.exceptions.Timeout:
+                self.logger.warning(f"尝试 {attempt + 1} 失败: 请求超时 ({timeout}秒)")
+                if attempt < max_retries - 1:
+                    wait_time = (attempt + 1) * 3
+                    self.logger.info(f"等待 {wait_time} 秒后重试...")
+                    time.sleep(wait_time)
+                else:
+                    return {
+                        'content': f"请求超时 ({timeout}秒)",
+                        'first_token_response_time': None,
+                        'total_response_time': None,
+                        'success': False,
+                        'attempt': attempt + 1
+                    }
+            except Exception as e:
+                self.logger.error(f"尝试 {attempt + 1} 失败: {str(e)}")
+                if attempt < max_retries - 1:
+                    wait_time = (attempt + 1) * 3
+                    self.logger.info(f"等待 {wait_time} 秒后重试...")
+                    time.sleep(wait_time)
+                else:
+                    return {
+                        'content': f"请求失败: {str(e)}",
+                        'first_token_response_time': None,
+                        'total_response_time': None,
+                        'success': False,
+                        'attempt': attempt + 1
+                    }
+        
+        return {
+            'content': "所有重试都失败了",
+            'first_token_response_time': None,
+            'total_response_time': None,
+            'success': False,
+            'attempt': max_retries
+        }
+
     def parse_evaluation_result(self, result_text: str, evaluation_type: str = "comprehensive") -> Dict:
         """
         解析评估结果
@@ -438,9 +566,86 @@ class AdvancedLLMAnalyzer:
             "analysis_timestamp": datetime.now().isoformat()
         }
 
+    def _evaluate_single_sample(self, reference: str, generated: str, evaluation_type: str = "comprehensive", use_streaming: bool = False) -> Dict:
+        """
+        评估单个样本
+        
+        Args:
+            reference (str): 参考答案
+            generated (str): 生成答案
+            evaluation_type (str): 评估类型
+            use_streaming (bool): 是否使用流式响应
+            
+        Returns:
+            Dict: 评估结果
+        """
+        
+        # 构建评估提示
+        if evaluation_type == "comprehensive":
+            if use_streaming:
+                prompt = self.create_evaluation_prompt(reference, generated, "comprehensive")
+                response_data = self.send_evaluation_request_streaming(prompt)
+                if response_data['success']:
+                    result = self.parse_evaluation_result(response_data['content'], "comprehensive")
+                    # 添加时间指标
+                    result['first_token_response_time'] = response_data['first_token_response_time']
+                    result['total_response_time'] = response_data['total_response_time']
+                    result['api_attempt'] = response_data['attempt']
+                else:
+                    result = self._get_error_evaluation_result("comprehensive")
+            else:
+                result = self.comprehensive_analyze(reference, generated)
+        elif evaluation_type == "business_only":
+            prompt = self.create_evaluation_prompt(reference, generated, "tire_business")
+            if use_streaming:
+                response_data = self.send_evaluation_request_streaming(prompt)
+                if response_data['success']:
+                    result = self.parse_evaluation_result(response_data['content'], "tire_business")
+                    # 添加时间指标
+                    result['first_token_response_time'] = response_data['first_token_response_time']
+                    result['total_response_time'] = response_data['total_response_time']
+                    result['api_attempt'] = response_data['attempt']
+                else:
+                    result = self._get_error_evaluation_result("tire_business")
+            else:
+                response_content = self.send_evaluation_request(prompt)
+                result = self.parse_evaluation_result(response_content, "tire_business")
+        elif evaluation_type == "comparison_only":
+            prompt = self.create_evaluation_prompt(reference, generated, "agent_comparison")
+            if use_streaming:
+                response_data = self.send_evaluation_request_streaming(prompt)
+                if response_data['success']:
+                    result = self.parse_evaluation_result(response_data['content'], "agent_comparison")
+                    # 添加时间指标
+                    result['first_token_response_time'] = response_data['first_token_response_time']
+                    result['total_response_time'] = response_data['total_response_time']
+                    result['api_attempt'] = response_data['attempt']
+                else:
+                    result = self._get_error_evaluation_result("agent_comparison")
+            else:
+                response_content = self.send_evaluation_request(prompt)
+                result = self.parse_evaluation_result(response_content, "agent_comparison")
+        else:
+            if use_streaming:
+                prompt = self.create_evaluation_prompt(reference, generated, "comprehensive")
+                response_data = self.send_evaluation_request_streaming(prompt)
+                if response_data['success']:
+                    result = self.parse_evaluation_result(response_data['content'], "comprehensive")
+                    # 添加时间指标
+                    result['first_token_response_time'] = response_data['first_token_response_time']
+                    result['total_response_time'] = response_data['total_response_time']
+                    result['api_attempt'] = response_data['attempt']
+                else:
+                    result = self._get_error_evaluation_result("comprehensive")
+            else:
+                result = self.comprehensive_analyze(reference, generated)
+        
+        return result
+
     def batch_analyze_dataframe(self, df: pd.DataFrame, ref_col: str, gen_col: str, 
                               analysis_type: str = "comprehensive",
-                              progress_callback=None, pause_check_callback=None) -> pd.DataFrame:
+                              progress_callback=None, pause_check_callback=None, 
+                              use_streaming: bool = False) -> pd.DataFrame:
         """
         批量分析DataFrame
         
@@ -451,6 +656,7 @@ class AdvancedLLMAnalyzer:
             analysis_type (str): 分析类型
             progress_callback: 进度回调
             pause_check_callback: 暂停检查回调
+            use_streaming (bool): 是否使用流式响应，支持首字响应时间测量
             
         Returns:
             pd.DataFrame: 添加了分析结果的数据框
@@ -477,18 +683,13 @@ class AdvancedLLMAnalyzer:
                 # 记录开始处理
                 self.logger.info(f"开始处理样本 {idx + 1}/{len(df)}")
                 
-                if analysis_type == "comprehensive":
-                    result = self.comprehensive_analyze(str(row[ref_col]), str(row[gen_col]))
-                elif analysis_type == "business_only":
-                    prompt = self.create_evaluation_prompt(str(row[ref_col]), str(row[gen_col]), "tire_business")
-                    result_text = self.send_evaluation_request(prompt)
-                    result = self.parse_evaluation_result(result_text, "tire_business")
-                elif analysis_type == "comparison_only":
-                    prompt = self.create_evaluation_prompt(str(row[ref_col]), str(row[gen_col]), "agent_comparison")
-                    result_text = self.send_evaluation_request(prompt)
-                    result = self.parse_evaluation_result(result_text, "agent_comparison")
-                else:
-                    result = self.comprehensive_analyze(str(row[ref_col]), str(row[gen_col]))
+                # 使用统一的评估方法
+                result = self._evaluate_single_sample(
+                    str(row[ref_col]), 
+                    str(row[gen_col]), 
+                    analysis_type, 
+                    use_streaming
+                )
                 
                 results.append(result)
                 
@@ -511,15 +712,30 @@ class AdvancedLLMAnalyzer:
             # 控制请求频率
             time.sleep(0.5) # 减少请求间隔
             
-            # 更新进度（显示已完成的样本）
+            # 更新进度（显示已完成的样本）并传递当前结果
             if progress_callback:
-                progress_callback(idx + 1, len(df))
-            
-            # 每10行记录一次进度
-            if (idx + 1) % 10 == 0:
-                self.logger.info(f"已完成增强LLM分析 {idx + 1}/{len(df)} 行")
+                # 创建当前行的结果，包含原始数据和分析结果
+                current_row = row.copy()
+                
+                # 添加分析结果到当前行
+                if analysis_type == "comprehensive":
+                    for key, value in result.items():
+                        current_row[f'llm_{key}'] = value
+                elif analysis_type == "business_only":
+                    for key, value in result.items():
+                        current_row[f'llm_business_{key}'] = value
+                elif analysis_type == "comparison_only":
+                    for key, value in result.items():
+                        current_row[f'llm_comparison_{key}'] = value
+                
+                # 调用回调函数，传递当前行数据
+                try:
+                    progress_callback(idx + 1, len(df), current_row)
+                except TypeError:
+                    # 如果回调函数不支持第三个参数，则使用旧方式
+                    progress_callback(idx + 1, len(df))
         
-        # 添加结果到DataFrame
+        # 将结果添加到DataFrame
         self._add_results_to_df(df, results, analysis_type)
         
         return df
